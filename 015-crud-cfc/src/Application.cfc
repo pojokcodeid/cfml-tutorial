@@ -3,8 +3,8 @@ component {
   this.applicationTimeout = createTimeSpan(0, 2, 0, 0);
   this.sessionManagement = true;
 
-  this.mappings["/cfc"] = expandPath("../../models/em");
-  datasourcePath = expandPath("../../config/datasource.json");
+  this.mappings["/cfc"] = expandPath("/models/em");
+  datasourcePath = expandPath("/config/datasource.json");
   if (fileExists(datasourcePath)) {
     datasourceConfig = deserializeJSON(fileRead(datasourcePath));
     this.datasource = structKeyArray(datasourceConfig)[1];
