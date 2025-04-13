@@ -1,0 +1,1 @@
+<h1>Welcome to Lucee Rest API</h1>
