@@ -1,0 +1,6 @@
+{
+  "jwtkey": "asd723lamsi9121",
+  "expiredMinute": 30,
+  "refreshKey": "ndknfi23n[345",
+  "refreshExpiredMinute": 1440
+}

@@ -28,4 +28,5 @@ box server forget
 
 ```
 http://localhost:8888/rest/em/user/say
+http://localhost:8888/rest/em/user/login
 ```

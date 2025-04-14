@@ -2,9 +2,6 @@ component {
   
     variables.jarPaths = [
         expandPath("./lib/password4j-1.5.3.jar"),
-        expandPath("./lib/commons-lang3-3.12.0.jar"),
-        expandPath("./lib/slf4j-api-1.7.30.jar"),
-        expandPath("./lib/slf4j-nop-1.7.30.jar")
     ];
   
     function init() {
