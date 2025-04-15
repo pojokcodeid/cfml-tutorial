@@ -1,7 +1,7 @@
 {
   "MyMariaDB": {
     "class": "org.mariadb.jdbc.Driver",
-    "connectionString": "jdbc:mariadb://127.0.0.1:3306/latihan",
+    "connectionString": "jdbc:mariadb://127.0.0.1:3306/restapi",
     "username": "root",
     "password": "",
     "connectionLimit": 5

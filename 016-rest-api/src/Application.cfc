@@ -15,7 +15,6 @@ component {
   }	
 
   function onApplicationStart() {
-      application.jwtkey = "$3cR3!k@GH34";
 		  // Base path dari aplikasi
       basePath = getDirectoryFromPath(getCurrentTemplatePath()) & "models/";
 
