@@ -1,0 +1,19 @@
+{
+    "name":"lucee-dev",
+    "description":"Sample App using Lucee and CommandBox",
+    "type":"app",
+    "web":{
+        "webroot":"src"
+    },
+    "version":"1.0.0",
+    "dependencies":{
+        "lucee":"6.2.0",
+        "logbox":"^7.3.1+17"
+    },
+    "scripts":{
+        "start":"server start"
+    },
+    "installPaths":{
+        "logbox":"src/logbox/"
+    }
+}
