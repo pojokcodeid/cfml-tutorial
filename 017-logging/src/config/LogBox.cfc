@@ -5,7 +5,7 @@ component {
             appenders = {
                 // rujukan https://logbox.ortusbooks.com/usage/appender-properties/rollingfileappender
                 MyAsyncFile = {
-                    class='logbox.system.logging.appenders.RollingFileAppender',
+                    class='dependencies.logbox.system.logging.appenders.RollingFileAppender',
                     properties={
                         filePath=expandPath( '../logs' ),
                         filename="MyLog",

@@ -4,11 +4,12 @@ component {
   this.sessionManagement = false;
   this.applicationTimeout = createTimeSpan(1,0,0,0);
 
-  LogBoxConfig = new logbox.system.logging.config.LogBoxConfig( CFCConfigPath="/config/LogBox.cfc" );
-  LogBox = new logbox.system.logging.LogBox( LogBoxConfig );
-  logger = LogBox.getRootLogger();
+  // LogBoxConfig = new logbox.system.logging.config.LogBoxConfig( CFCConfigPath="/config/LogBox.cfc" );
+  // LogBox = new logbox.system.logging.LogBox( LogBoxConfig );
+  // logger = LogBox.getRootLogger();
 
   function onApplicationStart() {
+    logger = new helpers.Logging();
     logger.info( 'Application Initialized.' );
     logger.warn( 'This method is deprecated.' );
     logger.error( 'Error placing order')
