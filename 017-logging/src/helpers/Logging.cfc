@@ -4,8 +4,8 @@ component accessors="true" {
     property logger;
 
     function init(){
-        LogBoxConfig = new dependencies.logbox.system.logging.config.LogBoxConfig( CFCConfigPath="/config/LogBox.cfc" );
-        LogBox = new dependencies.logbox.system.logging.LogBox( LogBoxConfig );
+        LogBoxConfig = new logbox.system.logging.config.LogBoxConfig( CFCConfigPath="/config/LogBox.cfc" );
+        LogBox = new logbox.system.logging.LogBox( LogBoxConfig );
         this.logger = LogBox.getRootLogger();
     }
 
