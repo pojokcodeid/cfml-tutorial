@@ -68,7 +68,9 @@ component extends="../jwtMiddleware" restpath="/user"  rest="true" {
 
 
 	remote struct function login()  httpmethod="GET" restpath="login" {
+		var passwordUtil = new helpers.Password();
 		var result = super.generate("Pojok Code");
+  		var hashedPassword = passwordUtil.bcryptHashGet("userPassword123!");
 		cfheader(statusCode=200, statusText="ok");
 		return {
 		success= true,
@@ -76,7 +78,8 @@ component extends="../jwtMiddleware" restpath="/user"  rest="true" {
 		data = {
 			id=1,
 			name="Pojok Code",
-			email="email@gmail.com"
+			email="email@gmail.com",
+			pass = hashedPassword
 		},
 		accessToken = result.accessToken,
 		refreshToken = result.refreshToken
