@@ -1,6 +1,11 @@
 component {
 
-	local.config = deserializeJSON(fileRead(expandPath('/config/jwt.json')));
+	if (fileExists(expandPath('/config/jwt.json'))) {
+		local.config = deserializeJSON(fileRead(expandPath('/config/jwt.json')));
+	}else{
+		local.config = deserializeJSON(fileRead(expandPath('./config/jwt.json')));
+	}
+	
 	this.jwtkey=local.config.jwtkey;
 	this.expiedMinute = local.config.expiredMinute;
 	this.jwtRefreshKey=local.config.refreshKey;
