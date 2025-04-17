@@ -1,4 +1,4 @@
-component extends="../jwtMiddleware" restpath="/user"  rest="true" {
+component extends="../JwtMiddleware" restpath="/user"  rest="true" {
 
 	remote struct function sayHay() httpmethod="GET" restpath="say" {
 		local.data = {}
@@ -11,6 +11,7 @@ component extends="../jwtMiddleware" restpath="/user"  rest="true" {
 			cfheader(statusCode=200, statusText="Ok");
 		}
 		return { 
+			// application=serializeJSON( application ),
 			success=verify.success,
 			message=verify.message, 
 			data=local.data
@@ -70,7 +71,7 @@ component extends="../jwtMiddleware" restpath="/user"  rest="true" {
 						:personal_id
 					)",
 					{
-						username = { value = newUser.email, sqltype = "CF_SQL_VARCHAR" },
+						username = { value = newUser.username, sqltype = "CF_SQL_VARCHAR" },
 						password = { value = newUser.password, sqltype = "CF_SQL_VARCHAR" },
 						role = { value = "user", sqltype = "CF_SQL_VARCHAR" },
 						status = { value = 1, sqltype = "CF_SQL_NUMERIC" },
@@ -93,7 +94,6 @@ component extends="../jwtMiddleware" restpath="/user"  rest="true" {
 		return response;
 	}
   
-	// Placeholder function to check if email already exists
 	private boolean function emailAlreadyExists(string email) {
 		local.qPersonal = queryExecute(
 			"SELECT id FROM personal where email = :email",
@@ -111,38 +111,154 @@ component extends="../jwtMiddleware" restpath="/user"  rest="true" {
 		}
 	}
 
-	// Placeholder function to add user to storage
-	private void function addUserToStorage(struct user) {
-		// Implement actual storage logic here
-	}
-
-
-	remote struct function login()  httpmethod="GET" restpath="login" {
-		var passwordUtil = new helpers.Password();
-		var result = super.generate("Pojok Code");
-  		var hashedPassword = passwordUtil.bcryptHashGet("userPassword123!");
-		cfheader(statusCode=200, statusText="ok");
-		local.qPersonal = queryExecute(
-			"SELECT id FROM personal where email = :email",
+	private struct function getUserByUsername(string username) {
+		local.qUser = queryExecute(
+			"SELECT user.id, user.username, user.password, user.role, user.status, personal.name, personal.email, personal.age 
+			FROM user 
+			INNER JOIN personal ON user.personal_id = personal.id 
+			WHERE user.username = :username",
 			{
-				email = {value="Test@email.com", sqltype="CF_SQL_VARCHAR"}
+				username = {value=username, sqltype="CF_SQL_VARCHAR"}
 			},
 			{
 				datasource: super.datasource
 			}
 		);
+		if(local.qUser.recordCount){
+			return {
+				id = local.qUser.id,
+				username = local.qUser.username,
+				password = local.qUser.password,
+				role = local.qUser.role,
+				status = local.qUser.status,
+				name = local.qUser.name,
+				email = local.qUser.email,
+				age = local.qUser.age
+			};
+		}else{
+			return {};
+		}
+	}
+
+	remote struct function login(struct user)  httpmethod="POST" restpath="login" {
+		var passwordUtil = new helpers.Password();
+		var newUser = user;
+		// get user by username
+		var userData = getUserByUsername(newUser.username);
+		if (structKeyExists(userData, "id")) {
+			if (not passwordUtil.bcryptHashVerify(newUser.password, userData.password)) {
+				cfheader(statusCode=401, statusText="Unauthorized");
+				return {
+					success = false,
+					message = "Invalid password",
+					data = {}
+				};
+			}
+		} else {
+			cfheader(statusCode=404, statusText="Not Found");
+			return {
+				success = false,
+				message = "User not found",
+				data = {}
+			};
+		}
+		userData.password="xxxxxxxxxxxxxxxxxxxxxxx";
+		var result = super.generate(userData);
+		cfheader(statusCode=200, statusText="ok");		
 		return {
 			success= true,
 			message= "Login Success",
-			application = serializeJSON( application ),
-			data = {
-				id=1,
-				name="Pojok Code",
-				email="email@gmail.com",
-				pass = hashedPassword
-			},
+			data = userData,
 			accessToken = result.accessToken,
 			refreshToken = result.refreshToken
+		}
+	}
+
+	remote struct function refreshToken() httpmethod="POST" restpath="refresh" {
+		var response = {};
+		var verify = authenticateRefresh();
+		if(not verify.success){
+			cfheader(statusCode=401, statusText="Unauthorized");
+			response = {
+				success = false,
+				message = verify.message,
+				data = {}
+			};
+		}else{
+			cfheader(statusCode=200, statusText="Ok");
+			var result = super.generate(verify.payload.DATA);
+			response = {
+				success = true,
+				message = "Refresh token success",
+				data = verify.payload.DATA,
+				accessToken = result.accessToken,
+				refreshToken = result.refreshToken
+			};
+		}
+		return response;
+	}
+
+	remote struct function updateUser(struct user) httpmethod="POST" restpath="update" {
+		var verify = super.authenticate();
+		if(not verify.success){
+			cfheader(statusCode=401, statusText="Unauthorized");
+			return {
+				success = false,
+				message = verify.message,
+				data = {}
+			};
+		}else{
+			cfheader(statusCode=200, statusText="Ok");
+			var passwordUtil = new helpers.Password();
+			var newUser = user;
+			var userData = getUserByUsername(newUser.oldUsername);
+			if (structKeyExists(userData, "id")) {
+				if ( not passwordUtil.bcryptHashVerify(newUser.oldPassword, userData.password)) {
+					cfheader(statusCode=401, statusText="Unauthorized");
+					return {
+						success = false,
+						message = "Invalid password",
+						data = {}
+					};
+				}
+			} else {
+				cfheader(statusCode=404, statusText="Not Found");
+				return {
+					success = false,
+					message = "User not found",
+					data = {}
+				};
+			}
+			if (structKeyExists(newUser, "username") and newUser.username != userData.username) {
+				local.qUpdate = queryExecute(
+					"UPDATE user SET username = :username WHERE id = :id",
+					{
+						username = { value = newUser.username, sqltype = "CF_SQL_VARCHAR" },
+						id = { value = userData.id, sqltype = "CF_SQL_NUMERIC" }
+					},
+					{ datasource = super.datasource }
+				);
+			}
+			if (structKeyExists(newUser, "password") and newUser.password != "") {
+				local.qUpdate = queryExecute(
+					"UPDATE user SET password = :password WHERE id = :id",
+					{
+						password = { value = passwordUtil.bcryptHashGet(newUser.password), sqltype = "CF_SQL_VARCHAR" },
+						id = { value = userData.id, sqltype = "CF_SQL_NUMERIC" }
+					},
+					{ datasource = super.datasource }
+				);
+			}
+			var dataReturn = userData;
+			dataReturn.oldPassword="xxxxxxxxxxxxxxxxxxxxxxx";
+			dataReturn.password="xxxxxxxxxxxxxxxxxxxxxxx";
+			dataReturn.oldUsername=newUser.oldUsername;
+			dataReturn.username=newUser.username;
+			return {
+				success = true,
+				message = "Update user success",
+				data = dataReturn
+			};
 		}
 	}
 }

@@ -15,6 +15,5 @@
     },
     "JVM":{
         "javaHome":"D:\\tools\\jdk-21.0.1"
-    },
-    "cfconfigFile":"cfconfig.json"
+    }
 }

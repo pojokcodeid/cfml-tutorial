@@ -1,15 +1,46 @@
-### load key
-GET http://localhost:8888/
+### testing say
+GET http://localhost:8888/rest/em/user/say
 ### register user
 POST http://localhost:8888/rest/em/user/register
 Content-Type: application/json
 {
     "name":"Pojok Code",
-    "password":"P@ssw0rd",
     "email":"code@gmail.com",
+    "username":"pcode",
+    "password":"P@ssw0rd",
     "age":30
 }
 
+### login user 
+POST http://localhost:8888/rest/em/user/login
+Content-Type: application/json
+{
+    "username":"pcode",
+    "password":"P@ssw0rd"
+}
+{{
+  $global.accessToken=JSON.parse(response.body).ACCESSTOKEN;
+  $global.refreshToken=JSON.parse(response.body).REFRESHTOKEN;
+}}
+### refresh token
+POST http://localhost:8888/rest/em/user/refresh
+Content-Type: application/json
+Authorization: Bearer {{$global.refreshToken}}
+{{
+  $global.accessToken=JSON.parse(response.body).ACCESSTOKEN;
+  $global.refreshToken=JSON.parse(response.body).REFRESHTOKEN;
+}}
 ### say hello
 GET http://localhost:8888/rest/em/user/say
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJEQVRBIjoiUG9qb2sgQ29kZSIsIkVYUCI6MTc0NDYyMDMzNywiVFMiOiJBcHJpbCwgMTQgMjAyNSAxNToxNTozNyArMDcwMCJ9.vn8OwjtL-9GtUJmkdyarBfywqHXvpvNG-FWqLe2yo0k
+Content-Type: application/json
+Authorization: Bearer {{$global.accessToken}}
+### update user 
+POST http://localhost:8888/rest/em/user/update
+Authorization: Bearer {{$global.accessToken}}
+Content-Type: application/json
+{
+    "oldUsername":"pcode",
+    "oldPassword":"P@ssw0rd",
+    "username":"pcode",
+    "password":"P@ssw0rd"
+}
