@@ -1,5 +1,15 @@
 ### load key
 GET http://localhost:8888/
+### register user
+POST http://localhost:8888/rest/em/user/register
+Content-Type: application/json
+{
+    "name":"Pojok Code",
+    "password":"P@ssw0rd",
+    "email":"code@gmail.com",
+    "age":30
+}
+
 ### say hello
 GET http://localhost:8888/rest/em/user/say
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJEQVRBIjoiUG9qb2sgQ29kZSIsIkVYUCI6MTc0NDYyMDMzNywiVFMiOiJBcHJpbCwgMTQgMjAyNSAxNToxNTozNyArMDcwMCJ9.vn8OwjtL-9GtUJmkdyarBfywqHXvpvNG-FWqLe2yo0k

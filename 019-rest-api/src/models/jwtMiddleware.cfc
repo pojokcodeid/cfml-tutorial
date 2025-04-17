@@ -1,15 +1,16 @@
 component {
-
-	if (fileExists(expandPath('/config/jwt.json'))) {
-		local.config = deserializeJSON(fileRead(expandPath('/config/jwt.json')));
+	// Panggil Application.cfc yang berada di root dir
+	if (fileExists(expandPath('/config/global.json'))) {
+		local.config = deserializeJSON(fileRead(expandPath('/config/global.json')));
 	}else{
-		local.config = deserializeJSON(fileRead(expandPath('./config/jwt.json')));
+		local.config = deserializeJSON(fileRead(expandPath('./config/global.json')));
 	}
 	
 	this.jwtkey=local.config.jwtkey;
 	this.expiedMinute = local.config.expiredMinute;
 	this.jwtRefreshKey=local.config.refreshKey;
 	this.refreshExpiredMinute=local.config.refreshExpiredMinute;
+	this.datasource=local.config.datasource;
 
 	function generate(data){
 		var expdt = dateAdd("n", this.expiedMinute , now());

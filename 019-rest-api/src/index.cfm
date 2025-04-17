@@ -1,5 +1,8 @@
-<!--- <h1>Welcome to Lucee Rest API</h1>
-<cfscript>
+<h1>Welcome to Lucee Rest API</h1>
+<cfoutput>
+  #serializeJSON( application )#
+</cfoutput>
+<!--- <cfscript>
   passwordUtil = new Password();
   
   // Hash password

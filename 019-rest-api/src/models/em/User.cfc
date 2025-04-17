@@ -19,28 +19,75 @@ component extends="../jwtMiddleware" restpath="/user"  rest="true" {
 
 	remote struct function register(struct user) httpmethod="POST" restpath="register" {
 		var response = {};
+		var passwordUtil = new helpers.Password();
 		var newUser = user;
-		newUser.id = createUUID();
-		newUser.password = hash(newUser.password, "SHA-256");
+		newUser.password = passwordUtil.bcryptHashGet(newUser.password);
 		
 		// Assuming you have some kind of user storage, e.g., a database or an in-memory structure
 		// Here we just simulate adding a user
 		if (emailAlreadyExists(newUser.email)) {
-		cfheader(statusCode=409, statusText="Conflict");
-		response = {
-			success = false,
-			message = "Email already registered",
-			data = {}
-		};
+			cfheader(statusCode=409, statusText="Conflict");
+			response = {
+				success = false,
+				message = "Email already registered",
+				data = {}
+			};
 		} else {
-		// Simulate storing the new user
-		addUserToStorage(newUser);
-		cfheader(statusCode=201, statusText="Created");
-		response = {
-			success = true,
-			message = "User registered successfully",
-			data = newUser
-		};
+			// Simulate storing the new user
+			transaction action="begin" {
+				// process insert personal
+				var qInsert = queryExecute(
+					"INSERT INTO personal (
+						name,
+						email,
+						age
+					) VALUES (
+						:name,
+						:email,
+						:age
+					)",
+					{
+						name = { value = newUser.name, sqltype = "CF_SQL_VARCHAR" },
+						email = { value = newUser.email, sqltype = "CF_SQL_VARCHAR" },
+						age = { value = newUser.age, sqltype = "CF_SQL_NUMERIC" }
+					},
+					{ datasource = super.datasource, result = "local.lastInsert" }
+				);
+				var insertedId = local.lastInsert.generatedKey;
+				// insert ke  user 
+				var qInsertUser = queryExecute(
+					"INSERT INTO user (
+						username,
+						password,
+						role,
+						status,
+						personal_id
+					) VALUES (
+						:username,
+						:password,
+						:role,
+						:status,
+						:personal_id
+					)",
+					{
+						username = { value = newUser.email, sqltype = "CF_SQL_VARCHAR" },
+						password = { value = newUser.password, sqltype = "CF_SQL_VARCHAR" },
+						role = { value = "user", sqltype = "CF_SQL_VARCHAR" },
+						status = { value = 1, sqltype = "CF_SQL_NUMERIC" },
+						personal_id = { value = insertedId, sqltype = "CF_SQL_NUMERIC" }
+					},
+					{ datasource = super.datasource }
+				);			
+			}
+			// change password before return 
+			newUser.password="xxxxxxxxxxxxxxxxxxx";
+			// addUserToStorage(newUser);
+			cfheader(statusCode=201, statusText="Created");
+			response = {
+				success = true,
+				message = "User registered successfully",
+				data = newUser
+			};
 		}
 		
 		return response;
@@ -49,9 +96,12 @@ component extends="../jwtMiddleware" restpath="/user"  rest="true" {
 	// Placeholder function to check if email already exists
 	private boolean function emailAlreadyExists(string email) {
 		local.qPersonal = queryExecute(
-			"SELECT personal_id FROM personal where email = :email",
+			"SELECT id FROM personal where email = :email",
 			{
 				email = {value=email, sqltype="CF_SQL_VARCHAR"}
+			},
+			{
+				datasource: super.datasource
 			}
 		);
 		if(local.qPersonal.recordCount){
@@ -72,17 +122,27 @@ component extends="../jwtMiddleware" restpath="/user"  rest="true" {
 		var result = super.generate("Pojok Code");
   		var hashedPassword = passwordUtil.bcryptHashGet("userPassword123!");
 		cfheader(statusCode=200, statusText="ok");
+		local.qPersonal = queryExecute(
+			"SELECT id FROM personal where email = :email",
+			{
+				email = {value="Test@email.com", sqltype="CF_SQL_VARCHAR"}
+			},
+			{
+				datasource: super.datasource
+			}
+		);
 		return {
-		success= true,
-		message= "Login Success",
-		data = {
-			id=1,
-			name="Pojok Code",
-			email="email@gmail.com",
-			pass = hashedPassword
-		},
-		accessToken = result.accessToken,
-		refreshToken = result.refreshToken
+			success= true,
+			message= "Login Success",
+			application = serializeJSON( application ),
+			data = {
+				id=1,
+				name="Pojok Code",
+				email="email@gmail.com",
+				pass = hashedPassword
+			},
+			accessToken = result.accessToken,
+			refreshToken = result.refreshToken
 		}
 	}
 }
