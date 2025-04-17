@@ -251,7 +251,7 @@ component extends="../JwtMiddleware" restpath="/user"  rest="true" {
 	 * @param {struct} user A struct containing the user's data to update.
 	 * @return {struct} A struct containing the response data.
 	 */
-	remote struct function updateUser(struct user) httpmethod="POST" restpath="update" {
+	remote struct function updateUser(struct user) httpmethod="PUT" restpath="update" {
 		var verify = super.authenticate();
 		if(not verify.success){
 			cfheader(statusCode=401, statusText="Unauthorized");

@@ -1,0 +1,3 @@
+### get data personal
+GET http://localhost:8888/rest/em/personal
+Authorization: Bearer {{$global.accessToken}}
