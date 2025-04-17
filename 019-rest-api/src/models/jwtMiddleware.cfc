@@ -1,5 +1,6 @@
 component {
-	// Panggil Application.cfc yang berada di root dir
+	
+	// remark: read config from config/global.json
 	if (fileExists(expandPath('/config/global.json'))) {
 		local.config = deserializeJSON(fileRead(expandPath('/config/global.json')));
 	}else{
@@ -12,7 +13,12 @@ component {
 	variables.refreshExpiredMinute=local.config.refreshExpiredMinute;
 	this.datasource=local.config.datasource;
 
-	function generate(data){
+	/**
+	 * @function generate
+	 * @param struct data The data to encode in the JWT
+	 * @return struct Returns a struct with generated accessToken and refreshToken
+	 */
+	public struct function generate(struct data){
 		var expdt = dateAdd("n", variables.expiedMinute , now());
 		var expdtRefresh = dateAdd("n", variables.refreshExpiredMinute , now());
 		var utcDate = dateDiff("s", dateConvert("utc2Local", createDateTime(1970, 1, 1, 0, 0, 0)), expdt);
@@ -29,9 +35,10 @@ component {
 	}
 
 	/**
-	 * @return any
-	 */	
-	function authenticate() {
+	 * Authenticate a request using a JWT token
+	 * @return struct Returns a struct containing the payload of the JWT or an empty struct if the token is invalid
+	 */
+	public struct function authenticate() {
 		var response = {};
 		var requestData = GetHttpRequestData();
 		if (StructKeyExists(requestData.Headers, "authorization")) {
@@ -59,9 +66,10 @@ component {
   	}
 
 	/**
-	 * @return any
-	 */	
-	function authenticateRefresh() {
+	 * Authenticates a request using a refresh token from JWT.
+	 * @return struct Returns a struct containing the payload of the JWT or an empty struct if the token is invalid
+	 */
+	public struct function authenticateRefresh() {
 		var response = {};
 		var requestData = GetHttpRequestData();
 		if (StructKeyExists(requestData.Headers, "authorization")) {
