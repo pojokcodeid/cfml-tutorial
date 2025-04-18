@@ -6,7 +6,11 @@ component {
         var uuid = createUUID();
 		var strSpt = "/";
 		if (findNoCase("Windows", server.OS.Name)) strSpt = "\";
-		var targetPath = getDirectoryFromPath(getCurrentTemplatePath()) & "../../logs" & strSpt & uuid & ".html";
+        var targetPath = getDirectoryFromPath(getCurrentTemplatePath()) & "../../logs";
+        if (not directoryExists(targetPath)) {
+            directoryCreate(targetPath);
+        }
+		targetPath = targetPath & strSpt & uuid & ".html";
         savecontent variable="strDump" {
             writeDump(var=exception, label="Exception", format="html");
         }

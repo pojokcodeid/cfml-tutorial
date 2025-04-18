@@ -5,13 +5,16 @@ component extends="../JwtMiddleware" restpath="/user"  rest="true" {
 		var verify = super.authenticate();
 		if(not verify.success){
 			// content if invalid token
-			cfheader(statusCode=401, statusText=verify.message);
-		}else{
-			// content if valid token
-			cfheader(statusCode=200, statusText="Ok");
+			cfheader(statusCode=401, statusText="Unauthorized");
+			return {
+				success = false,
+				message = verify.message,
+				data = {}
+			};
 		}
+		cfheader(statusCode=200, statusText="Ok");
 		return { 
-			// application=serializeJSON( application ),
+			application=serializeJSON( application ),
 			success=verify.success,
 			message=verify.message, 
 			data=local.data
