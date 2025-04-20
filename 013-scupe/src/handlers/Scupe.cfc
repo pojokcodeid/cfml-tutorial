@@ -4,7 +4,7 @@ component {
   this.appName = "MyApp"; // Bisa diakses dari luar: obj.appName
 
   // variables scope (private)
-  variables.secretKey = "xyz123"; // Tidak bisa diakses langsung dari luar
+  variables.secretKey = "xyz123"; // Tidak bisa diakses langsung dari luar hanya cfc ini saja
   local.contoh="contoh"; // ini tidak bisa diacess kedalam function dand ari luar cfc
   // var contoh3="123"; // ini tidak bisa di declarasikan di luar function
 

@@ -24,10 +24,11 @@ component {
 		var utcDate = dateDiff("s", dateConvert("utc2Local", createDateTime(1970, 1, 1, 0, 0, 0)), expdt);
 		var utcDateRefresh = dateDiff("s", dateConvert("utc2Local", createDateTime(1970, 1, 1, 0, 0, 0)), expdtRefresh);
 		var payload = {ts = now(), data = data, exp = utcDate};
+		var payloadRefresh = {ts = now(), data = data, exp = utcDateRefresh};
 		var jwt = new helpers.Jwt(variables.jwtkey);
 		var jwtRefresh = new helpers.Jwt(variables.jwtRefreshKey);
 		var token = jwt.encode(payload);
-		var tokenRefresh = jwtRefresh.encode(payload);
+		var tokenRefresh = jwtRefresh.encode(payloadRefresh);
 		return {
 			accessToken= token,
 			refreshToken=tokenRefresh

@@ -25,6 +25,17 @@ box server restart
 box server forget
 ```
 
+## export import cfconfig
+
+```bash
+box cfconfig export to=.cfconfig.json
+box server stop lucee-rest-api
+box server forget lucee-rest-api
+box server start
+box cfconfig import from=.cfconfig.json
+box server restart
+```
+
 # Contoh acess
 
 ```

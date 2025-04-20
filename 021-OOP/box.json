@@ -1,5 +1,5 @@
 {
-  "name": "lucee-rest-api",
+  "name": "lucee-dev",
   "description": "Sample App using Lucee and CommandBox",
   "type": "app",
   "version": "1.0.0",
@@ -7,7 +7,6 @@
     "lucee": "6.2.0"
   },
   "scripts": {
-    "start": "server start",
-    "postStart": "cfconfig import from=.cfconfig.json"
+    "start": "server start"
   }
 }
