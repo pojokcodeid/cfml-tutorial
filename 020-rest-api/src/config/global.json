@@ -1,7 +1,7 @@
 {
   "jwtkey": "asd723lamsi9121",
-  "expiredMinute": 30,
+  "expiredMinute": 1,
   "refreshKey": "ndknfi23n[345",
-  "refreshExpiredMinute": 1440,
+  "refreshExpiredMinute": 1420,
   "datasource":"mydatasource"
 }

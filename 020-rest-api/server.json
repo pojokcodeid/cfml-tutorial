@@ -3,11 +3,11 @@
     "startTimeout":"3600",
     "app":{
         "cfengine":"lucee",
-        "restMappings":"/rest/*,/api/*"
+        "restMappings":"/rest/*,/api/*,/*"
     },
     "web":{
         "host":"localhost",
-        "servletPassPredicate":"regex( '^/(.+?\\.cf[cm])(/.*)?$' ) or path-prefix-nocase( /rest/ )",
+        "servletPassPredicate":"regex( '^/(.+?\\.cf[cm])(/.*)?$' ) or path-prefix-nocase( /rest/ ) or path-prefix-nocase( / )",
         "webroot":"src",
         "http":{
             "port":8888

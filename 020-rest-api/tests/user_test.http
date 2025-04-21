@@ -1,5 +1,5 @@
 ### testing say
-GET http://localhost:8888/rest/em/user/say
+GET http://localhost:8888/em/user/say
 Authorization: Bearer {{$global.accessToken}}
 ### register user
 POST http://localhost:8888/rest/em/user/register
