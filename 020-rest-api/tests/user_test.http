@@ -1,5 +1,5 @@
 ### testing say
-GET http://localhost:8888/rest/em/user/say
+GET http://localhost:8888/api/em/user/say
 Authorization: Bearer {{$global.accessToken}}
 ### register user
 POST http://localhost:8888/rest/em/user/register
@@ -24,7 +24,7 @@ Content-Type: application/json
   $global.refreshToken=JSON.parse(response.body).REFRESHTOKEN;
 }}
 ### refresh token
-POST http://localhost:8888/rest/em/user/refresh
+POST http://localhost:8888/api/em/user/refresh
 Content-Type: application/json
 Authorization: Bearer {{$global.refreshToken}}
 {{
