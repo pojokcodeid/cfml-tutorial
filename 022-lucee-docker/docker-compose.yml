@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  commandbox:
+    image: ortussolutions/commandbox
+    ports:
+      - "8888:8888"
+      - "443:443"
+    environment:
+      PORT: 8888
+      SSL_PORT: 443
+    volumes:
+      - "./app:/app"
