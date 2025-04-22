@@ -1,6 +1,19 @@
 <h1>Welcome to Lucee Rest API</h1>
+<cfset jwt = new modules.jwtcfml.models.jwt()>
+<cfset payload = {'key': 'value', 'iat': now(), 'exp':now()}>
+<cfset secret = 'secret'>
+<cfset token = jwt.encode(payload, secret, 'HS256')>
+<cftry>
+  <cfset decode = jwt.decode("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDUzMTg4OTQsImV4cCI6MTc0NTMxODg5NCwia2V5IjoidmFsdWUifQ.R9tS_f_32FjouzQW1tXER3Xu4WvUDoKDtZjfJkyqXOY",
+   secret, 'HS256')>
+   <cfcatch>
+    <cfoutput>#cfcatch.Message#<br></cfoutput>
+    <!--- <cfoutput>#cfcatch.Detail#<br></cfoutput> --->
+  </cfcatch>
+</cftry>
 <cfoutput>
-  #serializeJSON( application )#
+  #token#<br>
+  <!--- #serializeJSON(decode)# --->
 </cfoutput>
 <!--- <cfscript>
   passwordUtil = new Password();

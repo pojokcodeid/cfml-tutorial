@@ -67,3 +67,9 @@ CREATE TABLE `user` (
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`personal_id`) REFERENCES `personal` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 ```
+
+lternatif gunakan https://github.com/jcberquist/jwt-cfml
+
+```
+box install jwt-cfml
+```
