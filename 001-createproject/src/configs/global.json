@@ -1,0 +1,13 @@
+{
+    "datasource":{
+        "MyMariaDB": {
+			"class": "org.mariadb.jdbc.Driver",
+			"connectionString": "jdbc:mariadb://127.0.0.1:3306/latihan",
+			"username": "root",
+			"password": "",
+			"connectionLimit": 5
+        }
+    },
+    "baseURL": "http://localhost:8888"
+  }
+  
