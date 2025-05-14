@@ -8,5 +8,7 @@ services:
     environment:
       PORT: 8888
       SSL_PORT: 443
+      LUCEE_ADMIN_PASSWORDS: "admin:admin"
     volumes:
       - "./app:/app"
+      - "./serverHome:/usr/local/lib/serverHome"

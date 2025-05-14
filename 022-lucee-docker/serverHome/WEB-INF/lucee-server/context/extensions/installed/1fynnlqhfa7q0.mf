@@ -1,0 +1,11 @@
+{
+  "id": "99A4EF8D-F2FD-40C8-8FB8C2E67A4EEEB6",
+  "name": "Microsoft SQL Server (Vendor Microsoft)",
+  "version": "12.6.3.jre11",
+  "startBundles": "false",
+  "releaseType": "all",
+  "trial": "false",
+  "categories": "Datasource",
+  "luceeCoreVersion": "5.3.2.63-",
+  "jdbc": "[{'id':'mssql','connectionString':'jdbc:sqlserver://{host}:{port}','label':'Microsoft SQL Server (Vendor Microsoft)','class':'com.microsoft.sqlserver.jdbc.SQLServerDriver','bundleName':'org.lucee.mssql','bundleVersion':'12.6.3.jre11'}]"
+}

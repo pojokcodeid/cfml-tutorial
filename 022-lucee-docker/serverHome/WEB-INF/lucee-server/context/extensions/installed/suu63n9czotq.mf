@@ -1,0 +1,10 @@
+{
+  "id": "87FE44E5-179C-43A3-A87B3D38BEF4652E",
+  "name": "EHCache",
+  "version": "2.10.0.36",
+  "startBundles": "false",
+  "releaseType": "all",
+  "trial": "false",
+  "luceeCoreVersion": "5.0.0.230-",
+  "cache": "[{'class':'org.lucee.extension.cache.eh.EHCache','bundleName':'ehcache.extension','bundleVersion':'2.10.0.36'}]"
+}

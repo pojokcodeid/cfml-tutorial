@@ -1,0 +1,2226 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE func-lib PUBLIC "-//Lucee//DTD CFML Function Library 1.0//EN"
+	"dtd/web-cfmfunctionlibrary_1_0.dtd">
+<func-lib>
+	<flib-version>1.00</flib-version>
+	<short-name>Image</short-name>
+	<uri>http://extension.lucee.org/function/image</uri>
+	<display-name>Image</display-name>
+	<description>
+		Image functions
+	</description>
+	<function>
+		<name>GetReadableImageFormats</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.GetReadableImageFormats</class>
+		<keywords>image</keywords>
+		<description>Returns a list of image formats that Lucee can read on the operating system where Lucee is deployed.</description>
+		<return>
+			<type>string</type>
+		</return>
+	</function>
+	<function>
+		<name>GetWriteableImageFormats</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.GetWriteableImageFormats</class>
+		<keywords>image</keywords>
+		<description>Returns a list of image formats that Lucee can write on the operating system where Lucee is deployed.</description>
+		<return>
+			<type>string</type>
+		</return>
+	</function>
+	<function>
+	    <name>ImageAddBorder</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageAddBorder</class>
+	    <member-name>addBorder</member-name>
+	    <member-type>image</member-type>
+	    <keywords>image,border,effect</keywords>
+    	<description>Adds a rectangular border around the outside edge of an image. The border can be a solid color or generated using various edge extension methods. The original image remains centered while the border increases the image dimensions.</description>
+	    <argument>
+	        <name>image</name>
+	        <alias>name</alias>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The source image to which the border will be added.</description>
+	    </argument>
+	    <argument>
+	        <name>thickness</name>
+	        <type>number</type>
+	        <required>No</required>
+	        <default>1</default>
+	        <description>Thickness of the border in pixels. The border is added to the outside edge of the image, increasing the image dimensions by 2 * thickness in both width and height.</description>
+	    </argument>
+	    <argument>
+	        <name>color</name>
+	        <alias>colour</alias>
+	        <type>string</type>
+	        <required>No</required>
+	        <default>black</default>
+	        <description>The color of the border when borderType is "constant". Has no effect with other border types. Can be any valid color name or hex value.</description>
+	    </argument>
+	    <argument>
+	        <name>borderType</name>
+	        <alias>type,border</alias>
+	        <type>string</type>
+	        <required>No</required>
+	        <default>constant</default>
+	        <description>Determines how the border area is filled:
+
+* `constant`: Creates a solid color border using the specified color
+* `zero`: Creates a black border (equivalent to constant with color="black")
+* `copy`: Extends edge pixels outward. Each border pixel copies the value of the nearest edge pixel. Corner areas are filled with the color of the nearest corner pixel
+* `reflect`: Creates a mirror effect by reflecting the image at its edges. Edge pixels are mirrored outward, and corners are created by mirroring the already reflected edges horizontally
+* `wrap`: Creates a tiled effect by wrapping the image content around to the opposite side, as if the image were repeated in all directions</description>
+	    </argument>
+	    <return>
+	        <type>void</type>
+	    </return>
+	</function>
+	<function>
+	    <name>ImageBlur</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageBlur</class>
+	    <member-name>blur</member-name>
+	    <member-type>image</member-type>
+	    <member-chaining>true</member-chaining>
+	    <keywords>image</keywords>
+	    <description>Applies a box blur filter to smooth an image by averaging pixel values within a square region. Useful for reducing image noise or creating soft focus effects.</description>
+	    <argument>
+	        <name>image</name>
+	        <alias>name</alias>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The image object, binary object, base64 string, or file path to be processed. The image will be modified in place.</description>
+	    </argument>
+	    <argument>
+	        <name>blurRadius</name>
+	        <type>number</type>
+	        <required>No</required>
+	        <default>3</default>
+	        <description>The size of the blur radius (averaging region) in pixels. Must be between 3 and 10 inclusive. Higher values create stronger blur effects. Default is 3. Performance impact increases quadratically with radius size.</description>
+	    </argument>
+	    <return>
+	        <type>void</type>
+	    </return>
+	</function>
+	<function>
+		<name>ImageClearRect</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageClearRect</class>
+		<member-name>clearRect</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Clears the specified rectangle by filling it with the background color of the current drawing surface.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>object</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>yes</required>
+			<description>The X coordinate of the rectangle to clear.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>yes</required>
+			<description>The Y coordinate of the rectangle to clear.</description>
+		</argument>
+		<argument>
+			<name>width</name>
+			<type>number</type>
+			<required>yes</required>
+			<description>The width of the rectangle to clear.</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>number</type>
+			<required>yes</required>
+			<description>The height of the rectangle to clear.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageFilterColorMap</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageFilterColorMap</class>
+		<member-name>filterColorMap</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>These are passed to the function ImageFilters (see ImageFilter documentation) which convert gray values to colors.</description>
+		<argument>
+			<name>type</name>
+			<type>string</type>
+			<required>Yes</required>
+			<description>type of the color map, possible values are:
+			- spectrum (colors of the spectrum)
+			- linear (interpolates linearly between two colors)
+			- grayscale (black is 0, white is 1)</description>
+		</argument>
+		<argument>
+			<name>lineColor1</name>
+			<alias>lineColour1</alias>
+			<type>string</type>
+			<required>no</required>
+			<description>used only for type "linear", the color corresponding to value 0 in the colormap.</description>
+		</argument>
+		<argument>
+			<name>lineColor2</name>
+			<alias>lineColour2</alias>
+			<type>string</type>
+			<required>no</required>
+			<description>used only for type "linear", the color corresponding to value 1 in the colormap.</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageFilterKernel</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageFilterKernel</class>
+		<keywords>image</keywords>
+		<description>These are passed to the function ImageFilters (see ImageFilter documentation).
+		The ImageFilterKernel function defines a matrix that describes how a specified pixel and its surrounding pixels affect the value computed for the pixel's position in the output image of a filtering operation.
+		The X origin and Y origin indicate the kernel matrix element that corresponds to the pixel position for which an output value is being computed.
+
+		</description>
+		<argument>
+			<name>width</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>width of the kernel</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>height of the kernel</description>
+		</argument>
+		<argument>
+			<name>data</name>
+			<type>any</type>
+			<required>Yes</required>
+			<description>kernel data in row major order</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageFilterWarpGrid</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageFilterWarpGrid</class>
+		<keywords>image</keywords>
+		<description>A warp grid. These are passed to the function ImageFilters (see ImageFilter documentation).</description>
+		<argument>
+			<name>rows</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>rows of the warp grid</description>
+		</argument>
+		<argument>
+			<name>cols</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>cols of the warp grid</description>
+		</argument>
+		<argument>
+			<name>width</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>width of the warp grid</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>height of the warp grid</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageFilterCurves</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageFilterCurves</class>
+		<keywords>image</keywords>
+		<description>the curves for the wrap grid</description>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+	    <name>ImageCopy</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageCopy</class>
+	    <member-name>copy</member-name>
+	    <member-type>image</member-type>
+	    <keywords>image</keywords>
+	    <description>Creates a new image by copying a rectangular area from the source image. If destination coordinates are provided, the copied area is also drawn at the new location in the resulting image.</description>
+	    <argument>
+	        <name>image</name>
+	        <alias>name</alias>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The source image object, binary object, base64 string, or file path from which to copy.</description>
+	    </argument>
+	    <argument>
+	        <name>x</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The x coordinate of the top-left corner of the area to copy from the source image.</description>
+	    </argument>
+	    <argument>
+	        <name>y</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The y coordinate of the top-left corner of the area to copy from the source image.</description>
+	    </argument>
+	    <argument>
+	        <name>width</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The width of the rectangular area to copy. Must be positive and not exceed image boundaries.</description>
+	    </argument>
+	    <argument>
+	        <name>height</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The height of the rectangular area to copy. Must be positive and not exceed image boundaries.</description>
+	    </argument>
+	    <argument>
+	        <name>dx</name>
+	        <type>number</type>
+	        <required>no</required>
+	        <default>-999</default>
+	        <description>The x coordinate where the copied area should be drawn in the new image. If omitted, only crops the area.</description>
+	    </argument>
+	    <argument>
+	        <name>dy</name>
+	        <type>number</type>
+	        <required>no</required>
+	        <default>-999</default>
+	        <description>The y coordinate where the copied area should be drawn in the new image. If omitted, only crops the area.</description>
+	    </argument>
+	    <return>
+	        <type>any</type>
+	    </return>
+	</function><function>
+	    <name>ImageCrop</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageCrop</class>
+	    <member-name>crop</member-name>
+	    <member-type>image</member-type>
+	    <member-chaining>true</member-chaining>
+	    <keywords>image</keywords>        
+	    <description>Crops an image to a specified rectangular area. The function modifies the original image by extracting the defined region. If the specified crop area extends beyond the image boundaries, the function automatically adjusts to fit within the image dimensions.</description>
+	    <argument>
+	        <name>image</name>
+	        <alias>name</alias>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The source image object to be cropped. Can be either an image object or a string containing the image path.</description>
+	    </argument>
+	    <argument>
+	        <name>x</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The X coordinate of the top-left corner of the crop area, measured in pixels from the left edge of the image.</description>
+	    </argument>
+	    <argument>
+	        <name>y</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The Y coordinate of the top-left corner of the crop area, measured in pixels from the top edge of the image.</description>
+	    </argument>
+	    <argument>
+	        <name>width</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The width of the crop area in pixels. If this extends beyond the image's right edge, it will be automatically adjusted to the image boundary.</description>
+	    </argument>
+	    <argument>
+	        <name>height</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The height of the crop area in pixels. If this extends beyond the image's bottom edge, it will be automatically adjusted to the image boundary.</description>
+	    </argument>
+	    <return>
+	        <type>void</type>
+	    </return>
+	</function>
+	<function>
+		<name>ImageDrawArc</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawArc</class>
+		<member-name>drawArc</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>		
+		<description>Draws a circular or elliptical arc.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the upper-left corner of the arc.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the upper-left corner of the arc.</description>
+		</argument>
+		<argument>
+			<name>width</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The width of the arc.</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The height of the arc.</description>
+		</argument>
+		<argument>
+			<name>startAngle</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The beginning angle in degrees.</description>
+		</argument>
+		<argument>
+			<name>arcAngle</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The angular extent of the arc, relative to the start angle.</description>
+		</argument>
+		<argument>
+			<name>filled</name>
+			<type>boolean</type>
+			<required>no</required>
+			<description>Specify whether the arc is filled:
+- true: The arc is filled with the specified drawing color.
+- false (default): Only the outline of the arc is drawn.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawBeveledRect</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawBeveledRect</class>
+		<member-name>drawBeveledRect</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>		
+		<description>Draws a rectangle with beveled edges.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>width</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The width of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The height of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>raised</name>
+			<type>boolean</type>
+			<required>no</required>
+			<description>Specify whether the rectangle appears raised above the surface or sunk into the surface:
+- true: The rectangle is raised.
+- false (default): The rectangle is sunk.</description>
+		</argument>
+		<argument>
+			<name>filled</name>
+			<type>boolean</type>
+			<required>no</required>
+			<description>Specify whether the rectangle is filled:
+- true: The rectangle is filled with the specified drawing color.
+- false (default): Only the outline of the rectangle is drawn.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawCubicCurve</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawCubicCurve</class>
+		<member-name>drawCubicCurve</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Draws a cubic curve.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x1</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the start point of the cubic curve segment.</description>
+		</argument>
+		<argument>
+			<name>y1</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the start point of the cubic curve segment.</description>
+		</argument>
+		<argument>
+			<name>ctrlx1</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the first control point of the cubic curve segment.</description>
+		</argument>
+		<argument>
+			<name>ctrly1</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the first control point of the cubic curve segment.</description>
+		</argument>
+		<argument>
+			<name>ctrlx2</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the second control point of the cubic curve segment.</description>
+		</argument>
+		<argument>
+			<name>ctrly2</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the second control point of the cubic curve segment.</description>
+		</argument>
+		<argument>
+			<name>x2</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the end point of the cubic curve segment.</description>
+		</argument>
+		<argument>
+			<name>y2</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the end point of the cubic curve segment.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawLine</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawLine</class>
+		<member-name>drawLine</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Draws a single line defined by two sets of x and y coordinates on a image.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x1</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate for the start point of the line.</description>
+		</argument>
+		<argument>
+			<name>y1</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate for the start point of the line.</description>
+		</argument>
+		<argument>
+			<name>x2</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate for the end point of the line.</description>
+		</argument>
+		<argument>
+			<name>y2</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate for the end point of the line.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawLines</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawLines</class>
+		<member-name>drawDrawLines</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>		
+		<keywords>image</keywords>
+		<description>Draws a sequence of connected lines defined by arrays of x and y coordinates.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>xcoords</name>
+			<type>array</type>
+			<required>Yes</required>
+			<description>A array of x coordinates.</description>
+		</argument>
+		<argument>
+			<name>ycoords</name>
+			<type>array</type>
+			<required>Yes</required>
+			<description>A array of y coordinates.</description>
+		</argument>
+		<argument>
+			<name>isPolygon</name>
+			<type>boolean</type>
+			<required>no</required>
+			<description>Specify whether the lines form a polygon:
+- true: The lines are connected to form a polygon.
+- false (default): The lines do not form a polygon.</description>
+		</argument>
+		<argument>
+			<name>filled</name>
+			<type>boolean</type>
+			<required>no</required>
+			<description>Specify whether the polygon is filled:
+- true: The polygon is filled with the specified drawing color.
+- false (default): Only the outline of the polygon is drawn.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawOval</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawOval</class>
+		<member-name>drawOval</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Draws an oval.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the upper left corner of the oval to draw.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the upper left corner of the oval to draw.</description>
+		</argument>
+		<argument>
+			<name>width</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The width of the oval to draw.</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The height of the oval to draw.</description>
+		</argument>
+		<argument>
+			<name>filled</name>
+			<type>boolean</type>
+			<required>no</required>
+			<description>Specify whether the oval is filled:
+- true: The oval is filled with the specified drawing color.
+- false (default): Only the outline of the oval is drawn.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawPoint</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawPoint</class>
+		<member-name>drawPoint</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Draws a point at the specified (x,y) coordinate.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the point.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the point.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawQuadraticCurve</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawQuadraticCurve</class>
+		<member-name>drawQuadraticCurve</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Draws a curved line. The curve is controlled by a single point.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x1</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the start point of the quadratic curve segment.</description>
+		</argument>
+		<argument>
+			<name>y1</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the start point of the quadratic curve segment.</description>
+		</argument>
+		<argument>
+			<name>ctrlx</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the first control point of the quadratic curve segment.</description>
+		</argument>
+		<argument>
+			<name>ctrly</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the first control point of the quadratic curve segment.</description>
+		</argument>
+		<argument>
+			<name>x2</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the end point of the quadratic curve segment.</description>
+		</argument>
+		<argument>
+			<name>y2</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the end point of the quadratic curve segment.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawRect</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawRect</class>
+		<member-name>drawRect</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Draws a rectangle.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>width</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The width of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The height of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>filled</name>
+			<type>boolean</type>
+			<required>no</required>
+			<description>Specify whether the rectangle is filled:
+- true: The rectangle is filled with the specified drawing color.
+- false (default): Only the outline of the rectangle is drawn.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawRoundRect</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawRoundRect</class>
+		<member-name>drawRoundRect</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Draws a rectangle with rounded corners.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>width</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The width of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The height of the rectangle.</description>
+		</argument>
+		<argument>
+			<name>arcWidth</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The horizontal diameter of the arc at the four corners.</description>
+		</argument>
+		<argument>
+			<name>arcHeight</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The vertical diameter of the arc at the four corners.</description>
+		</argument>
+		<argument>
+			<name>filled</name>
+			<type>boolean</type>
+			<required>no</required>
+			<description>Specify whether the rectangle is filled:
+- true: The rectangle is filled with the specified drawing color.
+- false (default): Only the outline of the rectangle is drawn.
+
+			</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawText</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawText</class>
+		<member-name>drawText</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>		
+		<keywords>image</keywords>
+		<description>Draws a text string on a image with the baseline of the first character positioned at (x,y) in the image.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>string</name>
+			<alias>str</alias>
+			<type>string</type>
+			<required>Yes</required>
+			<description>the text to draw.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate for the start point of the string.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate for the start point of the string.</description>
+		</argument>
+		<argument>
+			<name>attributeCollection</name>
+			<type>struct</type>
+			<required>no</required>
+			<description>a structure used to specify the text characteristics. the following keys are supported:
+- font: The name of the font used to draw the text string. If you do not specify the font attribute, the text is drawn in the default system font.
+- size: The font size for the text string. The default value is 10 points.
+- style: The style to apply to the font ( bold,italic,boldItalic,plain (default) ).
+- strikethrough: a boolean that specify whether strikethrough is applied to the text image, default is false.
+- underline: a boolean that specify whether underline is applied to the text image, default is false.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageFilter</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageFilter</class>
+		<member-name>filter</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image,filter</keywords>
+		<description>Executes a filter on the given image</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>filtername</name>
+			<type>string</type>
+			<required>yes</required>
+			<description>the name of the filter executed (average,block,blur ...)</description>
+		</argument>
+		<argument>
+			<name>parameters</name>
+			<type>struct</type>
+			<required>no</required>
+			<description>parameters for the filter defined with argument filtername</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+	    <name>ImageFlip</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageFlip</class>
+	    <member-name>flip</member-name>
+	    <member-type>image</member-type>
+	    <member-chaining>true</member-chaining>
+	    <keywords>image</keywords>
+	    <description>Transforms an image by flipping or rotating it along specified axes. This operation modifies the original image in place.</description>
+	    <argument>
+	        <name>image</name>
+	        <alias>name</alias>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The image object, binary object, base64 string, or file path to be transformed. The image will be modified in place.</description>
+	    </argument>
+	    <argument>
+	        <name>transpose</name>
+	        <type>string</type>
+	        <required>no</required>
+	        <default>vertical</default>
+	        <description>The type of transformation to apply:
+	- vertical: Mirrors the image top-to-bottom (default)
+	- horizontal: Mirrors the image left-to-right
+	- diagonal: Flips across top-left to bottom-right diagonal with rotation
+	- antidiagonal: Flips across top-right to bottom-left diagonal with rotation
+	- 90: Rotates clockwise by 90 degrees
+	- 180: Rotates by 180 degrees
+	- 270: Rotates clockwise by 270 degrees (same as -90)</description>
+	    </argument>
+	    <return>
+	        <type>void</type>
+	    </return>
+	</function>
+	<function>
+		<name>ImageCaptcha</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageCaptcha</class>
+		<keywords>image</keywords>
+		<description>Creates a captcha image</description>
+		<argument>
+			<name>text</name>
+			<type>string</type>
+			<required>Yes</required>
+			<description>Text in the captcha.</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>numeric</type>
+			<required>yes</required>
+			<description>Height of the captcha.</description>
+		</argument>
+		<argument>
+			<name>width</name>
+			<type>numeric</type>
+			<required>yes</required>
+			<description>Width of the captcha.</description>
+		</argument>
+		<argument>
+			<name>difficulty</name>
+			<type>string</type>
+			<required>No</required>
+			<default>low</default>
+			<values>low,medium,high</values>
+			<description>Level of complexity of the CAPTCHA text. Specify one of the following levels of text distortion: low, medium, high</description>
+		</argument>
+		<argument>
+			<name>fonts</name>
+			<alias>font</alias>
+			<type>any</type>
+			<required>No</required>
+			<default>arial</default>
+			<description>One or more valid fonts to use for the CAPTCHA text, as an array or as string list (separate multiple fonts with commas).
+			Lucee supports only the system fonts that the JDK can recognize. For example, TTF fonts in the Windows directory are supported on Windows.</description>
+		</argument>
+		<argument>
+			<name>fontsize</name>
+			<alias>size</alias>
+			<type>numeric</type>
+			<required>No</required>
+			<default>24</default>
+			<description>font size of the text in the CAPTCHA image.</description>
+		</argument>
+		<argument>
+			<name>fontcolor</name>
+			<alias>color</alias>
+			<type>string</type>
+			<required>No</required>
+			<default>black</default>
+			<description>font color of the text in the CAPTCHA image.</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageGetBlob</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageGetBlob</class>
+		<member-name>getBlob</member-name>
+		<member-type>image</member-type>		
+		<keywords>image</keywords>
+		<description>Retrieves the bytes of the underlying image. The bytes are in the same image format as the source image.</description>
+		<argument>
+			<name>image</name>
+			<alias>source,name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageGetBufferedImage</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageGetBufferedImage</class>
+		<member-name>getBufferedImage</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Returns the java.awt.BufferedImage object underlying the current image.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageGetIptcMetadata</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageGetIptcMetadata</class>
+		<member-name>getIptcMetadata</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Retrieves the International Press Telecommunications Council (IPTC )headers in a image as a struct. The IPTC metadata contains text that describes the image that is stored with it. IPTC metadata includes, but is not limited to, caption, keywords, credit, copyright, object name, created date, byline, headline, and source.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<return>
+			<type>struct</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageGetEXIFMetadata</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageGetEXIFMetadata</class>
+		<member-name>getEXIFMetadata</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Retrieves the Exchangeable Image File Format (EXIF) headers in an image as a CFML structure.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<return>
+			<type>struct</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageGetEXIFTag</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageGetEXIFTag</class>
+		<member-name>getEXIFTag</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Retrieves the specified EXIF tag in an image.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>tagName</name>
+			<type>string</type>
+			<required>Yes</required>
+			<description>The EXIF tag name to be returned.</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageGetHeight</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageGetHeight</class>
+		<member-name>getHeight</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Retrieves the height of the image in pixels.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<return>
+			<type>number</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageGetWidth</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageGetWidth</class>
+		<member-name>getWidth</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Retrieves the width of the specified image.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<return>
+			<type>number</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageGetIPTCTag</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageGetIPTCTag</class>
+		<status>unimplemented</status>
+		<member-name>getIPTCTag</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Retrieves the value of the IPTC tag for a image.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>tagName</name>
+			<type>string</type>
+			<required>Yes</required>
+			<description>The IPTC tag name whose value is returned.</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageGrayscale</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageGrayscale</class>
+		<member-name>grayscale</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Converts a image to grayscale.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageFormats</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageFormats</class>
+		<keywords>image</keywords>
+		<description>return all available readers and writers</description>
+		<argument>
+			<name>detailed</name>
+			<type>boolean</type>
+			<required>No</required>
+			<description>Give more details on format, which coder does supply them.</description>
+		</argument>
+		<return>
+			<type>struct</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageFonts</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageFonts</class>
+		<keywords>image</keywords>
+		<description>return all available</description>
+		<return>
+			<type>array</type>
+		</return>
+	</function>
+	<function>
+	    <name>ImageInfo</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageInfo</class>
+	    <member-name>info</member-name>
+	    <member-type>image</member-type>
+	    <keywords>image</keywords>
+	    <description>Returns a structure containing image information. When called with an image argument, returns details about the specific image including height, width, color model, size, and filename. When called without arguments, returns information about the Lucee image processing extension including its OSGi bundle version and status.</description>
+	    <argument>
+	        <name>image</name>
+	        <alias>name</alias>
+	        <type>any</type>
+	        <required>No</required>
+	        <description>Optional: The image to analyze. If provided, returns information about this specific image. If omitted, returns information about the image processing extension.</description>
+	    </argument>
+	    <return>
+	        <type>struct</type>
+	    </return>
+	</function>
+	<function>
+		<name>ImageCoderInfo</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageCoderInfo</class>
+		<member-name>coderInfo</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Gives detailed information about all coder used by the image extension.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<return>
+			<type>struct</type>
+		</return>
+	</function>
+	<function>
+	    <name>ImageNegative</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageNegative</class>
+	    <member-name>negative</member-name>
+	    <member-type>image</member-type>
+	    <member-chaining>true</member-chaining>
+	    <keywords>image</keywords>
+	    <description>Creates a negative version of the image by inverting all pixel values. Each color channel value is subtracted from 255, resulting in opposite colors (e.g., white becomes black, red becomes cyan).</description>
+	    <argument>
+	        <name>image</name>
+	        <alias>name</alias>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The image object, binary object, base64 string, or file path to be inverted. The image will be modified in place.</description>
+	    </argument>
+	    <return>
+	        <type>void</type>
+	    </return>
+	</function>
+	<function>
+		<name>ImageNew</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageNew</class>
+		<keywords>image</keywords>
+		<description>Creates a image.</description>
+		<argument>
+			<name>source</name>
+			<type>any</type>
+			<required>no</required>
+			<description>The source image path, URL, a variable that is read into the new image, or a Java buffered image.</description>
+		</argument>
+		<argument>
+			<name>width</name>
+			<type>string</type>
+			<required>no</required>
+			<description>The width of the new image. Valid when the height is specified and the source is not.</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>string</type>
+			<required>no</required>
+			<description>The height of the new image. Valid when the width is specified and the source is not.</description>
+		</argument>
+		<argument>
+			<name>imageType</name>
+			<alias>type</alias>
+			<type>string</type>
+			<required>no</required>
+			<description>The type of the image to create (Valid only when width and height are specified):
+- rgb
+- argb
+- grayscale</description>
+		</argument>
+		<argument>
+			<name>canvasColor</name>
+			<type>string</type>
+			<required>no</required>
+			<description>Color of the image canvas (The default value is "black"):
+- Hexadecimal value of RGB color. For example, specify the color white as ##FFFFFF or FFFFFF.
+- String value of color (for example, "black", "red", "green").
+- List of three numbers for (R,G,B) values. Each value must be in the range 0-255.</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+	    <name>ImageOverlay</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageOverlay</class>
+	    <member-name>overlay</member-name>
+	    <member-type>image</member-type>
+	    <member-chaining>true</member-chaining>
+	    <keywords>image</keywords>
+	    <description>Combines two images by overlaying one on top of the other using alpha compositing. The second image is blended with the first based on its transparency.</description>
+	    <argument>
+	        <name>source1</name>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The base image that serves as the bottom layer. This image is modified in place to contain the final result.</description>
+	    </argument>
+	    <argument>
+	        <name>source2</name>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The overlay image that is blended on top of the base image. Its transparency affects the final blending result.</description>
+	    </argument>
+	    <return>
+	        <type>void</type>
+	    </return>
+	</function>
+	<function>
+	    <name>ImagePaste</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImagePaste</class>
+	    <member-name>paste</member-name>
+	    <member-type>image</member-type>
+	    <member-chaining>true</member-chaining>
+	    <keywords>image</keywords>
+	    <description>Composites one image onto another at specified coordinates. The second image is overlaid on top of the first image, preserving transparency and using high-quality interpolation.</description>
+	    <argument>
+	        <name>image1</name>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The base image that will receive the pasted content. This image is modified in place.</description>
+	    </argument>
+	    <argument>
+	        <name>image2</name>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The image to paste onto the base image. Its transparency (alpha channel) is preserved during compositing.</description>
+	    </argument>
+	    <argument>
+	        <name>x</name>
+	        <type>number</type>
+	        <required>no</required>
+	        <description>The x coordinate where image2 will be placed on image1. If negative, image2 will be partially clipped.</description>
+	    </argument>
+	    <argument>
+	        <name>y</name>
+	        <type>number</type>
+	        <required>no</required>
+	        <description>The y coordinate where image2 will be placed on image1. If negative, image2 will be partially clipped.</description>
+	    </argument>
+	    <return>
+	        <type>void</type>
+	    </return>
+	</function>
+	<function>
+		<name>ImageReadBase64</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageReadBase64</class>
+		<member-name>readBase64</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Creates a image from a Base64 string.</description>
+		<argument>
+			<name>b64str</name>
+			<alias>data</alias>
+			<type>string</type>
+			<required>Yes</required>
+			<description>a variable or Base64 string.</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageRead</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageRead</class>
+		<keywords>image</keywords>
+		<description>Reads the source pathname or URL and creates a image.</description>
+		<argument>
+			<name>path</name>
+			<type>any</type>
+			<required>Yes</required>
+			<description>On-disk or in-memory pathname or URL of the source image.</description>
+		</argument>
+		<return>
+			<type>any</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageResize</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageResize</class>
+		<member-name>resize</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Resizes a image.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>width</name>
+			<type>string</type>
+			<required>Yes</required>
+			<description>New width of the image. If this value is blank, the width is calculated proportionately to the height.</description>
+		</argument>
+		<argument>
+			<name>height</name>
+			<type>string</type>
+			<required>no</required>
+			<description>New height of the image. If this value is blank, the height is calculated proportionately to the width.</description>
+		</argument>
+		<argument>
+			<name>interpolation</name>
+			<type>string</type>
+			<required>no</required>
+			<default>automatic</default>
+			<description>the interpolation method for resampling. You can specify a specific interpolation algorithm by name (for example, hamming), by image quality (for example, mediumQuality), or by performance (for example, highestPerformance). Valid values are:
+- automatic (default)
+- highestQuality
+- highQuality
+- mediumQuality
+- highestPerformance
+- highPerformance
+- mediumPerformance
+- nearest
+- bilinear
+- bicubic
+- bessel
+- blackman
+- hamming
+- hanning
+- hermite
+- lanczos
+- mitchell
+- quadratic
+			</description>
+		</argument>
+		<argument>
+			<name>blurFactor</name>
+			<type>number</type>
+			<required>no</required>
+			<default>1</default>
+			<description>The blur factor used for resampling. The higher the blur factor, the more blurred the image (also, the longer it takes to resize the image). Valid values are 0-10.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageRotate</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageRotate</class>
+		<member-name>rotate</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Rotates a image at a specified point by a specified angle.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>string</type>
+			<required>yes</required>
+			<default>2</default>
+			<description>The x coordinate for the point of rotation. The default value is 2.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>string</type>
+			<required>no</required>
+			<default>2</default>
+			<description>The y coordinate for the point of rotation. The default value is 2.</description>
+		</argument>
+		<argument>
+			<name>angle</name>
+			<type>string</type>
+			<required>no</required>
+			<default>0</default>
+			<description>The rotation angle in degrees.</description>
+		</argument>
+		<argument>
+			<name>interpolation</name>
+			<type>string</type>
+			<required>no</required>
+			<default>nearest</default>
+			<description>Type of interpolation:
+- nearest (default): Applies the nearest neighbor method of interpolation. Image quality is lower than the other interpolation methods, but processing is fastest.
+- bilinear: Applies the bilinear method of interpolation. The quality of the image is less pixelated than the default, but processing is slower.
+- bicubic: Applies the bicubic method of interpolation. Generally, the quality of image is highest with this method and processing is slowest.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageRotateDrawingAxis</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageRotateDrawingAxis</class>
+		<member-name>rotateDrawingAxis</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Rotates all subsequent drawing on a image at a specified point by a specified angle.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>angle</name>
+			<type>number</type>
+			<required>no</required>
+			<description>The rotation angle in degrees.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>no</required>
+			<description>The x coordinate for the point of rotation. The default value is 0.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>no</required>
+			<description>The y coordinate for the point of rotation. The default value is 0.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageScaleToFit</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageScaleToFit</class>
+		<member-name>scaleToFit</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Creates a resized image with the aspect ratio maintained.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>fitWidth</name>
+			<type>string</type>
+			<required>yes</required>
+			<description>The width of the bounding box in pixels. You can specify an integer, or an empty string ("") if the fitHeight is specified.</description>
+		</argument>
+		<argument>
+			<name>fitHeight</name>
+			<type>string</type>
+			<required>yes</required>
+			<description>The height of the bounding box in pixels. You can specify an integer, or an empty string ("") if the fitWidth is specified. </description>
+		</argument>
+		<argument>
+			<name>interpolation</name>
+			<type>string</type>
+			<required>no</required>
+			<default>automatic</default>
+			<description>The interpolation method for resampling. You can specify a specific interpolation algorithm by name (for example, hamming), by image quality (for example, mediumQuality), or by performance (for example, highestPerformance). Valid values are:
+- automatic (default)
+- highestQuality
+- highQuality
+- mediumQuality
+- highestPerformance
+- highPerformance
+- mediumPerformance
+- nearest
+- bilinear
+- bicubic
+- bessel
+- blackman
+- hamming
+- hanning
+- hermite
+- lanczos
+- mitchell
+- quadratic</description>
+		</argument>
+		<argument>
+			<name>blurFactor</name>
+			<type>number</type>
+			<required>no</required>
+			<default>1</default>
+			<description>The blur factor used for resampling. The higher the blur factor, the more blurred the image (also, the longer it takes to resize the image). Valid values are 1-10.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageWrite</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageWrite</class>
+		<member-name>write</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Writes a image to the specified filename or destination.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>destination</name>
+			<type>string</type>
+			<required>no</required>
+			<description>The path to write the file.
+
+If you create the image with the ImageNew function or another operation where you do not specify the filename, specify the destination parameter.
+The file format is derived from the extension of the filename. The default value for this parameter is the filename of the original image source.</description>
+		</argument>
+		<argument>
+			<name>quality</name>
+			<type>number</type>
+			<required>no</required>
+			<default>0.75</default>
+			<description>Defines the JPEG quality used to encode the image. This parameter applies only to destination files with an extension of JPG or JPEG. Valid values are fractions that range from 0 through 1 (the lower the number, the lower the quality). The default value is 0.75.</description>
+		</argument>
+		<argument>
+			<name>overwrite</name>
+			<type>boolean</type>
+			<required>no</required>
+			<default>true</default>
+			<description>If set to true (default), overwrites the destination file.</description>
+		</argument>
+		<argument>
+			<name>noMetaData</name>
+			<type>boolean</type>
+			<required>no</required>
+			<default>false</default>
+			<description>if true the meta data from the source file are ignored.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageWriteBase64</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageWriteBase64</class>
+		<member-name>writeBase64</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Writes Base64 images to the specified filename and destination.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>destination</name>
+			<type>string</type>
+			<required>yes</required>
+			<description>The path for the destination file.</description>
+		</argument>
+		<argument>
+			<name>format</name>
+			<type>string</type>
+			<required>yes</required>
+			<description>the image format</description>
+		</argument>
+		<argument>
+			<name>inHTMLFormat</name>
+			<type>boolean</type>
+			<required>no</required>
+			<description>Specify whether Base64 output includes the headers used by the Base64 images in the HTML "img" tag ("data:image/{format};base64,...") :
+- true
+- false (default)</description>
+		</argument>
+		<return>
+			<type>string</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageWriteToBrowser</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageWriteToBrowser</class>
+		<member-name>writeToBrowser</member-name>
+		<member-type>image</member-type>
+		<keywords>image</keywords>
+		<description>Writes image to browser.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageSetAntialiasing</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageSetAntialiasing</class>
+		<member-name>setAntialiasing</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Switches antialiasing on or off in rendered graphics.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>antialias</name>
+			<type>string</type>
+			<required>no</required>
+			<default>on</default>
+			<description>Antialiasing switch:
+- on,true: (default)
+- off,false:</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageSetBackgroundColor</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageSetBackgroundColor</class>
+		<member-name>setBackgroundColor</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Sets the background color for the image. The background color is used for clearing a region. Setting the background color only affects the subsequent ImageClearRect calls</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>color</name>
+			<alias>colour</alias>
+			<type>string</type>
+			<required>yes</required>
+			<description>Background color (The default value is "black"):
+- Hexadecimal value of RGB color. For example, specify the color white as ##FFFFFF or FFFFFF.
+- String value of color (for example, "black", "red", "green").
+- List of three numbers for (R,G,B) values. Each value must be in the range 0-255.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageSetDrawingAlpha</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageSetDrawingAlpha</class>
+		<member-name>setDrawingAlpha</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Sets the current drawing alpha for images. All subsequent graphics operations use the specified alpha.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>alpha</name>
+			<type>number</type>
+			<required>yes</required>
+			<description>a floating point number in range 0-1</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageSetDrawingColor</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageSetDrawingColor</class>
+		<member-name>setDrawingColor</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Sets the current drawing color for images. All subsequent graphics operations use the specified color.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>color</name>
+			<alias>colour</alias>
+			<type>string</type>
+			<required>yes</required>
+			<description>Drawing color (The default value is "black"):
+- Hexadecimal value of RGB color. For example, specify the color white as ##FFFFFF or FFFFFF.
+- String value of color (for example, "black", "red", "green").
+- List of three numbers for (R,G,B) values. Each value must be in the range 0-255.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageSetDrawingStroke</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageSetDrawingStroke</class>
+		<member-name>setDrawingStroke</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Sets the drawing stroke for points and lines in subsequent images.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>attributeCollection</name>
+			<type>struct</type>
+			<required>no</required>
+			<description>The structure used to specify the line attributes:
+- width: Pen width, which is measured perpendicularly to the pen trajectory.
+- endcaps: Decoration applied to the ends of unclosed subpaths and dash segments. Subpaths that start and end on the same point are considered unclosed if they do not have a close segment, valid values are ( butt.round,square )
+- lineJoins: Type of line joins, valid values are (bevel,miter,join)
+- miterLimit:The limit to trim a line join that has a mitered join decoration. (Use only when lineJoins = "miter".) A line join is trimmed when the ratio of miter length to stroke width is greater than the miterLimit value. The miter length is the diagonal length of the miter, which is the distance between the inside corner and the outside corner of the intersection. The smaller the angle formed by two line segments, the longer the miter length and the sharper the angle of intersection. The default value is 10.0, which trims all angles less than 11 degrees. Trimming miters converts the decoration of the line join to bevel.
+- dashArray: An array of numbers that indicates the dash pattern. For example. if dashArray is (8,4), the dash pattern is 8 pixels solid, 4 pixels blank, 8 pixels solid, 4 pixels blank, and so on.
+- dash_phases: An offset into the dash pattern. For example, a dash_phase of 2, and a dashArray of (8,4) produces the dash pattern of 6 pixels solid, 4 pixels blank, 8 pixels solid, 4 pixels blank, and so on.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageSetDrawingTransparency</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageSetDrawingTransparency</class>
+		<member-name>setDrawingTransparency</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Specifies the degree of transparency of drawing functions.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>percent</name>
+			<type>number</type>
+			<required>no</required>
+			<default>1</default>
+			<description>Percent of transparency, a floating point number in range 0-100</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+<function>
+    <name>ImageSharpen</name>
+    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageSharpen</class>
+    <member-name>sharpen</member-name>
+    <member-type>image</member-type>
+    <member-chaining>true</member-chaining>
+    <keywords>image</keywords>
+    <description>Enhances image clarity by applying an unsharp mask filter. 
+
+This technique works by:
+1. Creating a blurred copy of the original image
+2. Finding edges by comparing differences
+3. Enhancing edge contrast where differences are found
+
+*Note:* Despite the name "unsharp mask", this process actually increases sharpness.</description>
+    <argument>
+        <name>image</name>
+        <alias>name</alias>
+        <type>any</type>
+        <required>Yes</required>
+        <description>The source image to be sharpened. Can be:
+- An image object
+- A string containing the image path</description>
+    </argument>
+    <argument>
+        <name>gain</name>
+        <type>number</type>
+        <required>no</required>
+        <default>1</default>
+        <description>Controls the intensity of the sharpening effect:
+- **Positive values**: Increase sharpness
+- **Zero** (= 0): No effect
+- **Negative values**: Create blur effect
+
+*Typical range:* -10.0 to 10.0  
+*Default value:* 1.0  
+*Recommended:* Start with small values (0.5 - 2.0) for best results</description>
+    </argument>
+    <return>
+        <type>void</type>
+    </return>
+</function>
+	<function>
+	    <name>ImageShear</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageShear</class>
+	    <member-name>shear</member-name>
+	    <member-type>image</member-type>
+	    <member-chaining>true</member-chaining>
+	    <keywords>image</keywords>
+	    <description>Transforms an image by shearing it along one axis, creating a slanted or skewed effect. Positive values slant in one direction, negative values in the opposite direction.</description>
+	    <argument>
+	        <name>image</name>
+	        <alias>name</alias>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The source image to be sheared. The operation modifies this image directly.</description>
+	    </argument>
+	    <argument>
+	        <name>shear</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The shear factor to apply. Positive values slant forward, negative values backward. For example, 0.5 creates a 45-degree shear.</description>
+	    </argument>
+	    <argument>
+	        <name>direction</name>
+	        <type>string</type>
+	        <required>no</required>
+	        <default>horizontal</default>
+	        <description>The axis along which to apply the shear:
+	- horizontal (default): Shears along the x-axis, slanting vertical lines
+	- vertical: Shears along the y-axis, slanting horizontal lines</description>
+	    </argument>
+	    <argument>
+	        <name>interpolation</name>
+	        <type>string</type>
+	        <required>no</required>
+	        <default>nearest</default>
+	        <description>The interpolation method to use during transformation:
+	- nearest (default): Fastest method but lowest quality, best for simple transformations
+	- bilinear: Balanced between speed and quality, good for moderate shearing
+	- bicubic: Highest quality but slowest, recommended for significant shearing</description>
+	    </argument>
+	    <return>
+	        <type>void</type>
+	    </return>
+	</function>
+	<function>
+		<name>ImageShearDrawingAxis</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageShearDrawingAxis</class>
+		<member-name>shearDrawingAxis</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Shears the drawing canvas.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>shx</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The multiplier by which coordinates are shifted in the positive x axis direction as a function of the y coordinate.</description>
+		</argument>
+		<argument>
+			<name>shy</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>the multiplier by which coordinates are shifted in the positive y axis direction as a function of the x coordinate.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+    <name>ImageTranslate</name>
+	    <class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageTranslate</class>
+	    <member-name>translate</member-name>
+	    <member-type>image</member-type>
+	    <member-chaining>true</member-chaining>
+	    <keywords>image</keywords>
+	    <description>Moves an image to a new position by specified x and y offsets. The original image content is cleared and redrawn at the new location.</description>
+	    <argument>
+	        <name>image</name>
+	        <alias>name</alias>
+	        <type>any</type>
+	        <required>Yes</required>
+	        <description>The source image to be translated. The operation modifies this image directly.</description>
+	    </argument>
+	    <argument>
+	        <name>xTrans</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The horizontal displacement in pixels. Positive values move right, negative values move left.</description>
+	    </argument>
+	    <argument>
+	        <name>yTrans</name>
+	        <type>number</type>
+	        <required>Yes</required>
+	        <description>The vertical displacement in pixels. Positive values move down, negative values move up.</description>
+	    </argument>
+	    <argument>
+	        <name>interpolation</name>
+	        <type>string</type>
+	        <required>no</required>
+	        <default>nearest</default>
+	        <description>The interpolation method to use during translation:
+	- nearest (default): Fastest but lowest quality, uses nearest neighbor interpolation
+	- bilinear: Medium quality and speed, uses bilinear interpolation
+	- bicubic: Highest quality but slowest, uses bicubic interpolation</description>
+	    </argument>
+	    <return>
+	        <type>void</type>
+	    </return>
+	</function>
+	<function>
+		<name>ImageTranslateDrawingAxis</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageTranslateDrawingAxis</class>
+		<member-name>translateDrawingAxis</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Translates the origin of the image context to the point (x,y) in the current coordinate system.
+		Modifies the image context so that its new origin corresponds to the point (x,y) in the image's original coordinate system.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>x coordinate</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>y coordinate</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageXORDrawingMode</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageXORDrawingMode</class>
+		<member-name>XORDrawingMode</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>Sets the paint mode of the image to alternate between the image's current color and the new specified color.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The image on which this operation is performed.</description>
+		</argument>
+		<argument>
+			<name>color</name>
+			<alias>colour</alias>
+			<type>string</type>
+			<required>Yes</required>
+			<description>the color (The default value is "black"):
+- Hexadecimal value of RGB color. For example, specify the color white as ##FFFFFF or FFFFFF.
+- String value of color (for example, "black", "red", "green").
+- List of three numbers for (R,G,B) values. Each value must be in the range 0-255.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+	<function>
+		<name>IsImage</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.IsImage</class>
+		<keywords>image,decision</keywords>
+		<description>Determines whether a variable returns a image.</description>
+		<argument>
+			<name>image</name>
+			<alias>value,object,name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>The variable that is checked.</description>
+		</argument>
+		<return>
+			<type>boolean</type>
+		</return>
+	</function>
+	<function>
+		<name>IsImageFile</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.IsImageFile</class>
+		<keywords>decision,image</keywords>
+		<description>Verifies whether an image file is valid.</description>
+		<argument>
+			<name>path</name>
+			<alias>value,file</alias>
+			<type>string</type>
+			<required>Yes</required>
+			<description>The pathname of the file to be checked. The pathname can be absolute or relative to the CFM page and must be enclosed in quotation marks.</description>
+		</argument>
+		<return>
+			<type>boolean</type>
+		</return>
+	</function>
+	<function>
+		<name>ImageDrawImage</name>
+		<class bundle-name="org.lucee.image.extension" bundle-version="2.0.0.29">org.lucee.extension.image.functions.ImageDrawImage</class>
+		<status>deprecated</status>
+		<member-name>drawImage</member-name>
+		<member-type>image</member-type>
+		<member-chaining>true</member-chaining>
+		<keywords>image</keywords>
+		<description>this function is deprecated, use ImagePaste instead. Draws a image on a image with the baseline of the first character positioned at (x,y) in the image.</description>
+		<argument>
+			<name>image</name>
+			<alias>name</alias>
+			<type>any</type>
+			<required>Yes</required>
+			<description>the image to draw on it</description>
+		</argument>
+		<argument>
+			<name>image</name>
+			<type>any</type>
+			<required>Yes</required>
+			<description>the image to draw</description>
+		</argument>
+		<argument>
+			<name>x</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The x coordinate of the of the top left corner of the image to draw.</description>
+		</argument>
+		<argument>
+			<name>y</name>
+			<type>number</type>
+			<required>Yes</required>
+			<description>The y coordinate of the of the top left corner of the image to draw.</description>
+		</argument>
+		<return>
+			<type>void</type>
+		</return>
+	</function>
+</func-lib>

@@ -1,0 +1,10 @@
+{
+  "id": "CED6227E-0F49-6367-A68D21AACA6B07E8",
+  "name": "Lucee Administrator",
+  "version": "1.0.0.5",
+  "startBundles": "false",
+  "releaseType": "all",
+  "trial": "false",
+  "luceeCoreVersion": "5.0.0.050-",
+  "mapping": "[{'virtual':'/lucee/admin','physical':'{lucee-config}/context/admin','archive':'{lucee-config}/context/lucee-admin.lar','primary':'physical ','inspect':'once ','toplevel':'true','readonly':'true','listener-mode':'curr2root','listener-type':'modern'}]"
+}

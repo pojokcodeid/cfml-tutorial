@@ -1,0 +1,10 @@
+{
+  "id": "D46D49C3-EB85-8D97-30BEC2F38561E985",
+  "name": "Lucee Documentation",
+  "version": "1.0.0.4",
+  "startBundles": "false",
+  "releaseType": "all",
+  "trial": "false",
+  "luceeCoreVersion": "5.0.0.050-",
+  "mapping": "[{'virtual':'/lucee/doc','physical':'','archive':'{lucee-config}/context/lucee-doc.lar','primary':'archive ','inspect':'once ','toplevel':'true','readonly':'true','listenermode':'curr2root','listenertype':'modern'}]"
+}

@@ -1,0 +1,394 @@
+2025-05-13 22:59:53.3 lucee.runtime.config.ConfigServerFactory ===================================================================
+SERVER CONTEXT
+-------------------------------------------------------------------
+- config:/usr/local/lib/serverHome/WEB-INF/lucee-server/context
+- loader-version:6.3
+- core-version:6.2.0.321
+===================================================================
+
+2025-05-13 22:59:53.5 lucee.runtime.config.ConfigServerFactory load config file
+2025-05-13 22:59:53.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/locales/pt-PT-date.df]
+2025-05-13 22:59:53.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/security/antisamy-basic.xml]
+2025-05-13 22:59:53.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/lucee-context.lar]
+2025-05-13 22:59:53.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/lucee-admin.lar]
+2025-05-13 22:59:53.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/lucee-doc.lar]
+2025-05-13 22:59:53.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/component-dump.cfm]
+2025-05-13 22:59:53.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/Application.cfc]
+2025-05-13 22:59:53.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/form.cfm]
+2025-05-13 22:59:53.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/graph.cfm]
+2025-05-13 22:59:53.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/wddx.cfm]
+2025-05-13 22:59:53.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin.cfm]
+2025-05-13 22:59:54.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/plugin/Plugin.cfc]
+2025-05-13 22:59:54.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/plugin/Note/language.xml]
+2025-05-13 22:59:54.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/plugin/Note/overview.cfm]
+2025-05-13 22:59:54.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/plugin/Note/Action.cfc]
+2025-05-13 22:59:54.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/TaskGateway.cfc]
+2025-05-13 22:59:54.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/DummyGateway.cfc]
+2025-05-13 22:59:54.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/DirectoryWatcher.cfc]
+2025-05-13 22:59:54.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/DirectoryWatcherListener.cfc]
+2025-05-13 22:59:54.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/WatchService.cfc]
+2025-05-13 22:59:54.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/MailWatcher.cfc]
+2025-05-13 22:59:54.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/MailWatcherListener.cfc]
+2025-05-13 22:59:54.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/AsynchronousEvents.cfc]
+2025-05-13 22:59:54.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/AsynchronousEventsListener.cfc]
+2025-05-13 22:59:54.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Debug.cfc]
+2025-05-13 22:59:54.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Field.cfc]
+2025-05-13 22:59:54.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Group.cfc]
+2025-05-13 22:59:54.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/cdriver/Cache.cfc]
+2025-05-13 22:59:54.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/cdriver/Field.cfc]
+2025-05-13 22:59:54.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/cdriver/Group.cfc]
+2025-05-13 22:59:54.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/IDriver.cfc]
+2025-05-13 22:59:54.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/Driver.cfc]
+2025-05-13 22:59:54.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/IDatasource.cfc]
+2025-05-13 22:59:54.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/IDriverSelector.cfc]
+2025-05-13 22:59:54.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/Field.cfc]
+2025-05-13 22:59:54.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/Gateway.cfc]
+2025-05-13 22:59:54.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/Field.cfc]
+2025-05-13 22:59:54.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/Group.cfc]
+2025-05-13 22:59:54.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/Appender.cfc]
+2025-05-13 22:59:54.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/Field.cfc]
+2025-05-13 22:59:54.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/Group.cfc]
+2025-05-13 22:59:54.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/Layout.cfc]
+2025-05-13 22:59:54.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/Field.cfc]
+2025-05-13 22:59:54.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/Group.cfc]
+2025-05-13 22:59:54.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/templates/error/error.cfm]
+2025-05-13 22:59:54.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/templates/error/error-neo.cfm]
+2025-05-13 22:59:54.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/templates/error/error-public.cfm]
+2025-05-13 22:59:54.5 lucee.runtime.config.ConfigWebFactory start reading config
+2025-05-13 22:59:54.5 lucee.runtime.config.ConfigWebFactory fixed salt
+2025-05-13 22:59:54.5 lucee.runtime.config.ConfigWebFactory reloading configuration
+2025-05-13 22:59:54.6 lucee.runtime.config.ConfigWebFactory loaded admin mode
+2025-05-13 22:59:54.6 lucee.runtime.config.ConfigWebFactory loaded config
+2025-05-13 22:59:55.0 lucee.runtime.config.ConfigWebFactory loaded loggers
+2025-05-13 22:59:55.0 lucee.runtime.config.ConfigWebFactory loaded temp dir
+2025-05-13 22:59:55.0 lucee.runtime.config.ConfigWebFactory loaded id
+2025-05-13 22:59:55.0 lucee.runtime.config.ConfigWebFactory loaded version
+2025-05-13 22:59:55.0 lucee.runtime.config.ConfigWebFactory loaded lib
+2025-05-13 22:59:55.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/tag/Dump.cfc]
+2025-05-13 22:59:55.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/tag/build/jquery/jquery-1.12.4.min.js]
+2025-05-13 22:59:55.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/writeDump.cfm]
+2025-05-13 22:59:55.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/dump.cfm]
+2025-05-13 22:59:55.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/location.cfm]
+2025-05-13 22:59:55.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/threadJoin.cfm]
+2025-05-13 22:59:55.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/threadTerminate.cfm]
+2025-05-13 22:59:55.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/throw.cfm]
+2025-05-13 22:59:55.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/trace.cfm]
+2025-05-13 22:59:55.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/transactionCommit.cfm]
+2025-05-13 22:59:55.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/transactionRollback.cfm]
+2025-05-13 22:59:55.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/transactionSetsavepoint.cfm]
+2025-05-13 22:59:55.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/writeLog.cfm]
+2025-05-13 22:59:55.2 lucee.runtime.config.ConfigWebFactory loaded filesystem
+2025-05-13 22:59:55.2 lucee.runtime.config.ConfigWebFactory loaded extension definitions
+2025-05-13 22:59:55.2 lucee.runtime.config.ConfigWebFactory loaded application
+2025-05-13 22:59:55.2 lucee.runtime.config.ConfigWebFactory loaded java
+2025-05-13 23:00:03.5 lucee.runtime.config.ConfigWebFactory start reading config
+2025-05-13 23:00:03.5 lucee.runtime.config.ConfigWebFactory fixed salt
+2025-05-13 23:00:03.5 lucee.runtime.config.ConfigWebFactory loaded admin mode
+2025-05-13 23:00:03.5 lucee.runtime.config.ConfigWebFactory loaded config
+2025-05-13 23:00:03.5 lucee.runtime.config.ConfigWebFactory loaded loggers
+2025-05-13 23:00:03.5 lucee.runtime.config.ConfigWebFactory loaded temp dir
+2025-05-13 23:00:03.5 lucee.runtime.config.ConfigWebFactory loaded id
+2025-05-13 23:00:03.5 lucee.runtime.config.ConfigWebFactory loaded version
+2025-05-13 23:00:03.5 lucee.runtime.config.ConfigWebFactory loaded lib
+2025-05-13 23:00:03.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/tag/Dump.cfc]
+2025-05-13 23:00:03.6 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/tag/build/jquery/jquery-1.12.4.min.js]
+2025-05-13 23:00:03.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/writeDump.cfm]
+2025-05-13 23:00:03.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/dump.cfm]
+2025-05-13 23:00:03.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/location.cfm]
+2025-05-13 23:00:03.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/threadJoin.cfm]
+2025-05-13 23:00:03.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/threadTerminate.cfm]
+2025-05-13 23:00:03.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/throw.cfm]
+2025-05-13 23:00:03.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/trace.cfm]
+2025-05-13 23:00:03.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/transactionCommit.cfm]
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/transactionRollback.cfm]
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/transactionSetsavepoint.cfm]
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/writeLog.cfm]
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigWebFactory loaded filesystem
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigWebFactory loaded extension definitions
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigWebFactory loaded application
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigWebFactory loaded java
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigServerFactory ===================================================================
+SERVER CONTEXT
+-------------------------------------------------------------------
+- config:/usr/local/lib/serverHome/WEB-INF/lucee-server/context
+- loader-version:6.3
+- core-version:6.2.0.321
+===================================================================
+
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigServerFactory load config file
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/security/antisamy-basic.xml]
+2025-05-13 23:00:03.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/lucee-context.lar]
+2025-05-13 23:00:03.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/lucee-admin.lar]
+2025-05-13 23:00:03.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/lucee-doc.lar]
+2025-05-13 23:00:03.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/form.cfm]
+2025-05-13 23:00:03.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/graph.cfm]
+2025-05-13 23:00:03.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/TaskGateway.cfc]
+2025-05-13 23:00:04.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/DummyGateway.cfc]
+2025-05-13 23:00:04.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/DirectoryWatcher.cfc]
+2025-05-13 23:00:04.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/DirectoryWatcherListener.cfc]
+2025-05-13 23:00:04.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/WatchService.cfc]
+2025-05-13 23:00:04.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/MailWatcher.cfc]
+2025-05-13 23:00:04.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/MailWatcherListener.cfc]
+2025-05-13 23:00:04.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/AsynchronousEvents.cfc]
+2025-05-13 23:00:04.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/lucee/extension/gateway/AsynchronousEventsListener.cfc]
+2025-05-13 23:00:04.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Debug.cfc]
+2025-05-13 23:00:04.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Field.cfc]
+2025-05-13 23:00:04.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Group.cfc]
+2025-05-13 23:00:04.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/cdriver/Cache.cfc]
+2025-05-13 23:00:04.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/cdriver/Field.cfc]
+2025-05-13 23:00:04.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/cdriver/Group.cfc]
+2025-05-13 23:00:04.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/IDriver.cfc]
+2025-05-13 23:00:04.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/Driver.cfc]
+2025-05-13 23:00:04.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/IDatasource.cfc]
+2025-05-13 23:00:04.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/IDriverSelector.cfc]
+2025-05-13 23:00:04.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/Field.cfc]
+2025-05-13 23:00:04.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/Gateway.cfc]
+2025-05-13 23:00:04.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/Field.cfc]
+2025-05-13 23:00:04.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/Group.cfc]
+2025-05-13 23:00:04.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/Appender.cfc]
+2025-05-13 23:00:04.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/Field.cfc]
+2025-05-13 23:00:04.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/Group.cfc]
+2025-05-13 23:00:04.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/Layout.cfc]
+2025-05-13 23:00:04.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/Field.cfc]
+2025-05-13 23:00:04.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/Group.cfc]
+2025-05-13 23:00:04.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/templates/error/error.cfm]
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/templates/error/error-neo.cfm]
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/templates/error/error-public.cfm]
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory start reading config
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory fixed salt
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded admin mode
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded config
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded constants
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded loggers
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded temp dir
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded id
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded version
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded security
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded java settings
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded lib
+2025-05-13 23:00:04.3 lucee.runtime.config.ConfigWebFactory loaded system
+2025-05-13 23:00:04.4 lucee.runtime.config.ConfigWebFactory loaded resource providers
+2025-05-13 23:00:04.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/tag/Dump.cfc]
+2025-05-13 23:00:04.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/tag/build/jquery/jquery-1.12.4.min.js]
+2025-05-13 23:00:04.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/writeDump.cfm]
+2025-05-13 23:00:04.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/dump.cfm]
+2025-05-13 23:00:04.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/location.cfm]
+2025-05-13 23:00:04.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/threadJoin.cfm]
+2025-05-13 23:00:04.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/threadTerminate.cfm]
+2025-05-13 23:00:04.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/throw.cfm]
+2025-05-13 23:00:04.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/trace.cfm]
+2025-05-13 23:00:04.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/transactionCommit.cfm]
+2025-05-13 23:00:04.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/transactionRollback.cfm]
+2025-05-13 23:00:04.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/transactionSetsavepoint.cfm]
+2025-05-13 23:00:04.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/library/function/writeLog.cfm]
+2025-05-13 23:00:04.5 lucee.runtime.config.ConfigWebFactory loaded filesystem
+2025-05-13 23:00:06.2 lucee.runtime.config.ConfigWebFactory loaded extension
+2025-05-13 23:00:06.2 lucee.runtime.config.ConfigWebFactory loaded webservice
+2025-05-13 23:00:06.2 lucee.runtime.config.ConfigWebFactory loaded orm
+2025-05-13 23:00:06.3 lucee.runtime.config.ConfigWebFactory loaded cache handlers
+2025-05-13 23:00:06.3 lucee.runtime.config.ConfigWebFactory loaded charset
+2025-05-13 23:00:06.3 lucee.runtime.config.ConfigWebFactory loaded application
+2025-05-13 23:00:06.3 lucee.runtime.config.ConfigWebFactory loaded java
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded mappings
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded rest
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded extensions
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded datasources
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded cache
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded custom tag mappings
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded tags
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded regional
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded compiler
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded scope
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded mail
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded search
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded scheduled tasks
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded debug
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded error
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded regex
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded cfx
+2025-05-13 23:00:06.4 lucee.runtime.config.ConfigWebFactory loaded component
+2025-05-13 23:00:06.5 lucee.runtime.config.ConfigWebFactory loaded update
+2025-05-13 23:00:06.5 lucee.runtime.config.ConfigWebFactory loaded setting
+2025-05-13 23:00:06.5 lucee.runtime.config.ConfigWebFactory loaded proxy
+2025-05-13 23:00:06.5 lucee.runtime.config.ConfigWebFactory loaded remote clients
+2025-05-13 23:00:06.5 lucee.runtime.config.ConfigWebFactory loaded settings2
+2025-05-13 23:00:06.5 lucee.runtime.config.ConfigWebFactory loaded listeners
+2025-05-13 23:00:06.6 lucee.runtime.config.ConfigWebFactory loaded dump writers
+2025-05-13 23:00:06.6 lucee.runtime.config.ConfigWebFactory loaded gateways
+2025-05-13 23:00:06.6 lucee.runtime.config.ConfigWebFactory loaded exe log
+2025-05-13 23:00:06.6 lucee.runtime.config.ConfigWebFactory loaded queue
+2025-05-13 23:00:06.6 lucee.runtime.config.ConfigWebFactory loaded monitors
+2025-05-13 23:00:06.6 lucee.runtime.config.ConfigWebFactory loaded login
+2025-05-13 23:00:06.6 lucee.runtime.config.ConfigWebFactory loaded AI
+2025-05-13 23:00:06.6 lucee.runtime.config.ConfigWebFactory loaded startup hook
+2025-05-13 23:00:06.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Debug.cfc]
+2025-05-13 23:00:06.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Field.cfc]
+2025-05-13 23:00:06.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Group.cfc]
+2025-05-13 23:00:06.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Classic.cfc]
+2025-05-13 23:00:06.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Simple.cfc]
+2025-05-13 23:00:06.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Modern.cfc]
+2025-05-13 23:00:06.7 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/debug/Comment.cfc]
+2025-05-13 23:00:06.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/info/Info.cfc]
+2025-05-13 23:00:06.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/IDriver.cfc]
+2025-05-13 23:00:06.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/Driver.cfc]
+2025-05-13 23:00:06.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/IDatasource.cfc]
+2025-05-13 23:00:06.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/IDriverSelector.cfc]
+2025-05-13 23:00:06.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/types/Field.cfc]
+2025-05-13 23:00:06.8 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/dbdriver/Other.cfc]
+2025-05-13 23:00:06.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/cdriver/Cache.cfc]
+2025-05-13 23:00:06.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/cdriver/RamCache.cfc]
+2025-05-13 23:00:06.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/cdriver/Field.cfc]
+2025-05-13 23:00:06.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/cdriver/Group.cfc]
+2025-05-13 23:00:06.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/aidriver/AI.cfc]
+2025-05-13 23:00:06.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/aidriver/Claude.cfc]
+2025-05-13 23:00:06.9 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/aidriver/Gemini.cfc]
+2025-05-13 23:00:07.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/aidriver/OpenAI.cfc]
+2025-05-13 23:00:07.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/aidriver/Field.cfc]
+2025-05-13 23:00:07.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/aidriver/Group.cfc]
+2025-05-13 23:00:07.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/mailservers/Other.cfc]
+2025-05-13 23:00:07.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/mailservers/GMail.cfc]
+2025-05-13 23:00:07.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/mailservers/GMX.cfc]
+2025-05-13 23:00:07.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/mailservers/iCloud.cfc]
+2025-05-13 23:00:07.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/mailservers/Yahoo.cfc]
+2025-05-13 23:00:07.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/mailservers/Outlook.cfc]
+2025-05-13 23:00:07.0 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/mailservers/MailCom.cfc]
+2025-05-13 23:00:07.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/mailservers/MailServer.cfc]
+2025-05-13 23:00:07.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/TaskGatewayDriver.cfc]
+2025-05-13 23:00:07.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/AsynchronousEvents.cfc]
+2025-05-13 23:00:07.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/DirectoryWatcher.cfc]
+2025-05-13 23:00:07.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/MailWatcher.cfc]
+2025-05-13 23:00:07.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/Gateway.cfc]
+2025-05-13 23:00:07.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/Field.cfc]
+2025-05-13 23:00:07.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/gdriver/Group.cfc]
+2025-05-13 23:00:07.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/DatasourceAppender.cfc]
+2025-05-13 23:00:07.1 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/ConsoleAppender.cfc]
+2025-05-13 23:00:07.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/ResourceAppender.cfc]
+2025-05-13 23:00:07.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/Appender.cfc]
+2025-05-13 23:00:07.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/Field.cfc]
+2025-05-13 23:00:07.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/appender/Group.cfc]
+2025-05-13 23:00:07.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/DatadogLayout.cfc]
+2025-05-13 23:00:07.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/ClassicLayout.cfc]
+2025-05-13 23:00:07.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/HTMLLayout.cfc]
+2025-05-13 23:00:07.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/PatternLayout.cfc]
+2025-05-13 23:00:07.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/XMLLayout.cfc]
+2025-05-13 23:00:07.2 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/JsonLayout.cfc]
+2025-05-13 23:00:07.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/Layout.cfc]
+2025-05-13 23:00:07.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/Field.cfc]
+2025-05-13 23:00:07.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/context/admin/logging/layout/Group.cfc]
+2025-05-13 23:00:07.3 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/security/cacerts]
+2025-05-13 23:00:07.4 lucee.runtime.config.ConfigWebFactory ===================================================================
+WEB CONTEXT (SINGLE) (ce771743493b173d166dcd89dbb6223f)
+-------------------------------------------------------------------
+- config:/usr/local/lib/serverHome/WEB-INF/lucee-server/context
+- webroot:/app/src
+- label:ce771743493b173d166dcd89dbb6223f
+===================================================================
+
+2025-05-13 23:00:07.4 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/HelperBase.cfc]
+2025-05-13 23:00:07.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/Feed.cfc]
+2025-05-13 23:00:07.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/Ftp.cfc]
+2025-05-13 23:00:07.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/Http.cfc]
+2025-05-13 23:00:07.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/Mail.cfc]
+2025-05-13 23:00:07.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/Query.cfc]
+2025-05-13 23:00:07.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/Result.cfc]
+2025-05-13 23:00:07.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/Administrator.cfc]
+2025-05-13 23:00:07.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/Component.cfc]
+2025-05-13 23:00:07.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/orm/IEventHandler.cfc]
+2025-05-13 23:00:07.5 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/orm/INamingStrategy.cfc]
+2025-05-13 23:00:07.6 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/test/LuceeTestSuite.cfc]
+2025-05-13 23:00:07.6 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/test/LuceeTestSuiteRunner.cfc]
+2025-05-13 23:00:07.6 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/test/LuceeTestCase.cfc]
+2025-05-13 23:00:07.6 lucee.runtime.config.ConfigFactory Written file: [/usr/local/lib/serverHome/WEB-INF/lucee-server/context/components/org/lucee/cfml/test/LuceeTestCaseParallel.cfc]
+2025-05-13 23:01:50.0 lucee.runtime.config.ConfigServerFactory ===================================================================
+SERVER CONTEXT
+-------------------------------------------------------------------
+- config:/usr/local/lib/serverHome/WEB-INF/lucee-server/context
+- loader-version:6.3
+- core-version:6.2.0.321
+===================================================================
+
+2025-05-13 23:01:50.2 lucee.runtime.config.ConfigServerFactory load config file
+2025-05-13 23:01:50.5 lucee.runtime.config.ConfigWebFactory start reading config
+2025-05-13 23:01:50.5 lucee.runtime.config.ConfigWebFactory fixed salt
+2025-05-13 23:01:50.5 lucee.runtime.config.ConfigWebFactory loaded admin mode
+2025-05-13 23:01:50.5 lucee.runtime.config.ConfigWebFactory loaded config
+2025-05-13 23:01:50.7 lucee.runtime.config.ConfigWebFactory loaded loggers
+2025-05-13 23:01:50.7 lucee.runtime.config.ConfigWebFactory loaded temp dir
+2025-05-13 23:01:50.7 lucee.runtime.config.ConfigWebFactory loaded id
+2025-05-13 23:01:50.7 lucee.runtime.config.ConfigWebFactory loaded version
+2025-05-13 23:01:50.7 lucee.runtime.config.ConfigWebFactory loaded lib
+2025-05-13 23:01:50.8 lucee.runtime.config.ConfigWebFactory loaded filesystem
+2025-05-13 23:01:50.8 lucee.runtime.config.ConfigWebFactory loaded extension definitions
+2025-05-13 23:01:50.8 lucee.runtime.config.ConfigWebFactory loaded application
+2025-05-13 23:01:50.8 lucee.runtime.config.ConfigWebFactory loaded java
+2025-05-13 23:01:50.9 lucee.runtime.config.ConfigServerFactory ===================================================================
+SERVER CONTEXT
+-------------------------------------------------------------------
+- config:/usr/local/lib/serverHome/WEB-INF/lucee-server/context
+- loader-version:6.3
+- core-version:6.2.0.321
+===================================================================
+
+2025-05-13 23:01:50.9 lucee.runtime.config.ConfigServerFactory load config file
+2025-05-13 23:01:51.0 lucee.runtime.config.ConfigWebFactory start reading config
+2025-05-13 23:01:51.0 lucee.runtime.config.ConfigWebFactory fixed salt
+2025-05-13 23:01:51.0 lucee.runtime.config.ConfigWebFactory loaded admin mode
+2025-05-13 23:01:51.0 lucee.runtime.config.ConfigWebFactory loaded config
+2025-05-13 23:01:51.0 lucee.runtime.config.ConfigWebFactory loaded constants
+2025-05-13 23:01:51.1 lucee.runtime.config.ConfigWebFactory loaded loggers
+2025-05-13 23:01:51.1 lucee.runtime.config.ConfigWebFactory loaded temp dir
+2025-05-13 23:01:51.1 lucee.runtime.config.ConfigWebFactory loaded id
+2025-05-13 23:01:51.1 lucee.runtime.config.ConfigWebFactory loaded version
+2025-05-13 23:01:51.1 lucee.runtime.config.ConfigWebFactory loaded security
+2025-05-13 23:01:51.1 lucee.runtime.config.ConfigWebFactory loaded java settings
+2025-05-13 23:01:51.1 lucee.runtime.config.ConfigWebFactory loaded lib
+2025-05-13 23:01:51.1 lucee.runtime.config.ConfigWebFactory loaded system
+2025-05-13 23:01:51.2 lucee.runtime.config.ConfigWebFactory loaded resource providers
+2025-05-13 23:01:51.3 lucee.runtime.config.ConfigWebFactory loaded filesystem
+2025-05-13 23:01:53.3 lucee.runtime.config.ConfigWebFactory loaded extension
+2025-05-13 23:01:53.3 lucee.runtime.config.ConfigWebFactory loaded webservice
+2025-05-13 23:01:53.3 lucee.runtime.config.ConfigWebFactory loaded orm
+2025-05-13 23:01:53.4 lucee.runtime.config.ConfigWebFactory loaded cache handlers
+2025-05-13 23:01:53.4 lucee.runtime.config.ConfigWebFactory loaded charset
+2025-05-13 23:01:53.4 lucee.runtime.config.ConfigWebFactory loaded application
+2025-05-13 23:01:53.4 lucee.runtime.config.ConfigWebFactory loaded java
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded mappings
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded rest
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded extensions
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded datasources
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded cache
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded custom tag mappings
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded tags
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded regional
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded compiler
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded scope
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded mail
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded search
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded scheduled tasks
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded debug
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded error
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded regex
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded cfx
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded component
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded update
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded setting
+2025-05-13 23:01:53.5 lucee.runtime.config.ConfigWebFactory loaded proxy
+2025-05-13 23:01:53.6 lucee.runtime.config.ConfigWebFactory loaded remote clients
+2025-05-13 23:01:53.6 lucee.runtime.config.ConfigWebFactory loaded settings2
+2025-05-13 23:01:53.6 lucee.runtime.config.ConfigWebFactory loaded listeners
+2025-05-13 23:01:53.6 lucee.runtime.config.ConfigWebFactory loaded dump writers
+2025-05-13 23:01:53.6 lucee.runtime.config.ConfigWebFactory loaded gateways
+2025-05-13 23:01:53.6 lucee.runtime.config.ConfigWebFactory loaded exe log
+2025-05-13 23:01:53.6 lucee.runtime.config.ConfigWebFactory loaded queue
+2025-05-13 23:01:53.6 lucee.runtime.config.ConfigWebFactory loaded monitors
+2025-05-13 23:01:53.6 lucee.runtime.config.ConfigWebFactory loaded login
+2025-05-13 23:01:53.6 lucee.runtime.config.ConfigWebFactory loaded AI
+2025-05-13 23:01:53.7 lucee.runtime.config.ConfigWebFactory loaded startup hook
+2025-05-13 23:01:54.2 lucee.runtime.config.ConfigWebFactory ===================================================================
+WEB CONTEXT (SINGLE) (ce771743493b173d166dcd89dbb6223f)
+-------------------------------------------------------------------
+- config:/usr/local/lib/serverHome/WEB-INF/lucee-server/context
+- webroot:/app/src
+- label:ce771743493b173d166dcd89dbb6223f
+===================================================================
+

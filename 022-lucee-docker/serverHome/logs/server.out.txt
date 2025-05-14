@@ -1,0 +1,34 @@
+[INFO] 2025-05-13T22:59:50Z runwar.server - ******************************************************************************
+[INFO] 2025-05-13T22:59:50Z runwar.server - Starting Runwar
+[INFO] 2025-05-13T22:59:50Z runwar.server -   - Runwar Version: 5.1.1
+[INFO] 2025-05-13T22:59:50Z runwar.server -   - Java Version: 11.0.27+6 (Eclipse Adoptium)
+[INFO] 2025-05-13T22:59:50Z runwar.server -   - Java Home: /opt/java/openjdk
+[INFO] 2025-05-13T22:59:50Z runwar.server - ******************************************************************************
+[INFO] 2025-05-13T22:59:50Z runwar.server - Listeners:
+[INFO] 2025-05-13T22:59:50Z runwar.server -   - Binding HTTP on 0.0.0.0:8888
+[INFO] 2025-05-13T22:59:50Z runwar.server - ******************************************************************************
+[INFO] 2025-05-13T22:59:50Z runwar.server - Configuring Servlet
+[INFO] 2025-05-13T22:59:50Z runwar.server -   Found WEB-INF: '/usr/local/lib/serverHome/WEB-INF'
+[INFO] 2025-05-13T22:59:50Z runwar.server - ******************************************************************************
+[INFO] 2025-05-13T22:59:50Z runwar.server - Creating deployment [default]
+[INFO] 2025-05-13T22:59:50Z runwar.server -     Web Root: /app/src
+[INFO] 2025-05-13T23:00:07Z runwar.server - ******************************************************************************
+[INFO] 2025-05-13T23:00:07Z runwar.server - Starting 'stop' listener thread - Host: 127.0.0.1 - Socket: 39183
+[INFO] 2025-05-13T23:00:07Z runwar.server - Server is up - stop-port:39183 PID:7 version 5.1.1
+[INFO] 2025-05-13T23:01:46Z runwar.server - ******************************************************************************
+[INFO] 2025-05-13T23:01:46Z runwar.server - Starting Runwar
+[INFO] 2025-05-13T23:01:46Z runwar.server -   - Runwar Version: 5.1.1
+[INFO] 2025-05-13T23:01:46Z runwar.server -   - Java Version: 11.0.27+6 (Eclipse Adoptium)
+[INFO] 2025-05-13T23:01:46Z runwar.server -   - Java Home: /opt/java/openjdk
+[INFO] 2025-05-13T23:01:46Z runwar.server - ******************************************************************************
+[INFO] 2025-05-13T23:01:46Z runwar.server - Listeners:
+[INFO] 2025-05-13T23:01:46Z runwar.server -   - Binding HTTP on 0.0.0.0:8888
+[INFO] 2025-05-13T23:01:46Z runwar.server - ******************************************************************************
+[INFO] 2025-05-13T23:01:46Z runwar.server - Configuring Servlet
+[INFO] 2025-05-13T23:01:46Z runwar.server -   Found WEB-INF: '/usr/local/lib/serverHome/WEB-INF'
+[INFO] 2025-05-13T23:01:46Z runwar.server - ******************************************************************************
+[INFO] 2025-05-13T23:01:46Z runwar.server - Creating deployment [default]
+[INFO] 2025-05-13T23:01:46Z runwar.server -     Web Root: /app/src
+[INFO] 2025-05-13T23:01:54Z runwar.server - ******************************************************************************
+[INFO] 2025-05-13T23:01:54Z runwar.server - Starting 'stop' listener thread - Host: 127.0.0.1 - Socket: 42429
+[INFO] 2025-05-13T23:01:54Z runwar.server - Server is up - stop-port:42429 PID:7 version 5.1.1

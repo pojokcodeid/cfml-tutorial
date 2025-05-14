@@ -1,0 +1,11 @@
+{
+  "id": "671B01B8-B3B3-42B9-AC055A356BED5281",
+  "name": "PostgreSQL",
+  "version": "42.7.4",
+  "startBundles": "false",
+  "releaseType": "all",
+  "trial": "false",
+  "categories": "Datasource",
+  "luceeCoreVersion": "5.0.0.019-",
+  "jdbc": "[{'label':'PostgreSQL','id':'postgresql','connectionString':'jdbc:postgresql://{host}:{port}/{database}','class':'org.postgresql.Driver','bundleName':'org.postgresql.jdbc','bundleVersion':'42.7.4'}]"
+}

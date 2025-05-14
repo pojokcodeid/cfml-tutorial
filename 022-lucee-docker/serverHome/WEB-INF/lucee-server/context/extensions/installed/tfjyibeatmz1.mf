@@ -1,0 +1,9 @@
+{
+  "id": "8D7FB0DF-08BB-1589-FE3975678F07DB17",
+  "name": "Compress Tags",
+  "version": "1.0.0.15",
+  "startBundles": "false",
+  "releaseType": "all",
+  "trial": "false",
+  "luceeCoreVersion": "5.0.0.252-"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "7E673D15-D87C-41A6-8B5F1956528C605F",
+  "name": "MySQL",
+  "version": "9.1.0",
+  "startBundles": "false",
+  "releaseType": "all",
+  "trial": "false",
+  "categories": "Datasource",
+  "luceeCoreVersion": "5.0.0.019-",
+  "jdbc": "[{'label':'MySQL','id':'mysql','connectionString':'jdbc:mysql://{host}:{port}/{database}','class':'com.mysql.cj.jdbc.Driver','bundleName':'com.mysql.cj','bundleVersion':'9.1.0'}]"
+}
