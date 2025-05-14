@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+    react-app:
+        build: .
+        ports:
+            - "80:80" # Menghubungkan langsung ke port 80
+        restart: always

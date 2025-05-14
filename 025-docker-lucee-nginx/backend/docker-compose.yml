@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  lucee:
+    image: lucee/lucee:latest
+    container_name: lucee_app
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./app/src:/var/www
+      - ./lucee:/opt/lucee
+    environment:
+      - LUCEE_ADMIN_PASSWORD=supersecret
+    depends_on:
+      - mariadb
+    networks:
+      - backend
+
+  mariadb:
+    image: mariadb:latest
+    container_name: lucee_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: lucee_db
+      MYSQL_USER: lucee_user
+      MYSQL_PASSWORD: userpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mariadb_data:/var/lib/mysql
+    networks:
+      - backend
+    command:
+      - "--bind-address=0.0.0.0"
+
+  nginx:
+    image: nginx:latest
+    container_name: lucee_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - lucee
+    networks:
+      - backend
+
+volumes:
+  mariadb_data:
+  lucee:
+
+networks:
+  backend:
