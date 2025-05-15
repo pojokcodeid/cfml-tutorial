@@ -7,7 +7,7 @@
     "web": {
         "blockCFAdmin": "false",
         "http": {
-            "port": "80"
+            "port": "8080"
         }
     },
     "lucee": {
