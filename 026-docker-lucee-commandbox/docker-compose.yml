@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  commandbox:
+    image: ortussolutions/commandbox:latest
+    container_name: commandbox_app
+    ports:
+      - "8080:8080"
+      - "443:443"
+    environment:
+      - PORT=8080
+      - SSL_PORT=443
+      - CFCONFIG_adminPassword=passwordku123
+    volumes:
+      - ./app:/app
+      - ./lucee:/usr/local/lib/serverHome/WEB-INF
+volumes:
+  lucee:
