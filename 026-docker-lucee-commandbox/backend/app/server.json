@@ -1,0 +1,23 @@
+{
+    "name":"rest-be",
+    "profile":"development",
+    "startTimeout":"3600",
+    "app":{
+        "cfengine":"lucee@6"
+    },
+    "web":{
+        "blockCFAdmin":"false",
+        "host":"localhost",
+        "webroot":"src",
+        "http":{
+            "port":8888
+        },
+        "rewrites":{
+            "enable":"true",
+            "config":"customRewrites.xml"
+        }
+    },
+    "lucee":{
+        "version":"6.2"
+    }
+}

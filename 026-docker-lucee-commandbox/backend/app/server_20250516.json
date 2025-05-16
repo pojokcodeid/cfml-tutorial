@@ -1,0 +1,16 @@
+{
+     "startTimeout":"3600",
+    "app":{
+        "cfengine":"lucee@6"
+    },
+    "profile": "development",
+    "web": {
+        "blockCFAdmin": "false",
+        "http": {
+            "port": "8080"
+        }
+    },
+    "lucee": {
+        "version": "6.2"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "name":"rest-be",
+    "description":"Sample App using Lucee and CommandBox",
+    "type":"app",
+    "version":"1.0.0",
+    "dependencies":{
+        "jwt-cfml":"^1.2.1"
+    },
+    "scripts":{
+        "start":"server start",
+        "restart":"server restart",
+        "stop":"server stop"
+    },
+    "installPaths":{
+        "jwt-cfml":"src/modules/jwtcfml/"
+    }
+}
