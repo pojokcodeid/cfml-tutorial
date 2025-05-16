@@ -1,8 +1,8 @@
-version: '3.8'
+version: "3.8"
 
 services:
   commandbox:
-    build: .
+    image: ortussolutions/commandbox:latest
     container_name: commandbox_app
     ports:
       - "8888:8888"
@@ -11,6 +11,9 @@ services:
       - PORT=8888
       - SSL_PORT=443
       - CFCONFIG_adminPassword=passwordku123
+    volumes:
+      - ./app:/app
+      - ./lucee:/usr/local/lib/serverHome/WEB-INF
     depends_on:
       - mariadb
     networks:
@@ -29,10 +32,10 @@ services:
       - "3306:3306"
     volumes:
       - ./mariadb_data:/var/lib/mysql
-    command:
-      - "--bind-address=0.0.0.0"
     networks:
       - backend
+    command:
+      - "--bind-address=0.0.0.0"
 
   nginx:
     image: nginx:latest
@@ -47,6 +50,7 @@ services:
       - backend
 
 volumes:
+  lucee:
   mariadb_data:
 
 networks:

@@ -1,6 +1,5 @@
 {
     "name":"rest-be",
-    "profile":"development",
     "startTimeout":"3600",
     "app":{
         "cfengine":"lucee@6"

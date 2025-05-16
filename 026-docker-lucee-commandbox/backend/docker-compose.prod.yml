@@ -1,0 +1,4 @@
+services:
+  commandbox:
+    volumes:
+      - ./lucee:/usr/local/lib/serverHome/WEB-INF
