@@ -1,0 +1,8 @@
+{
+    "web":{
+        "http":{
+            "port":8080
+        }
+    },
+    "cfengine":"lucee@6"
+}
