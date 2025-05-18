@@ -1,0 +1,25 @@
+{
+    "datasource":{
+        "MyMariaDB": {
+			"class": "org.mariadb.jdbc.Driver",
+			"connectionString": "jdbc:mariadb://127.0.0.1:3306/fullstack",
+			"username": "root",
+			"password": "",
+			"connectionLimit": 5
+        }
+    },
+    "baseURL": "http://localhost:8888",
+    "acessTokenKey": "myAccessTokenKey",
+    "refreshTokenKey": "myRefreshTokenKey",
+    "expiedMinute": 1,
+    "refreshExpiredMinute": 360,
+    "emailFrom": "info@mail.com",
+    "gmail":{
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "username":"asep.010801503125082@gmail.com",
+        "password": "rqoc bpjn aixf ebzc",
+        "usessl": true,
+        "usetls": false 
+    }
+}
