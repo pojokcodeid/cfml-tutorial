@@ -1,0 +1,56 @@
+### create employee
+POST http://localhost:8888/employee
+Content-Type: multipart/form-data; boundary=WebKitFormBoundary
+
+--WebKitFormBoundary
+Content-Disposition: form-data; name="name"
+
+Pojok Code 
+--WebKitFormBoundary
+Content-Disposition: form-data; name="email"
+
+coba@email.com
+--WebKitFormBoundary
+Content-Disposition: form-data; name="age"
+
+20
+--WebKitFormBoundary
+Content-Disposition: form-data; name="lampiran"; filename="example.png"
+Content-Type: image/png
+
+< ./example.png
+
+--WebKitFormBoundary
+
+### get all data
+GET http://localhost:8888/employee
+
+### get data by id
+GET http://localhost:8888/employee/60
+
+### update data
+PUT http://localhost:8888/employee/61
+Content-Type: multipart/form-data; boundary=WebKitFormBoundary
+
+--WebKitFormBoundary
+Content-Disposition: form-data; name="name"
+
+Pojok Code Updated 
+--WebKitFormBoundary
+Content-Disposition: form-data; name="email"
+
+coba@email.com
+--WebKitFormBoundary
+Content-Disposition: form-data; name="age"
+
+20
+--WebKitFormBoundary
+Content-Disposition: form-data; name="lampiran"; filename="example.png"
+Content-Type: image/png
+
+< ./example.png
+
+--WebKitFormBoundary
+
+### delete data
+DELETE http://localhost:8888/employee/61

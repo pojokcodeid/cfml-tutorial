@@ -1,0 +1,14 @@
+{
+	"name": "rest-framework",
+	"description": "Sample App using Lucee and CommandBox",
+	"type": "app",
+	"version": "1.0.0",
+	"dependencies": {
+		"lucee": "6.2.0"
+	},
+	"scripts": {
+		"start": "server start",
+		"restart": "server restart",
+		"stop": "server stop"
+	}
+}
