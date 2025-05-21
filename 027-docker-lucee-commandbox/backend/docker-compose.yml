@@ -11,6 +11,8 @@ services:
       - PORT=8888
       - SSL_PORT=443
       - CFCONFIG_adminPassword=passwordku123
+    volumes:
+      - ./lucee:/usr/local/lib/serverHome/WEB-INF
     depends_on:
       - mariadb
     networks:

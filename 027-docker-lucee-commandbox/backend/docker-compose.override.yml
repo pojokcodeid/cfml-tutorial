@@ -1,5 +1,0 @@
-services:
-  commandbox:
-    volumes:
-      - ./app:/app         # Live sync lokal → container
-      - ./lucee:/usr/local/lib/serverHome/WEB-INF
