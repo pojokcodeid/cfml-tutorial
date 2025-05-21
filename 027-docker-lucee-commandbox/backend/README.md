@@ -23,3 +23,7 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
 ```
 docker compose down -v
 ```
+
+## Compile
+
+https://www.forgebox.io/view/cfml-compiler
