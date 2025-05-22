@@ -1,0 +1,14 @@
+{
+    "startTimeout":"3600",
+    "app":{
+        "cfengine":"lucee@6.2.0"
+    },
+    "web":{
+        "blockCFAdmin":"false",
+        "host":"localhost",
+        "webroot":"src",
+        "http":{
+            "port":8888
+        }
+    }
+}

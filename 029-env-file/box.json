@@ -1,0 +1,10 @@
+{
+    "name":"env-file",
+    "description":"Sample cfml with env file",
+    "type":"app",
+    "version":"1.0.0",
+    "dependencies":{
+        "commandbox-dotenv": "^2.4.0"
+    },
+    "script":{}
+}
