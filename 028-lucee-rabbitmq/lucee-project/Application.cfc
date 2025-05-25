@@ -1,7 +1,7 @@
 component {
   this.name = "LuceeRabbitMQApp";
   this.javaSettings = {
-    loadPaths = ["lib"],
+    loadPaths = ["lib/rabbitmq"],
     reloadOnChange = true
   };
 }
