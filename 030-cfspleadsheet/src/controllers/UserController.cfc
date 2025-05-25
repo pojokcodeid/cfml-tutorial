@@ -111,4 +111,20 @@ component {
             writeDump(var = e, label = "ERROR Upload Excel");
         }
     }
+
+    public void function downloadPdf(){
+        var userModel= new models.UserModel();
+        var users = userModel.getAllUsers();
+        cfdocument(
+        format="pdf",
+        filename=expandPath("/temp/UserReport.pdf"),
+        overwrite="yes",
+        pagetype="A4",
+        orientation="portrait"
+        ) {
+            include "/templates/userTemplate.cfm";
+        }
+        cfheader(name="Content-Disposition", value="attachment;filename=UserReport.pdf");
+        cfcontent(type="application/pdf", file=expandPath("/temp/UserReport.pdf"), reset=true);
+    }
 }

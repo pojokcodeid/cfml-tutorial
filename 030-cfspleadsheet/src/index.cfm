@@ -6,8 +6,11 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Hello World</h1>
-  <a href="http://localhost:8888/download.cfm">Download Excel</a> &nbsp;
+  <cfset userModel = createObject("models.UserModel") />
+  <cfset users = userModel.getAllUsers() />
+  <cfinclude template="/templates/userTemplate.cfm" /><br><br>
+  <a href="http://localhost:8888/download.cfm?type=excel">Download Excel</a> &nbsp;
+  <a href="http://localhost:8888/download.cfm?type=pdf">Download PDF</a> &nbsp;
   <a href="http://localhost:8888/upload.cfm">Upload</a> &nbsp;
   <a href="http://localhost:8888/template.cfm">Template</a>
 </body>
