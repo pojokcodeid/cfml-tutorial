@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  commandbox:
+    build: .
+    container_name: commandbox_app
+    ports:
+      - "8888:8888"
+      - "443:443"
+    environment:
+      - PORT=8888
+      - SSL_PORT=443
+      - CFCONFIG_adminPassword=passwordku123
+    volumes:
+      - ./app:/app
+      - ./lucee:/usr/local/lib/serverHome/WEB-INF
+    depends_on:
+      - mariadb
+    networks:
+      - backend
+
+  mariadb:
+    image: mariadb:latest
+    container_name: lucee_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: lucee_db
+      MYSQL_USER: lucee_user
+      MYSQL_PASSWORD: userpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mariadb_data:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  lucee:
+  mariadb_data:
+
+networks:
+  backend:
