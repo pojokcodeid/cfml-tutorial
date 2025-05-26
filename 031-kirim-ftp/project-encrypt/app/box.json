@@ -1,0 +1,19 @@
+{
+    "name":"cfspleadsheet",
+    "description":"cfspleadsheet",
+    "version":"1.0",
+    "type":"app",
+    "dependencies":{
+        "commandbox-dotenv": "^2.4.0",
+        "spreadsheet-cfml": "^5.0.0",
+        "mariadb":"jar:https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/3.5.3/mariadb-java-client-3.5.3.jar"
+    },
+    "script":{
+        "start":"box server start",
+        "stop":"box server stop"
+    },
+    "installPaths": {
+        "spreadsheet-cfml": "./src/spreadsheetCFML/",
+        "mariadb": "./src/libs/mariadb/"
+    }
+}
