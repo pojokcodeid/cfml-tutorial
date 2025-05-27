@@ -13,6 +13,7 @@
   <a href="http://localhost:8888/download.cfm?type=pdf">Download PDF</a> &nbsp;
   <a href="http://localhost:8888/upload.cfm">Upload</a> &nbsp;
   <a href="http://localhost:8888/template.cfm">Template</a> &nbsp;
-  <a href="http://localhost:8888/encrypt_and_send.cfm">Encrypt and Send</a>
+  <a href="http://localhost:8888/encrypt_and_send.cfm">Encrypt and Send</a> &nbsp;
+  <a href="http://localhost:8888/decript_and_read.cfm">Decript and Read</a>
 </body>
 </html>

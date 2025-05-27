@@ -43,8 +43,10 @@ services:
       FTP_USER_NAME: user
       FTP_USER_PASS: password
       FTP_USER_HOME: /home/ftpusers/user
+      FTP_PASSIVE_PORTS: 30000:30009
     ports:
       - "2121:21"
+      - "30000-30009:30000-30009"
     networks:
       - backend
     volumes:
@@ -57,3 +59,4 @@ volumes:
 
 networks:
   backend:
+    driver: bridge

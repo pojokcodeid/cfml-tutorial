@@ -8,7 +8,7 @@
         "host":"localhost",
         "webroot":"src",
         "http":{
-            "port":8080
+            "port":8888
         }
     }
 }
