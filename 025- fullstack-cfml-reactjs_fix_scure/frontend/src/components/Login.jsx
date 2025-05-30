@@ -16,10 +16,6 @@ const Login = () => {
                     "acessToken",
                     response.data.ACCESSTOKEN
                 );
-                secureLocalStorage.setItem(
-                    "refreshToken",
-                    response.data.REFRESHTOKEN
-                );
                 secureLocalStorage.setItem("user", response.data.DATA);
                 toast.success("Login Berhasil!", {
                     position: "top-center",

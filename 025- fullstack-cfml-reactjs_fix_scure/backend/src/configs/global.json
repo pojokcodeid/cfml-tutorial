@@ -9,6 +9,7 @@
         }
     },
     "baseURL": "http://localhost:8888",
+    "feUrl": "http://localhost:5173",
     "acessTokenKey": "myAccessTokenKey",
     "refreshTokenKey": "myRefreshTokenKey",
     "expiedMinute": 1,

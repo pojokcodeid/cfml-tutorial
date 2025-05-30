@@ -23,18 +23,19 @@ component {
 	}
 
 	function onRequestStart(string targetPage) {
-        // Allow all origins (or specify the one you want)
-        header name="Access-Control-Allow-Origin" value="*";
+        header name="Access-Control-Allow-Origin" value="#config.feUrl#";
+        header name="Access-Control-Allow-Credentials" value="true";
         header name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS";
         header name="Access-Control-Allow-Headers" value="Content-Type, Authorization";
-        
-        // Handle preflight request
+
         if (cgi.request_method == "OPTIONS") {
-            // Stop processing further
+            cfheader(statuscode="204", statustext="No Content");
             abort;
         }
+
         return true;
-	}
+    }
+
 
 	this.onError = function(exception, eventname){
         var uuid = createUUID();

@@ -9,9 +9,9 @@ import Logout from "../components/Logout.jsx";
 import Profile from "../components/user/Profile.jsx";
 
 const RouteNavigation = () => {
-    const refreshToken = secureLocalStorage.getItem("refreshToken");
+    const accessToken = secureLocalStorage.getItem("acessToken");
     const buildNav = () => {
-        if (refreshToken) {
+        if (accessToken) {
             return (
                 <>
                     <BrowserRouter>
