@@ -139,14 +139,11 @@ component extends="core.BaseController" {
 
             var Jwt = new core.helpers.Jwt();
             var token = Jwt.encode(user);
-
-            var expdtRefresh = dateAdd("n", 10080 , now()); // expires in 7 days
             cfcookie(
                 name="refreshToken",
                 value=token.refreshToken,
-                domain="localhost",
-                path="/",
-                expires=dateDiff("s", dateConvert("utc2Local", createDateTime(1970, 1, 1, 0, 0, 0)), expdtRefresh),
+                path = "/user/refresh",
+                expires=token.expiredRefresh,
                 httponly=true,
                 encodevalue=true,
                 samesite="strict"
@@ -170,46 +167,31 @@ component extends="core.BaseController" {
 
     public any function refreshToken() {
         try {
-            var refreshToken = cookie.refreshToken ?: "";
-
-            if (isEmpty(refreshToken)) {
+            var authenticate = new core.helpers.Header();
+            var auth = authenticate.authenticateRefresh();
+            if(not isStruct(auth.DATA) && auth.DATA==false){
                 return {
                     success = false,
                     code = 401,
-                    message = "Missing refresh token",
+                    message = auth.message,
                     data = {}
                 };
             }
-
-            var Jwt = new core.helpers.Jwt();
-            var verifiedData = Jwt.decodeRefresh(refreshToken); // pastikan method verifikasi refresh token tersedia
-
-            if (verifiedData.message != "success") {
-                return {
-                    success = false,
-                    code = 401,
-                    message = verifiedData.message,
-                    data = {}
-                };
-            }
-
-            var newToken = Jwt.encode(verifiedData.data.content); // encode ulang jadi access token baru
-            var expdtRefresh = dateAdd("n", 10080 , now()); // expires in 7 days
+            var newToken = auth.token;
             cfcookie(
-                name="refreshToken",
-                value=newToken.refreshToken,
-                domain="localhost",
-                path="/",
-                expires=dateDiff("s", dateConvert("utc2Local", createDateTime(1970, 1, 1, 0, 0, 0)), expdtRefresh),
-                httponly=true,
-                encodevalue=true,
-                samesite="strict"
+                name = "refreshToken",
+                value = newToken.refreshToken,
+                path = "/user/refresh",
+                expires = newToken.expiredRefresh,
+                httponly = true,
+                encodevalue = true,
+                samesite = "strict"
             );
             return {
                 success = true,
                 code = 200,
                 message = "Token refreshed",
-                data = verifiedData.data.content,
+                data = auth.data,
                 accessToken = newToken.accessToken
             };
         } catch (any e) {

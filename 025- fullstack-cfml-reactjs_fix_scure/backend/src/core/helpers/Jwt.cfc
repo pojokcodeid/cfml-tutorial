@@ -25,7 +25,9 @@ component {
         var payloadRefresh = {'content': content, 'iat': now(), 'exp': utcDateRefresh}
         return {
             accessToken: jwt.encode(payload, acessKey, 'HS256'),
-            refreshToken: jwt.encode(payloadRefresh, refreshKey, 'HS256')
+            refreshToken: jwt.encode(payloadRefresh, refreshKey, 'HS256'),
+            expiredAccess = utcDate,
+            expiredRefresh = utcDateRefresh
         }
 
     }
