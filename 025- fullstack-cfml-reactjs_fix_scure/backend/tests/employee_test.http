@@ -1,0 +1,41 @@
+@base_url=http://localhost:8888
+### register
+POST {{base_url}}/user/register
+Content-Type: application/json
+{
+    "name":"Pojok Code",
+    "email":"asep.010801503125082@gmail.com",
+    "password":"P@ssw0rd"
+}
+
+### login
+POST {{base_url}}/user/login
+{
+    "email":"code@gmail.com",
+    "password":"P@ssw0rd"
+}
+
+{{
+  $global.accessToken=JSON.parse(response.body).ACCESSTOKEN;
+}}
+
+### refresh token
+GET {{base_url}}/user/refresh
+Authorization: Bearer {{$global.refreshToken}}
+
+{{
+  $global.accessToken=JSON.parse(response.body).ACCESSTOKEN;
+  $global.refreshToken=JSON.parse(response.body).REFRESHTOKEN;
+}}
+
+### update
+PUT {{base_url}}/user/update
+Authorization: Bearer {{$global.accessToken}}
+Content-Type: application/json
+{
+    "name":"Pojok Code",
+    "email":"code@gmail.com",
+    "phone":"",
+    "address":"",
+    "password":"P@ssw0rd"
+}
