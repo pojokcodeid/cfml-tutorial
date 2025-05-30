@@ -146,6 +146,7 @@ component extends="core.BaseController" {
                 expires=token.expiredRefresh,
                 httponly=true,
                 encodevalue=true,
+                secure=true,
                 samesite="strict"
             );
             return {
@@ -184,6 +185,7 @@ component extends="core.BaseController" {
                 path = "/user/refresh",
                 expires = newToken.expiredRefresh,
                 httponly = true,
+                secure=true,
                 encodevalue = true,
                 samesite = "strict"
             );
