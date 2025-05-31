@@ -5,14 +5,11 @@ component {
     }
 
     public function authenticateAcess(){
-        var requestData = GetHttpRequestData();
-        if (StructKeyExists(requestData.Headers, "authorization")) {
-            var token = requestData.Headers.authorization;
-            token = replace(token, "Bearer ", "", "all");
-            token = replace(token, " ", "", "all");
+        var accessToken = cookie.accessToken ?: "";
+        if (not isEmpty(accessToken)) {
             try{
                 var jwt = new core.helpers.Jwt();
-				return jwt.decodeAccess(token);
+				return jwt.decodeAccess(accessToken);
             }catch (any e) {
                 return {
                     message= "Anauthorized",

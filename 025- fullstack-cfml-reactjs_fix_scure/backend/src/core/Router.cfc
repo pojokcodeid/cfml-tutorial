@@ -9,6 +9,7 @@ component {
         app.post("/user/login", { controller: "em.UserController", method: "login"});
         app.get("/user/refresh", { controller: "em.UserController", method: "refreshToken"});
         app.put("/user/update", { controller: "em.UserController", method: "update"});
+        app.get("/user/logout", { controller: "em.UserController", method: "logout"});
         return app.run();
     }
 }

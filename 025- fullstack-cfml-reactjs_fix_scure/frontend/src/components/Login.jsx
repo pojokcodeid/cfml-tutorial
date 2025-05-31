@@ -1,5 +1,5 @@
 import React from "react";
-import { axiosNoAuth } from "../auth/AxiosConfig.jsx";
+import { axiosInstance } from "../auth/AxiosConfig.jsx";
 import secureLocalStorage from "react-secure-storage";
 import { toast } from "react-toastify";
 import { Button, Card, Form, Input } from "antd";
@@ -7,15 +7,11 @@ import { Button, Card, Form, Input } from "antd";
 const Login = () => {
     const onFinish = async (values) => {
         try {
-            const response = await axiosNoAuth.post("/user/login", {
+            const response = await axiosInstance.post("/user/login", {
                 email: values.email,
                 password: values.password,
             });
             if (response.data) {
-                secureLocalStorage.setItem(
-                    "acessToken",
-                    response.data.ACCESSTOKEN
-                );
                 secureLocalStorage.setItem("user", response.data.DATA);
                 toast.success("Login Berhasil!", {
                     position: "top-center",

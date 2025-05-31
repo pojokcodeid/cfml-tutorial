@@ -140,21 +140,30 @@ component extends="core.BaseController" {
             var Jwt = new core.helpers.Jwt();
             var token = Jwt.encode(user);
             cfcookie(
+                name="accessToken",
+                value=token.accessToken,
+                path = "/",
+                expires=token.expiredAccess,
+                httponly=true,
+                encodevalue=true,
+                // secure=true,
+                samesite="strict"
+            );
+            cfcookie(
                 name="refreshToken",
                 value=token.refreshToken,
                 path = "/user/refresh",
                 expires=token.expiredRefresh,
                 httponly=true,
                 encodevalue=true,
-                secure=true,
+                // secure=true,
                 samesite="strict"
             );
             return {
                 success = true,
                 code = 200,
                 message = "success",
-                data = user,
-                accessToken = token.accessToken
+                data = user
             };
         } catch (any e) {
             return {
@@ -180,12 +189,22 @@ component extends="core.BaseController" {
             }
             var newToken = auth.token;
             cfcookie(
+                name="accessToken",
+                value=newToken.accessToken,
+                path = "/",
+                expires=newToken.expiredAccess,
+                httponly=true,
+                encodevalue=true,
+                // secure=true,
+                samesite="strict"
+            );
+            cfcookie(
                 name = "refreshToken",
                 value = newToken.refreshToken,
                 path = "/user/refresh",
                 expires = newToken.expiredRefresh,
                 httponly = true,
-                secure=true,
+                // secure=true,
                 encodevalue = true,
                 samesite = "strict"
             );
@@ -193,8 +212,7 @@ component extends="core.BaseController" {
                 success = true,
                 code = 200,
                 message = "Token refreshed",
-                data = auth.data,
-                accessToken = newToken.accessToken
+                data = auth.data
             };
         } catch (any e) {
             return {
@@ -254,6 +272,35 @@ component extends="core.BaseController" {
                 message = e.message,
                 data = {}
             }
+        }
+    }
+
+    public any function logout(){
+        cfcookie(
+            name="accessToken",
+            value="",
+            path = "/",
+            expires=0,
+            httponly=true,
+            encodevalue=true,
+            secure=true,
+            samesite="strict"
+        );
+        cfcookie(
+            name = "refreshToken",
+            value = "",
+            path = "/user/refresh",
+            expires = 0,
+            httponly = true,
+            secure=true,
+            encodevalue = true,
+            samesite = "strict"
+        );
+        return {
+            success = true,
+            code = 200,
+            message = "success",
+            data = {}
         }
     }
 }

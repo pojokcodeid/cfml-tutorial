@@ -28,7 +28,6 @@ GET {{base_url}}/user/refresh
 
 ### update
 PUT {{base_url}}/user/update
-Authorization: Bearer {{$global.accessToken}}
 Content-Type: application/json
 {
     "name":"Pojok Code",
@@ -37,3 +36,6 @@ Content-Type: application/json
     "address":"",
     "password":"P@ssw0rd"
 }
+
+### logout
+GET {{base_url}}/user/logout

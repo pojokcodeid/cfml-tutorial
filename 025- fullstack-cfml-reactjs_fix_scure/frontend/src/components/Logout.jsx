@@ -1,15 +1,13 @@
-import React from "react";
 import secureLocalStorage from "react-secure-storage";
-import Login from "./Login.jsx";
+import { axiosInstance } from "../auth/AxiosConfig.jsx";
 
 const Logout = () => {
-    secureLocalStorage.removeItem("acessToken");
-    secureLocalStorage.removeItem("user");
-    return (
-        <>
-            <Login />
-        </>
-    );
+    const logout = async () => {
+        await axiosInstance.get("/user/logout");
+        secureLocalStorage.removeItem("user");
+        window.location.href = "/";
+    };
+    logout();
 };
 
 export default Logout;

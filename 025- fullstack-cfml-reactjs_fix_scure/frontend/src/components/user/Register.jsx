@@ -1,5 +1,5 @@
 import React from "react";
-import { axiosNoAuth } from "../../auth/AxiosConfig.jsx";
+import { axiosInstance } from "../../auth/AxiosConfig.jsx";
 import { toast } from "react-toastify";
 import { Button, Card, Form, Input } from "antd";
 
@@ -12,7 +12,7 @@ const Register = () => {
             return;
         }
         try {
-            const response = await axiosNoAuth.post("/user/register", {
+            const response = await axiosInstance.post("/user/register", {
                 name: values.name,
                 email: values.email,
                 password: values.password,
