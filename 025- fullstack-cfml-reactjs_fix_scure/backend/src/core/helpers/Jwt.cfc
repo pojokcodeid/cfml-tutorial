@@ -26,8 +26,8 @@ component {
         return {
             accessToken: jwt.encode(payload, acessKey, 'HS256'),
             refreshToken: jwt.encode(payloadRefresh, refreshKey, 'HS256'),
-            expiredAccess = utcDate,
-            expiredRefresh = utcDateRefresh
+            expiredAccess = expdt,
+            expiredRefresh = expdtRefresh
         }
 
     }
