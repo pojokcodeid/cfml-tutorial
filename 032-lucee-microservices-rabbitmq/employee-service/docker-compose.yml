@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+
+  employee-service:
+    build:
+      context: .
+    container_name: employee_service
+    ports:
+      - "8081:8888"
+    environment:
+      - PORT=8888
+      - SSL_PORT=443
+      - CFCONFIG_adminPassword=passwordku123
+    volumes:
+      - ./app:/app
+    depends_on:
+      - mariadb
+    networks:
+      - shared-net
+
+  mariadb:
+    image: mariadb:latest
+    container_name: employee_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: employee_db
+      MYSQL_USER: lucee_user
+      MYSQL_PASSWORD: userpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mariadb_data:/var/lib/mysql
+    command:
+      - "--bind-address=0.0.0.0"
+    networks:
+      - shared-net
+
+volumes:
+  mariadb_data:
+  app:
+
+networks:
+  shared-net:
+    external: true

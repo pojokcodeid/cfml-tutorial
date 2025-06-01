@@ -1,0 +1,25 @@
+{
+    "datasource":{
+        "MyMariaDB": {
+			"class": "org.mariadb.jdbc.Driver",
+			"connectionString": "jdbc:mariadb://mariadb:3306/employee_db",
+			"username": "root",
+			"password": "rootpass"
+        }
+    },
+    "baseURL": "http://localhost:8080",
+    "feUrl": "http://localhost:5173",
+    "acessTokenKey": "myAccessTokenKey",
+    "refreshTokenKey": "myRefreshTokenKey",
+    "expiedMinute": 5,
+    "refreshExpiredMinute": 360,
+    "emailFrom": "info@mail.com",
+    "gmail": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "username": "asep.010801503125082@gmail.com",
+        "password": "unbo epxq cjpf osoz",
+        "usessl": true,
+        "usetls": false 
+    }
+}
