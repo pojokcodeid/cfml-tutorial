@@ -1,77 +1,77 @@
 component {
 
     public any function init() {
-        variables.utcBaseDate = createObject( 'java', 'java.util.Date' ).init( javacast( 'long', 0 ) );
-        variables.ECParameterSpecCache = { };
+        variables.utcBaseDate = createObject('java', 'java.util.Date').init(javacast('long', 0));
+        variables.ECParameterSpecCache = {};
 
-        var Base64 = createObject( 'java', 'java.util.Base64' );
+        var Base64 = createObject('java', 'java.util.Base64');
         variables.base64UrlEncoder = Base64.getUrlEncoder().withoutPadding();
         variables.base64UrlDecoder = Base64.getUrlDecoder();
     }
 
-    function convertDateToUnixTimestamp( required date dateToConvert ) {
-        return dateDiff( 's', utcBaseDate, parseDateTime( dateToConvert ) );
+    function convertDateToUnixTimestamp(required date dateToConvert) {
+        return dateDiff('s', utcBaseDate, parseDateTime(dateToConvert));
     }
 
-    function convertUnixTimestampToDate( required numeric timestamp ) {
-        return dateAdd( 's', timestamp, utcBaseDate );
+    function convertUnixTimestampToDate(required numeric timestamp) {
+        return dateAdd('s', timestamp, utcBaseDate);
     }
 
-    function base64UrlToBinary( base64url ) {
-        return variables.base64UrlDecoder.decode( base64url );
+    function base64UrlToBinary(base64url) {
+        return variables.base64UrlDecoder.decode(base64url);
     }
 
-    function binaryToBase64Url( source ) {
-        return variables.base64UrlEncoder.encodeToString( source );
+    function binaryToBase64Url(source) {
+        return variables.base64UrlEncoder.encodeToString(source);
     }
 
     /**
-    * The INTEGER encoding for DER consists of a 02 tag a length encoding of the value
-    * and then a signed, minimum sized, big endian encoding of the encoded number.
-    *
-    * - https://stackoverflow.com/questions/54718741/how-to-der-encode-an-ecdsa-signature
-    */
-    function derEncodeIntegerBytes( byteArray ) {
+     * The INTEGER encoding for DER consists of a 02 tag a length encoding of the value
+     * and then a signed, minimum sized, big endian encoding of the encoded number.
+     *
+     * - https://stackoverflow.com/questions/54718741/how-to-der-encode-an-ecdsa-signature
+     */
+    function derEncodeIntegerBytes(byteArray) {
         // first remove any padding
-        for ( var i = 1; i <= arrayLen( byteArray ); i++ ) {
-            if ( byteArray[ i ] != 0 ) break;
+        for (var i = 1; i <= arrayLen(byteArray); i++) {
+            if (byteArray[i] != 0) break;
         }
-        var unpadded = arraySlice( byteArray, i );
+        var unpadded = arraySlice(byteArray, i);
 
         // add sign if negative
-        if ( unpadded[ 1 ] < 0 ) {
-            unpadded.prepend( 0 );
+        if (unpadded[1] < 0) {
+            unpadded.prepend(0);
         }
 
         // if len > 127 the length encoding will be wrong, but that won't happen for the supported signature sizes
-        var derEncoded = [ 2, unpadded.len() ];
+        var derEncoded = [2, unpadded.len()];
 
-        derEncoded.append( unpadded, true );
+        derEncoded.append(unpadded, true);
 
         return derEncoded;
     }
 
 
     /**
-    * The SEQUENCE encoding is simply a tag set to the byte value 30, the
-    * length encoding and then the concatenation of the two INTEGER
-    * structures.
-    *
-    * https://stackoverflow.com/questions/54718741/how-to-der-encode-an-ecdsa-signature
-    *
-    * Also see:
-    * https://crypto.stackexchange.com/questions/57731/ecdsa-signature-rs-to-asn1-der-encoding-question
-    */
-    function convertP1363ToDER( signature ) {
-        var split = len( signature ) / 2;
-        var r = derEncodeIntegerBytes( arraySlice( signature, 1, split ) );
-        var s = derEncodeIntegerBytes( arraySlice( signature, split + 1, split ) );
+     * The SEQUENCE encoding is simply a tag set to the byte value 30, the
+     * length encoding and then the concatenation of the two INTEGER
+     * structures.
+     *
+     * https://stackoverflow.com/questions/54718741/how-to-der-encode-an-ecdsa-signature
+     *
+     * Also see:
+     * https://crypto.stackexchange.com/questions/57731/ecdsa-signature-rs-to-asn1-der-encoding-question
+     */
+    function convertP1363ToDER(signature) {
+        var split = len(signature) / 2;
+        var r = derEncodeIntegerBytes(arraySlice(signature, 1, split));
+        var s = derEncodeIntegerBytes(arraySlice(signature, split + 1, split));
 
-        var DERSignature = [ 48 ];
+        var DERSignature = [48];
 
         var length = r.len() + s.len();
 
-        if ( length > 255 ) {
+        if (length > 255) {
             throw(
                 type = 'jwtcfml.InvalidSignature',
                 message = 'Invalid P1363 key.',
@@ -87,49 +87,45 @@ component {
 
             https://stackoverflow.com/questions/54718741/how-to-der-encode-an-ecdsa-signature
         */
-        if ( length > 127 ) {
-            DERSignature.append( -127 );
+        if (length > 127) {
+            DERSignature.append(-127);
             length -= 256;
         }
-        DERSignature.append( length );
+        DERSignature.append(length);
 
-        DERSignature.append( r, true );
-        DERSignature.append( s, true );
+        DERSignature.append(r, true);
+        DERSignature.append(s, true);
 
-        return javacast( 'byte[]', DERSignature );
+        return javacast('byte[]', DERSignature);
     }
 
-    function convertDERtoP1363( required any signature, required string algorithm ) {
+    function convertDERtoP1363(required any signature, required string algorithm) {
         // extract the two integers from the DER signature
         // assuming a 02 tag byte followed by a single length byte since we should not see
         // anything larger in the supported algorithms
         var start = 3;
-        while ( signature[ start ] != 2 ) start++;
-        var r = arraySlice( signature, start + 2, signature[ start + 1 ] );
-        var s = arraySlice( signature, start + 2 + r.len() + 2 );
+        while (signature[start] != 2) start++;
+        var r = arraySlice(signature, start + 2, signature[start + 1]);
+        var s = arraySlice(signature, start + 2 + r.len() + 2);
 
-        if ( r[ 1 ] == 0 ) r = arraySlice( r, 2 );
-        if ( s[ 1 ] == 0 ) s = arraySlice( s, 2 );
+        if (r[1] == 0) r = arraySlice(r, 2);
+        if (s[1] == 0) s = arraySlice(s, 2);
 
-        var lengthMap = {
-            ES256: 32,
-            ES384: 48,
-            ES512: 64
-        };
+        var lengthMap = {ES256: 32, ES384: 48, ES512: 64};
 
-        var P1363Signature = [ ];
+        var P1363Signature = [];
 
-        for ( var i = 1; i <= lengthMap[ algorithm ] - r.len(); i++ ) P1363Signature.append( 0 );
-        P1363Signature.append( r, true );
+        for (var i = 1; i <= lengthMap[algorithm] - r.len(); i++) P1363Signature.append(0);
+        P1363Signature.append(r, true);
 
-        for ( var i = 1; i <= lengthMap[ algorithm ] - s.len(); i++ ) P1363Signature.append( 0 );
-        P1363Signature.append( s, true );
+        for (var i = 1; i <= lengthMap[algorithm] - s.len(); i++) P1363Signature.append(0);
+        P1363Signature.append(s, true);
 
-        return javacast( 'byte[]', P1363Signature );
+        return javacast('byte[]', P1363Signature);
     }
 
-    function parsePEMEncodedKey( required string pemKey ) {
-        if ( reFind( '^-----BEGIN (RSA|EC) (PARAMETERS|PRIVATE)', pemKey ) ) {
+    function parsePEMEncodedKey(required string pemKey) {
+        if (reFind('^-----BEGIN (RSA|EC) (PARAMETERS|PRIVATE)', pemKey)) {
             throw(
                 type = 'jwtcfml.InvalidPrivateKey',
                 message = 'Invalid private key format.',
@@ -138,47 +134,43 @@ component {
         }
 
         var binaryKey = binaryDecode(
-            trim( pemKey ).reReplace( '-----[A-Z\s]+-----', '', 'all' ).reReplace( '[\r\n]', '', 'all' ),
+            trim(pemKey).reReplace('-----[A-Z\s]+-----', '', 'all').reReplace('[\r\n]', '', 'all'),
             'base64'
         );
 
-        if ( find( '-----BEGIN CERTIFICATE-----', pemKey ) ) {
-            var bis = createObject( 'java', 'java.io.ByteArrayInputStream' ).init( binaryKey );
-            return createObject( 'java', 'java.security.cert.CertificateFactory' )
-                .getInstance( 'X.509' )
-                .generateCertificate( bis )
+        if (find('-----BEGIN CERTIFICATE-----', pemKey)) {
+            var bis = createObject('java', 'java.io.ByteArrayInputStream').init(binaryKey);
+            return createObject('java', 'java.security.cert.CertificateFactory')
+                .getInstance('X.509')
+                .generateCertificate(bis)
                 .getPublicKey();
         }
 
-        if ( find( '-----BEGIN PUBLIC KEY-----', pemKey ) ) {
-            var publicKeySpec = createObject( 'java', 'java.security.spec.X509EncodedKeySpec' ).init( binaryKey );
+        if (find('-----BEGIN PUBLIC KEY-----', pemKey)) {
+            var publicKeySpec = createObject('java', 'java.security.spec.X509EncodedKeySpec').init(binaryKey);
             try {
-                return createObject( 'java', 'java.security.KeyFactory' )
-                    .getInstance( 'RSA' )
-                    .generatePublic( publicKeySpec );
-            } catch ( any e ) {
+                return createObject('java', 'java.security.KeyFactory').getInstance('RSA').generatePublic(publicKeySpec);
+            } catch (any e) {
             }
             try {
-                return createObject( 'java', 'java.security.KeyFactory' )
-                    .getInstance( 'EC' )
-                    .generatePublic( publicKeySpec );
-            } catch ( any e ) {
+                return createObject('java', 'java.security.KeyFactory').getInstance('EC').generatePublic(publicKeySpec);
+            } catch (any e) {
             }
         }
 
-        if ( find( '-----BEGIN PRIVATE KEY-----', pemKey ) ) {
-            var privateKeySpec = createObject( 'java', 'java.security.spec.PKCS8EncodedKeySpec' ).init( binaryKey );
+        if (find('-----BEGIN PRIVATE KEY-----', pemKey)) {
+            var privateKeySpec = createObject('java', 'java.security.spec.PKCS8EncodedKeySpec').init(binaryKey);
             try {
-                return createObject( 'java', 'java.security.KeyFactory' )
-                    .getInstance( 'RSA' )
-                    .generatePrivate( privateKeySpec );
-            } catch ( any e ) {
+                return createObject('java', 'java.security.KeyFactory')
+                    .getInstance('RSA')
+                    .generatePrivate(privateKeySpec);
+            } catch (any e) {
             }
             try {
-                return createObject( 'java', 'java.security.KeyFactory' )
-                    .getInstance( 'EC' )
-                    .generatePrivate( privateKeySpec );
-            } catch ( any e ) {
+                return createObject('java', 'java.security.KeyFactory')
+                    .getInstance('EC')
+                    .generatePrivate(privateKeySpec);
+            } catch (any e) {
             }
         }
 
@@ -189,12 +181,24 @@ component {
         )
     }
 
-    function parseJWK( required struct jwk ) {
-        if ( jwk.kty == 'RSA' ) {
-            if ( jwk.keyExists( 'd' ) ) {
+    function parseJWK(required struct jwk) {
+        if (jwk.kty == 'RSA') {
+            if (jwk.keyExists('d')) {
                 try {
-                    var bigInts = bigIntegers( jwk, [ 'n', 'e', 'd', 'p', 'q', 'dp', 'dq', 'qi' ] );
-                    var keySpec = createObject( 'java', 'java.security.spec.RSAPrivateCrtKeySpec' ).init(
+                    var bigInts = bigIntegers(
+                        jwk,
+                        [
+                            'n',
+                            'e',
+                            'd',
+                            'p',
+                            'q',
+                            'dp',
+                            'dq',
+                            'qi'
+                        ]
+                    );
+                    var keySpec = createObject('java', 'java.security.spec.RSAPrivateCrtKeySpec').init(
                         bigInts.n,
                         bigInts.e,
                         bigInts.d,
@@ -204,48 +208,45 @@ component {
                         bigInts.dq,
                         bigInts.qi
                     );
-                    var kf = createObject( 'java', 'java.security.KeyFactory' ).getInstance( 'RSA' );
-                    return kf.generatePrivate( keySpec );
-                } catch ( any e ) {
+                    var kf = createObject('java', 'java.security.KeyFactory').getInstance('RSA');
+                    return kf.generatePrivate(keySpec);
+                } catch (any e) {
                 }
 
                 try {
-                    var bigInts = bigIntegers( jwk, [ 'n', 'd' ] );
-                    var keySpec = createObject( 'java', 'java.security.spec.RSAPrivateKeySpec' ).init(
+                    var bigInts = bigIntegers(jwk, ['n', 'd']);
+                    var keySpec = createObject('java', 'java.security.spec.RSAPrivateKeySpec').init(
                         bigInts.n,
                         bigInts.d
                     );
-                    var kf = createObject( 'java', 'java.security.KeyFactory' ).getInstance( 'RSA' );
-                    return kf.generatePrivate( keySpec );
-                } catch ( any e ) {
+                    var kf = createObject('java', 'java.security.KeyFactory').getInstance('RSA');
+                    return kf.generatePrivate(keySpec);
+                } catch (any e) {
                 }
             } else {
                 try {
-                    var bigInts = bigIntegers( jwk, [ 'n', 'e' ] );
-                    var ks = createObject( 'java', 'java.security.spec.RSAPublicKeySpec' ).init( bigInts.n, bigInts.e );
-                    var kf = createObject( 'java', 'java.security.KeyFactory' ).getInstance( 'RSA' );
-                    return kf.generatePublic( ks );
-                } catch ( any e ) {
+                    var bigInts = bigIntegers(jwk, ['n', 'e']);
+                    var ks = createObject('java', 'java.security.spec.RSAPublicKeySpec').init(bigInts.n, bigInts.e);
+                    var kf = createObject('java', 'java.security.KeyFactory').getInstance('RSA');
+                    return kf.generatePublic(ks);
+                } catch (any e) {
                 }
             }
         }
 
-        if ( jwk.kty == 'EC' ) {
-            var kf = createObject( 'java', 'java.security.KeyFactory' ).getInstance( 'EC' );
-            var ECParameterSpec = getECParameterSpec( jwk.crv );
+        if (jwk.kty == 'EC') {
+            var kf = createObject('java', 'java.security.KeyFactory').getInstance('EC');
+            var ECParameterSpec = getECParameterSpec(jwk.crv);
 
-            if ( jwk.keyExists( 'd' ) ) {
-                var bigInts = bigIntegers( jwk, [ 'd' ] );
-                var ks = createObject( 'java', 'java.security.spec.ECPrivateKeySpec' ).init(
-                    bigInts.d,
-                    ECParameterSpec
-                );
-                return kf.generatePrivate( ks );
+            if (jwk.keyExists('d')) {
+                var bigInts = bigIntegers(jwk, ['d']);
+                var ks = createObject('java', 'java.security.spec.ECPrivateKeySpec').init(bigInts.d, ECParameterSpec);
+                return kf.generatePrivate(ks);
             } else {
-                var bigInts = bigIntegers( jwk, [ 'x', 'y' ] );
-                var ECPoint = createObject( 'java', 'java.security.spec.ECPoint' ).init( bigInts.x, bigInts.y );
-                var ks = createObject( 'java', 'java.security.spec.ECPublicKeySpec' ).init( ECPoint, ECParameterSpec );
-                return kf.generatePublic( ks );
+                var bigInts = bigIntegers(jwk, ['x', 'y']);
+                var ECPoint = createObject('java', 'java.security.spec.ECPoint').init(bigInts.x, bigInts.y);
+                var ks = createObject('java', 'java.security.spec.ECPublicKeySpec').init(ECPoint, ECParameterSpec);
+                return kf.generatePublic(ks);
             }
         }
 
@@ -256,27 +257,25 @@ component {
         )
     }
 
-    private function bigIntegers( jwk, keys ) {
-        var bigInts = { };
-        for ( var key in keys ) {
-            bigInts[ key ] = createObject( 'java', 'java.math.BigInteger' ).init( 1, base64UrlToBinary( jwk[ key ] ) );
+    private function bigIntegers(jwk, keys) {
+        var bigInts = {};
+        for (var key in keys) {
+            bigInts[key] = createObject('java', 'java.math.BigInteger').init(1, base64UrlToBinary(jwk[key]));
         }
         return bigInts;
     }
 
-    private function getECParameterSpec( crv ) {
-        if ( !variables.ECParameterSpecCache.keyExists( crv ) ) {
-            var kpg = createObject( 'java', 'java.security.KeyPairGenerator' ).getInstance( 'EC' );
-            var ecgp = createObject( 'java', 'java.security.spec.ECGenParameterSpec' ).init(
-                'secp#crv.listLast( '-' )#r1'
-            );
-            kpg.initialize( ecgp );
-            variables.ECParameterSpecCache[ crv ] = kpg
+    private function getECParameterSpec(crv) {
+        if (!variables.ECParameterSpecCache.keyExists(crv)) {
+            var kpg = createObject('java', 'java.security.KeyPairGenerator').getInstance('EC');
+            var ecgp = createObject('java', 'java.security.spec.ECGenParameterSpec').init('secp#crv.listLast('-')#r1');
+            kpg.initialize(ecgp);
+            variables.ECParameterSpecCache[crv] = kpg
                 .generateKeyPair()
                 .getPublic()
                 .getParams();
         }
-        return variables.ECParameterSpecCache[ crv ];
+        return variables.ECParameterSpecCache[crv];
     }
 
 }

@@ -1,5 +1,5 @@
 component {
-    
+
     property array params;
     property array paramsVariables;
     property array handlers;
@@ -11,23 +11,23 @@ component {
     property string DEFAULT_DELETE;
 
     public function init() {
-        variables.controllerFile="Default";
-        variables.controllerMethod="index";
-        variables.params=[];
-        variables.paramsVariables=[];
-        variables.handlers=[];
-        variables.DEFAULT_GET="GET";
-        variables.DEFAULT_POST="POST";
-        variables.DEFAULT_PUT="PUT";
-        variables.DEFAULT_DELETE="DELETE";
+        variables.controllerFile = 'Default';
+        variables.controllerMethod = 'index';
+        variables.params = [];
+        variables.paramsVariables = [];
+        variables.handlers = [];
+        variables.DEFAULT_GET = 'GET';
+        variables.DEFAULT_POST = 'POST';
+        variables.DEFAULT_PUT = 'PUT';
+        variables.DEFAULT_DELETE = 'DELETE';
         return this;
     }
 
-    public function setDefaultController(string controllerFile){
+    public function setDefaultController(string controllerFile) {
         variables.controllerFile = controllerFile;
     }
 
-    public function setDefaultControllerMethod(string controllerMethod){
+    public function setDefaultControllerMethod(string controllerMethod) {
         variables.controllerMethod = controllerMethod;
     }
 
@@ -48,34 +48,30 @@ component {
     }
 
     private function setHandler(string method, string path, any handler) {
-        local.content={
-            path = path,
-            method = method,
-            handler = handler
-        };
-        arrayAppend(variables.handlers, local.content);    
+        local.content = {path: path, method: method, handler: handler};
+        arrayAppend(variables.handlers, local.content);
     }
 
     public function run() {
         // dapatkan data dari url
         var urlPage = trim(url.page);
         // ambil http method yang digunakan
-        var httpMethod = ucase(cgi.request_method);
+        var httpMethod = uCase(cgi.request_method);
         // lakkan perulangan semua setting route
         for (var handler in variables.handlers) {
             // ambil setting url route
-            var urlRoute= handler.path;
+            var urlRoute = handler.path;
             // convert urlRoute menjadi array
-            var urlRouteArray = listToArray(urlRoute, "/");
+            var urlRouteArray = listToArray(urlRoute, '/');
             // hitung panjang array urlRoute
             var urlRouteArrayLength = arrayLen(urlRouteArray);
-            
-            var urlArray=[];
+
+            var urlArray = [];
             // cek apakah url tidak kosong
             if (len(urlPage) > 0) {
-                var urlArray = listToArray(urlPage, "/");
+                var urlArray = listToArray(urlPage, '/');
                 var urlArrayLength = arrayLen(urlArray);
-            }else{
+            } else {
                 var urlArrayLength = 0;
             }
 
@@ -84,35 +80,35 @@ component {
                 // reset array params
                 variables.paramsVariables = [];
                 // lakukan pengecekan apakah ada param
-                for ( var urlItem in urlRouteArray ) {
+                for (var urlItem in urlRouteArray) {
                     // check apakah urlItem mengandung carakter :
-                    if (urlItem.find(":", 1) neq 0) {
+                    if (urlItem.find(':', 1) neq 0) {
                         // hapus dari urlRouteArray
                         arrayDeleteAt(urlRouteArray, arrayFind(urlRouteArray, urlItem));
                         // tambahkan ke array params dengan menghilangkan symbol :
-                        arrayAppend(variables.paramsVariables, urlItem.replace(":", ""));
+                        arrayAppend(variables.paramsVariables, urlItem.replace(':', ''));
                     }
                 }
                 // convert array urlRouteArray item ke satu string
-                var urlRouteString = "";
-                for (var i=1; i <= arrayLen(urlRouteArray); i++) {
+                var urlRouteString = '';
+                for (var i = 1; i <= arrayLen(urlRouteArray); i++) {
                     urlRouteString &= urlRouteArray[i];
                     if (i lt arrayLen(urlRouteArray)) {
-                        urlRouteString &= "/";
+                        urlRouteString &= '/';
                     }
                 }
                 // tambahkan tanda / untuk mencegah salah cek url
-                urlRouteString &= "/";
-                urlPage &= "/";
+                urlRouteString &= '/';
+                urlPage &= '/';
                 // lakukan pengecekan apakah url mengandung urlRouteString
                 if (urlPage.find(urlRouteString, 1) neq 0 and httpMethod == handler.method) {
                     // tentukan controller file dan methodnya
-                    variables.controllerFile=handler.handler.controller;
-                    variables.controllerMethod=handler.handler.method;
+                    variables.controllerFile = handler.handler.controller;
+                    variables.controllerMethod = handler.handler.method;
                     // replace urlPage dengan urlRouteString
-                    urlPage = urlPage.replace(urlRouteString, "");
+                    urlPage = urlPage.replace(urlRouteString, '');
                     // convert urlPage menjadi array
-                    variables.params = listToArray(urlPage, "/");
+                    variables.params = listToArray(urlPage, '/');
                     break;
                 }
             }
@@ -120,13 +116,13 @@ component {
 
         // menangani kiriman json data atau post form
         local.content = {};
-        if (len(trim(getHttpRequestData().content))) {
+        if (len(trim(getHTTPRequestData().content))) {
             try {
-                local.content = deserializeJson(getHttpRequestData().content);
+                local.content = deserializeJSON(getHTTPRequestData().content);
             } catch (any e) {
                 local.content = form; // fallback to form data if JSON deserialization fails
             }
-            arrayAppend(variables.paramsVariables, "content");
+            arrayAppend(variables.paramsVariables, 'content');
             arrayAppend(variables.params, local.content);
         }
         // return {
@@ -137,24 +133,21 @@ component {
         //     paramsVariables: variables.paramsVariables,
         //     params: variables.params
         // }
-        
-        var controllerPath = "/controllers/#replace(controllerFile, ".", "/", "all")#.cfc";
+
+        var controllerPath = '/controllers/#replace(controllerFile, '.', '/', 'all')#.cfc';
         if (fileExists(expandPath(controllerPath))) {
-            var controller = createObject("component", "controllers.#controllerFile#");
+            var controller = createObject('component', 'controllers.#controllerFile#');
 
             if (structKeyExists(controller, controllerMethod)) {
-                return controller[controllerMethod](argumentCollection=paramsToStruct(params));
+                return controller[controllerMethod](argumentCollection = paramsToStruct(params));
             } else {
                 return {
                     success: false,
-                    message: "Method `#controllerMethod#` not found in controller `#controllerFile#`."
+                    message: 'Method `#controllerMethod#` not found in controller `#controllerFile#`.'
                 };
             }
         } else {
-            return {
-                success: false,
-                message: "Controller `#controllerFile#` not found."
-            }
+            return {success: false, message: 'Controller `#controllerFile#` not found.'}
         }
         // writeDump(var=controllerFile, label="controllerFile");
     }
@@ -162,7 +155,7 @@ component {
     // Ubah array params menjadi struct dengan nama arg1, arg2, dst.
     private function paramsToStruct(array params) {
         var s = {};
-        for (var i=1; i <= arrayLen(params); i++) {
+        for (var i = 1; i <= arrayLen(params); i++) {
             s[paramsVariables[i]] = params[i];
         }
         return s;

@@ -1,59 +1,56 @@
 component extends="core.Message" {
+
     function init() {
         return this;
     }
 
-    function view(filePath, content={}) {
+    function view(filePath, content = {}) {
         // extract content supaya dapat digunakan di cfm file
         for (var key in content) {
             variables[key] = content[key];
         }
-        var viewPath = "/views/#replace(filePath, ".", "/", "all")#.cfm";
+        var viewPath = '/views/#replace(filePath, '.', '/', 'all')#.cfm';
         if (fileExists(expandPath(viewPath))) {
-            include "/views/templates/header.cfm";
-            include "/views/#replace(filePath, ".", "/", "all")#.cfm";
-            include "/views/templates/footer.cfm";
+            include '/views/templates/header.cfm';
+            include '/views/#replace(filePath, '.', '/', 'all')#.cfm';
+            include '/views/templates/footer.cfm';
         } else {
-            throw("File not found: " & filePath);
+            throw('File not found: ' & filePath);
         }
     }
 
-    function model(modelFile){
-        var modelPath = "/models/#replace(modelFile, ".", "/", "all")#.cfc";
+    function model(modelFile) {
+        var modelPath = '/models/#replace(modelFile, '.', '/', 'all')#.cfc';
         if (fileExists(expandPath(modelPath))) {
-            return createObject("component", "models.#modelFile#");
-        }else{
-            throw("File not found: " & modelPath);
+            return createObject('component', 'models.#modelFile#');
+        } else {
+            throw('File not found: ' & modelPath);
         }
     }
 
-    function redirect(parhUrl){
-        cflocation(url=application.baseURL & parhUrl);
+    function redirect(parhUrl) {
+        cflocation(url = application.baseURL & parhUrl);
     }
 
-    function upload(path, file){
+    function upload(path, file) {
         uploadDir = path;
-        
+
         // Buat folder jika belum ada
         if (!directoryExists(uploadDir)) {
             directoryCreate(uploadDir);
         }
-        
+
         // Upload dan rename
-        uploadedFile = fileUpload(
-            destination = uploadDir, 
-            fileField = file, 
-            mode = "makeunique"
-        );
+        uploadedFile = fileUpload(destination = uploadDir, fileField = file, mode = 'makeunique');
         // Ambil ekstensi file original
-        fileExt = listLast(uploadedFile.serverFile, ".");
-        
+        fileExt = listLast(uploadedFile.serverFile, '.');
+
         // Generate nama UUID
-        uuidName = createUUID() & "." & fileExt;
-        
+        uuidName = createUUID() & '.' & fileExt;
+
         // Rename file ke UUID
         fileMove(
-            source = uploadedFile.serverDirectory & "/" & uploadedFile.serverFile,
+            source = uploadedFile.serverDirectory & '/' & uploadedFile.serverFile,
             destination = uploadDir & uuidName
         );
 
