@@ -71,7 +71,15 @@ component {
             date: [5], 
             time: [6]
         };
-        spreadsheet.addRows( workbook=workbook,  data=rows, datatypes=datatypes);
+        spreadsheet.addRows( workbook=workbook,  data=rows, datatypes=datatypes, autoSizeColumns=true);
+        for (var row=3; row <= arrayLen(rows) + 2; row++) {
+            spreadsheet.formatRow(workbook, {
+                topborder="thin", topbordercolor="000000", 
+                bottomborder="thin", bottombordercolor="000000",
+                leftborder="thin", leftbordercolor="000000",
+                rightborder="thin", rightbordercolor="000000"
+            }, row, false);
+        }
 
         // === 4. Atur lebar kolom ===
         spreadsheet.setColumnWidth(workbook, 1, 15); // Kolom A: NIK
