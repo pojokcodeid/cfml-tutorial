@@ -5,6 +5,7 @@
     "version":"1.0.0",
     "dependencies":{
         "jwt-cfml":"^1.2.1",
+        "paasword4j":"jar:https://repo1.maven.org/maven2/com/password4j/password4j/1.8.3/password4j-1.8.3.jar",
         "mariadb":"jar:https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/3.5.3/mariadb-java-client-3.5.3.jar",
         "amqpclient": "jar:https://repo1.maven.org/maven2/com/rabbitmq/amqp-client/5.25.0/amqp-client-5.25.0.jar"
     },
@@ -16,6 +17,7 @@
     "installPaths":{
         "jwt-cfml":"src/modules/jwtcfml/",
         "mariadb": "src/lib/mariadb/",
-        "amqpclient": "src/lib/rabbitmq/"
+        "amqpclient": "src/lib/rabbitmq/",
+        "paasword4j": "src/lib/password4j/"
     }
 }

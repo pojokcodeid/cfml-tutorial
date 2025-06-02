@@ -2,26 +2,39 @@ component {
 
     this.name = 'MyApplication'; // Nama aplikasi
     this.applicationTimeout = createTimespan(0, 2, 0, 0); // Waktu kedaluwarsa aplikasi
-    this.javaSettings = {loadPaths: ['lib/mariadb', 'lib/rabbitmq'], reloadOnChange: true};
+    this.javaSettings = {loadPaths: [
+        'lib/mariadb', 
+        'lib/rabbitmq',
+        'lib/password4j'
+        ], reloadOnChange: true};
 
     globalConfig = expandPath('/configs/global.json');
-    if (fileExists(globalConfig)) {
-        config = deserializeJSON(fileRead(globalConfig));
-        this.datasource = structKeyArray(config.datasource)[1];
-        this.datasources = config.datasource;
-    } else {
-        writeDump('Datasource config file not found: #globalConfig#');
-        abort;
+    config = deserializeJSON(fileRead(globalConfig));
+    
+    variables.myEnv= createObject("core.helpers.EnvLoader");
+    variables.connDSN = myEnv.getEnv("CONN_DSN");
+    variables.connClass = myEnv.getEnv("CONN_CLASS");
+    variables.connString = myEnv.getEnv("CONN_STRING");
+    variables.connUsername = myEnv.getEnv("CONN_USER");
+    variables.connPassword = myEnv.getEnv("CONN_PASS");
+    this.datasource = connDSN;
+    this.datasources = {
+        "#connDSN#" : {
+            class: connClass,
+            connectionString: connString,
+            username: connUsername,
+            password: connPassword
+        }
     }
 
     function onApplicationStart() {
-        application.baseURL = config.baseURL;
-        application.emailFrom = config.emailFrom;
+        application.baseURL = myEnv.getEnv("BASE_URL");
+        application.emailFrom = myEnv.getEnv("EMAIL_FROM");
         return true;
     }
 
     function onRequestStart(string targetPage) {
-        header name="Access-Control-Allow-Origin" value="#config.feUrl#";
+        header name="Access-Control-Allow-Origin" value="#myEnv.getEnv("FE_URL")#";
         header name="Access-Control-Allow-Credentials" value="true";
         header name="Access-Control-Allow-Methods" value="GET, POST, PUT, DELETE, OPTIONS";
         header name="Access-Control-Allow-Headers" value="Content-Type, Authorization";
@@ -69,12 +82,12 @@ component {
     // gunakan ini untuk config mail server
     // https://myaccount.google.com/apppasswords
     this.mail = {
-        server: config.gmail.host,
-        username: config.gmail.username, // ganti dengan email kamu
-        password: config.gmail.password, // ganti dengan App Password (bukan password biasa)
-        port: config.gmail.port,
-        useSSL: config.gmail.usessl,
-        useTLS: config.gmail.usetls // Gmail SSL pakai port 465
+        server: myEnv.getEnv("GMAIL_HOST"),
+        username:  myEnv.getEnv("GMAIL_USERNAME"), // ganti dengan email kamu
+        password: myEnv.getEnv("GMAIL_PASSWORD"), // ganti dengan App Password (bukan password biasa)
+        port: myEnv.getEnv("GMAIL_PORT"),
+        useSSL: myEnv.getEnv("GMAIL_USESSL"),
+        useTLS: myEnv.getEnv("GMAIL_USETLS") // Gmail SSL pakai port 465
     };
 
 }

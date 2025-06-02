@@ -7,6 +7,14 @@ component extends="core.BaseController" {
         return this;
     }
 
+    public any function test(){
+        var password = new core.helpers.Password();
+        var hash = password.bcryptHashGet('password');
+        var jwt = new core.helpers.Jwt();
+        var token= jwt.encode({username: 'pojokcode'});
+        return {code: 200, message: 'Success', data: token};
+    }
+
     public any function sendMssage() {
         var rabbit = new core.helpers.RabbitMQ().init();
         var data = {

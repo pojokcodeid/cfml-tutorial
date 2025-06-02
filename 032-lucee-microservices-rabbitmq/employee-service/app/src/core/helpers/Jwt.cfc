@@ -3,17 +3,11 @@ component {
     variables.jwt = new modules.jwtcfml.models.jwt();
 
     function init() {
-        globalConfig = expandPath('/configs/global.json');
-        if (fileExists(globalConfig)) {
-            config = deserializeJSON(fileRead(globalConfig));
-            variables.acessKey = config.acessTokenKey;
-            variables.refreshKey = config.refreshTokenKey;
-            variables.expiedMinute = config.expiedMinute;
-            variables.refreshExpiredMinute = config.refreshExpiredMinute;
-        } else {
-            writeDump('config file not found: #globalConfig#');
-            abort;
-        }
+        var myEnv= createObject("core.helpers.EnvLoader");
+        variables.acessKey = myEnv.getEnv("ACCESS_TOKEN");
+        variables.refreshKey = myEnv.getEnv("REFRESH_TOKEN");
+        variables.expiedMinute = myEnv.getEnv("EXPIRED_ACCESS_MINUTE");
+        variables.refreshExpiredMinute = myEnv.getEnv("EXPIRED_REFRESH_MINUTE");
         return this;
     }
 
