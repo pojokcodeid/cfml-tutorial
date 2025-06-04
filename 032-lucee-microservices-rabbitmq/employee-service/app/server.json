@@ -9,7 +9,7 @@
         "host":"localhost",
         "webroot":"src",
         "http":{
-            "port":8888
+            "port":8081
         },
         "rewrites":{
             "enable":"true",

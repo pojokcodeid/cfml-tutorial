@@ -34,4 +34,123 @@ component extends="core.BaseController" {
         return {code: 200, message: 'Success', data: deserializeJSON(result)};
     }
 
+    public struct function register(content = {}) {
+        try {
+            var result = validate(content, rules);
+            if (not result.success) {
+                return {
+                    success: false,
+                    code: 400,
+                    message: result.errors[1],
+                    data: {}
+                }
+            }
+            var Bcript = new core.helpers.Password();
+            content.password = Bcript.bcryptHashGet(content.password);
+            var registeredUser = UserModel.register(content);
+            registeredUser.activate = application.baseURL & '/user/activate/' & registeredUser.uuid;
+            var mail = new core.helpers.Mail(
+                registeredUser.email,
+                application.emailFrom,
+                'Email Activation',
+                'html'
+            );
+            mail.send(
+                '<p>Hi #registeredUser.name#</p>
+                <p>Click the link below to activate your account</p>
+                <a href="#registeredUser.activate#">Activate</a>'
+            );
+            return {
+                success: true,
+                code: 201,
+                message: 'success',
+                data: registeredUser
+            }
+        } catch (any e) {
+            return {
+                success: false,
+                code: 422,
+                message: e.message,
+                data: {}
+            }
+        }
+    }
+
+        public struct function login(content = {}) {
+        var loginRules = {email: 'required|is_email', password: 'required'};
+        try {
+            var result = validate(content, loginRules);
+            if (!result.success) {
+                return {
+                    success: false,
+                    code: 400,
+                    message: result.errors[1],
+                    data: {}
+                };
+            }
+
+            var user = UserModel.login(content);
+            var isValid = false;
+
+            if (structKeyExists(user, 'password')) {
+                var Bcript = new core.helpers.Password();
+                isValid = user.password = Bcript.bcryptHashVerify(content.password, user.password);
+            } else {
+                return {
+                    success: false,
+                    code: 401,
+                    message: 'User not found',
+                    data: {}
+                };
+            }
+
+            if (!isValid) {
+                return {
+                    success: false,
+                    code: 401,
+                    message: 'Invalid Password',
+                    data: {}
+                };
+            }
+
+            user.password = '********';
+
+            var Jwt = new core.helpers.Jwt();
+            var token = Jwt.encode(user);
+            cfcookie(
+                name = "accessToken",
+                value = token.accessToken,
+                path = "/",
+                expires = token.expiredAccess,
+                httponly = true,
+                encodevalue = true,
+                // secure=true,
+                samesite = "strict"
+            );
+            cfcookie(
+                name = "refreshToken",
+                value = token.refreshToken,
+                path = "/user/refresh",
+                expires = token.expiredRefresh,
+                httponly = true,
+                encodevalue = true,
+                // secure=true,
+                samesite = "strict"
+            );
+            return {
+                success: true,
+                code: 200,
+                message: 'success',
+                data: user
+            };
+        } catch (any e) {
+            return {
+                success: false,
+                code: 422,
+                message: e.message,
+                data: {}
+            };
+        }
+    }
+
 }

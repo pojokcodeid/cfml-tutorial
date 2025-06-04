@@ -6,9 +6,9 @@ services:
       context: .
     container_name: employee_service
     ports:
-      - "8081:8888"
+      - "8081:8081"
     environment:
-      - PORT=8888
+      - PORT=8081
       - SSL_PORT=443
       - CFCONFIG_adminPassword=passwordku123
     volumes:
