@@ -5,7 +5,6 @@ component {
     this.webURL = 'https://github.com/jcberquist/jwt-cfml';
     this.description = 'This module supports encoding and decoding JSON Web Tokens.';
 
-    function configure() {
-    }
+    function configure() {}
 
 }

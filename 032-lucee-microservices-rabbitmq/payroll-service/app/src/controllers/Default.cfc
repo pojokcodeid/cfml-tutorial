@@ -5,7 +5,7 @@ component {
     }
 
     public struct function index() {
-        return {success: false, code: 404, message: 'Not Found'};
+        return {success: false, code: 404, message: 'Not Found from payroll'};
     }
 
 }

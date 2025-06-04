@@ -76,7 +76,7 @@ component extends="core.BaseController" {
         }
     }
 
-        public struct function login(content = {}) {
+    public struct function login(content = {}) {
         var loginRules = {email: 'required|is_email', password: 'required'};
         try {
             var result = validate(content, loginRules);
@@ -130,7 +130,7 @@ component extends="core.BaseController" {
             cfcookie(
                 name = "refreshToken",
                 value = token.refreshToken,
-                path = "/user/refresh",
+                path = "/",
                 expires = token.expiredRefresh,
                 httponly = true,
                 encodevalue = true,
@@ -142,6 +142,55 @@ component extends="core.BaseController" {
                 code: 200,
                 message: 'success',
                 data: user
+            };
+        } catch (any e) {
+            return {
+                success: false,
+                code: 422,
+                message: e.message,
+                data: {}
+            };
+        }
+    }
+
+    public any function refreshToken() {
+        try {
+            var authenticate = new core.helpers.Header();
+            var auth = authenticate.authenticateRefresh();
+            if (not isStruct(auth.DATA) && auth.DATA == false) {
+                return {
+                    success: false,
+                    code: 401,
+                    message: auth.message,
+                    data: {}
+                };
+            }
+            var newToken = auth.token;
+            cfcookie(
+                name = "accessToken",
+                value = newToken.accessToken,
+                path = "/",
+                expires = newToken.expiredAccess,
+                httponly = true,
+                encodevalue = true,
+                // secure=true,
+                samesite = "strict"
+            );
+            cfcookie(
+                name = "refreshToken",
+                value = newToken.refreshToken,
+                path = "/",
+                expires = newToken.expiredRefresh,
+                httponly = true,
+                // secure=true,
+                encodevalue = true,
+                samesite = "strict"
+            );
+            return {
+                success: true,
+                code: 200,
+                message: 'Token refreshed',
+                data: auth.data
             };
         } catch (any e) {
             return {

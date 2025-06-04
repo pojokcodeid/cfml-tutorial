@@ -5,14 +5,11 @@ component {
     }
 
     public function authenticateAcess() {
-        var requestData = getHTTPRequestData();
-        if (structKeyExists(requestData.Headers, 'authorization')) {
-            var token = requestData.Headers.authorization;
-            token = replace(token, 'Bearer ', '', 'all');
-            token = replace(token, ' ', '', 'all');
+        var accessToken = cookie.accessToken ?: '';
+        if (not isEmpty(accessToken)) {
             try {
                 var jwt = new core.helpers.Jwt();
-                return jwt.decodeAccess(token);
+                return jwt.decodeAccess(accessToken);
             } catch (any e) {
                 return {message: 'Anauthorized', data: false};
             }
@@ -22,19 +19,18 @@ component {
     }
 
     public function authenticateRefresh() {
-        var requestData = getHTTPRequestData();
-        if (structKeyExists(requestData.Headers, 'authorization')) {
-            var token = requestData.Headers.authorization;
-            token = replace(token, 'Bearer ', '', 'all');
-            token = replace(token, ' ', '', 'all');
+        var refreshToken = cookie.refreshToken ?: '';
+        if (not isEmpty(refreshToken)) {
             try {
                 var jwt = new core.helpers.Jwt();
-                return jwt.decodeRefresh(token);
+                var auth = jwt.decodeRefresh(refreshToken);
+                var newToken = jwt.encode(auth.DATA.content);
+                return {message: 'success', token: newToken, data: auth.DATA.content}
             } catch (any e) {
-                return {message: 'Anauthorized', data: false};
+                return {message: 'Anauthorized', token: '', data: false};
             }
         } else {
-            return {message: 'Anauthorized', data: false};
+            return {message: 'Anauthorized', token: '', data: false};
         }
     }
 

@@ -1,6 +1,6 @@
-@base_url=http://localhost:8081
+@base_url=http://localhost:8080
 ### register 
-POST {{base_url}}/user/register
+POST {{base_url}}/auth/user/register
 Content-Type: application/json
 {
     "name":"Pojok Code",
@@ -9,35 +9,12 @@ Content-Type: application/json
 }
 
 ### login
-POST {{base_url}}/user/login
+POST {{base_url}}/auth/user/login
 Content-Type: application/json
 {
     "email":"code@gmail.com",
     "password":"P@ssw0rd"
 }
-
-{{
-  $global.accessToken=JSON.parse(response.body).ACCESSTOKEN;
-  $global.refreshToken=JSON.parse(response.body).REFRESHTOKEN;
-}}
 
 ### refresh Token
-GET {{base_url}}/user/refresh
-Authorization: Bearer {{$global.refreshToken}}
-
-{{
-  $global.accessToken=JSON.parse(response.body).ACCESSTOKEN;
-  $global.refreshToken=JSON.parse(response.body).REFRESHTOKEN;
-}}
-
-### update user 
-POST {{base_url}}/user/update
-Authorization: Bearer {{$global.accessToken}}
-Content-Type: application/json
-{
-    "name":"Pojok Code",
-    "email":"code@gmail.com",
-    "phone":"",
-    "address":"",
-    "password":"P@ssw0rd"
-}
+GET {{base_url}}/auth/user/refresh
