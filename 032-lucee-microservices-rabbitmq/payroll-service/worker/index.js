@@ -1,44 +1,65 @@
 const amqp = require("amqplib");
 
-const queue = "testQueue2";
+const queues = ["testQueue2", "paymentQueue", "logQueue"];
 
-async function receiveMessage() {
+async function receiveMessages() {
   try {
-    // Koneksi ke RabbitMQ
     const connection = await amqp.connect("amqp://guest:guest@rabbitmq:5672");
     const channel = await connection.createChannel();
 
-    // Pastikan queue ada (dengan type quorum kalau ingin disamakan)
-    await channel.assertQueue(queue, {
-      durable: true,
-      arguments: {
-        "x-queue-type": "quorum", // Hanya jika kamu memang pakai quorum queue
-      },
-    });
+    for (const queue of queues) {
+      await channel.assertQueue(queue, {
+        durable: true,
+        arguments: {
+          "x-queue-type": "quorum", // Jika semua pakai quorum
+        },
+      });
 
-    console.log(`Menunggu pesan dari queue: ${queue}...`);
+      console.log(`✅ Menunggu pesan dari queue: ${queue}`);
 
-    channel.consume(queue, (msg) => {
-      if (msg !== null) {
-        const content = msg.content.toString();
-        console.log("Pesan diterima:", content);
+      channel.consume(
+        queue,
+        (msg) => {
+          if (msg !== null) {
+            const content = msg.content.toString();
+            console.log(`📥 [${queue}] Pesan diterima:`, content);
 
-        // Jika pesan berupa JSON, bisa parse:
-        try {
-          const data = JSON.parse(content);
-          // panggil rest api ke sini untuk memperbaharui data
-          console.log("Data parsed:", data);
-        } catch (e) {
-          console.error("Bukan JSON valid:", e.message);
+            try {
+              const data = JSON.parse(content);
+              // Di sini kamu bisa tambahkan handler khusus per queue
+              handleQueueMessage(queue, data);
+            } catch (e) {
+              console.error(`[${queue}] ❌ Bukan JSON valid:`, e.message);
+            }
+
+            channel.ack(msg);
+          }
+        },
+        {
+          noAck: false,
         }
-
-        // Tandai pesan sebagai selesai diproses
-        channel.ack(msg);
-      }
-    });
+      );
+    }
   } catch (err) {
-    console.error("Gagal menerima pesan:", err);
+    console.error("❌ Gagal menerima pesan:", err.message);
+    setTimeout(receiveMessages, 5000); // Retry auto jika gagal
   }
 }
 
-receiveMessage();
+function handleQueueMessage(queue, data) {
+  switch (queue) {
+    case "testQueue2":
+      console.log("🔧 Update data dari testQueue2:", data);
+      break;
+    case "paymentQueue":
+      console.log("💰 Payment handler:", data);
+      break;
+    case "logQueue":
+      console.log("📝 Log data handler:", data);
+      break;
+    default:
+      console.warn(`⚠️ Tidak ada handler untuk queue: ${queue}`);
+  }
+}
+
+receiveMessages();
