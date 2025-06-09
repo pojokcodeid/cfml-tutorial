@@ -35,6 +35,46 @@ component extends="core.BaseController" {
     }
 
     public struct function update(content = {}) {
+        // if (not structKeyExists(content, 'password') || content.password == '') {
+        //     variables.rules = {name: 'required', email: 'required|is_email'}
+        // }
+        try {
+            // var authenticate = new core.helpers.Header();
+            // var auth = authenticate.authenticateAcess();
+            // if (not isStruct(auth.DATA) && auth.DATA == false) {
+            //     return {
+            //         success: false,
+            //         code: 401,
+            //         message: auth.message,
+            //         data: {}
+            //     }
+            // }
+            // var result = validate(content, rules);
+            // if (not result.success) {
+            //     return {
+            //         success: false,
+            //         code: 400,
+            //         message: result.errors[1],
+            //         data: {}
+            //     }
+            // }
+            return {
+                success: true,
+                code: 200,
+                message: 'success',
+                data: {}
+            }
+        } catch (any e) {
+            return {
+                success: false,
+                code: 422,
+                message: e.message,
+                data: {}
+            }
+        }
+    }
+
+    public struct function update2(content = {}) {
         if (not structKeyExists(content, 'password') || content.password == '') {
             variables.rules = {name: 'required', email: 'required|is_email'}
         }

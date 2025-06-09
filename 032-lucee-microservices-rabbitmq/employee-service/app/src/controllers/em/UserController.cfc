@@ -28,7 +28,7 @@ component extends="core.BaseController" {
         var jsonMessage = serializeJSON(data);
 
         // Kirim JSON ke queue
-        var result = rabbit.sendMessage('testQueue2', jsonMessage);
+        var result = rabbit.sendMessage('user/update', jsonMessage);
         rabbit.close();
 
         return {code: 200, message: 'Success', data: deserializeJSON(result)};
