@@ -36,6 +36,22 @@ services:
     networks:
       - shared-net
 
+  worker:
+    container_name: node-app
+    build:
+      context: ./worker
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./worker:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - shared-net
+    
+
 volumes:
   mariadb_data:
   app:
