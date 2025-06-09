@@ -14,11 +14,11 @@ services:
     volumes:
       - ./app:/app
     depends_on:
-      - mariadb
+      - payroll_db
     networks:
       - shared-net
 
-  mariadb:
+  payroll_db:
     image: mariadb:latest
     container_name: payroll_db
     restart: unless-stopped
