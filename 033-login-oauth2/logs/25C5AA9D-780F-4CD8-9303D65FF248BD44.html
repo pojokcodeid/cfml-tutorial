@@ -1,0 +1,155 @@
+
+<!-- ==start== dump {ts '2025-06-27 19:30:17'} format: html -->
+<div id="xh-Ow63cURTW_jiF1AdiKaw" class="-lucee-dump"><style>
+.-lucee-dump .disp-none { display: none; }
+</style>
+<script>
+window.__Lucee = { initialized : false,
+				addEventListeners : function(selector, event, handler, useCapture){
+					useCapture = useCapture || false;
+					Array.prototype.forEach.call(
+						 document.querySelectorAll(selector)
+						,function(el, ix) {
+						  el.addEventListener(event, handler, useCapture);
+						}
+					);
+				}
+				,getNextSiblings   : function(el){
+					var  orig = el
+						,result = [];
+					while (el && el.nodeType === Node.ELEMENT_NODE) {
+						if (el !== orig)
+							result.push(el);
+						el = el.nextElementSibling || el.nextSibling;
+					}
+					return result;
+				}
+				,onDocumentReady		   : function(){
+					var L = window.__Lucee;
+					if (L.initialized)
+						return;
+					L.addEventListeners(".collapse-trigger", "click", function(evt){
+						var tr = evt.target.closest("tr");
+						var siblings = L.getNextSiblings(tr);
+						siblings.forEach(function(el, ix){
+							el.classList.toggle("disp-none");
+						});
+					});
+					L.initialized = true;
+				}
+			}
+			
+document.addEventListener("DOMContentLoaded", __Lucee.onDocumentReady);
+</script>
+<style type="text/css">
+div#xh-Ow63cURTW_jiF1AdiKaw table {font-family:Verdana, Geneva, Arial, Helvetica, sans-serif; font-size:11px; empty-cells:show; color:#000; border-collapse:collapse;}
+div#xh-Ow63cURTW_jiF1AdiKaw td {border:1px solid #000; vertical-align:top; padding:2px; empty-cells:show;}
+div#xh-Ow63cURTW_jiF1AdiKaw td span {font-weight:bold;}
+div#xh-Ow63cURTW_jiF1AdiKaw td.luceeN0 {color:#005122;border-color:#005122;background-color:#b7e4c7;}
+div#xh-Ow63cURTW_jiF1AdiKaw td.luceeH0 {color:#005122;border-color:#005122;background-color:#52b788;}
+div#xh-Ow63cURTW_jiF1AdiKaw td.luceeN1 {color:#990000;border-color:#990000;background-color:#fc9;}
+div#xh-Ow63cURTW_jiF1AdiKaw td.luceeH1 {color:#990000;border-color:#990000;background-color:#f60;}
+div#xh-Ow63cURTW_jiF1AdiKaw td.luceeN2 {color:#002949;border-color:#002949;background-color:#89c2d9;}
+div#xh-Ow63cURTW_jiF1AdiKaw td.luceeH2 {color:#002949;border-color:#002949;background-color:#468faf;}
+div#xh-Ow63cURTW_jiF1AdiKaw td.luceeN3 {color:#999999;border-color:#999999;background-color:#ccc;}
+div#xh-Ow63cURTW_jiF1AdiKaw td.luceeH3 {color:#999999;border-color:#999999;background-color:#fff;}
+</style>
+<table title="D:\youtube\CFML\033-login-oauth2\src\Application.cfc:57"><tr><td class="luceeH3">Exception</td></tr><tr><td class="luceeN3"><table><tr><td class="collapse-trigger luceeH2" colspan="3" style="cursor:pointer;"><span>Catch</span></td></tr><tr><td class="luceeH2">additional</td><td class="luceeN2"><table><tr><td class="collapse-trigger luceeH2" colspan="0" style="cursor:pointer;"><span>Struct (ordered)</span></td></tr></table></td></tr><tr><td class="luceeH2">Detail</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1"></td></tr></table></td></tr><tr><td class="luceeH2">ErrNumber</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">0</td></tr></table></td></tr><tr><td class="luceeH2">ErrorCode</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">0</td></tr></table></td></tr><tr><td class="luceeH2">Extended_Info</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1"></td></tr></table></td></tr><tr><td class="luceeH2">ExtendedInfo</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1"></td></tr></table></td></tr><tr><td class="luceeH2">Message</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">variable [OUTPUT] doesn't exist</td></tr></table></td></tr><tr><td class="luceeH2">StackTrace</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">lucee.runtime.exp.ExpressionException: variable [OUTPUT] doesn't exist
+	at lucee.runtime.type.scope.UndefinedImpl.get(UndefinedImpl.java:270)
+	at lucee.runtime.type.scope.UndefinedImpl.get(UndefinedImpl.java:210)
+	at lucee.runtime.PageContextImpl.us(PageContextImpl.java:1299)
+	at index_cfm$cf.call(/index.cfm:4)
+	at lucee.runtime.PageContextImpl._doInclude(PageContextImpl.java:1112)
+	at lucee.runtime.PageContextImpl._doInclude(PageContextImpl.java:1006)
+	at lucee.runtime.listener.ModernAppListener._onRequest(ModernAppListener.java:213)
+	at lucee.runtime.listener.MixedAppListener.onRequest(MixedAppListener.java:41)
+	at lucee.runtime.PageContextImpl.execute(PageContextImpl.java:2810)
+	at lucee.runtime.PageContextImpl._execute(PageContextImpl.java:2797)
+	at lucee.runtime.PageContextImpl.executeCFML(PageContextImpl.java:2768)
+	at lucee.runtime.engine.Request.exe(Request.java:45)
+	at lucee.runtime.engine.CFMLEngineImpl._service(CFMLEngineImpl.java:1109)
+	at lucee.runtime.engine.CFMLEngineImpl.serviceCFML(CFMLEngineImpl.java:1066)
+	at lucee.loader.engine.CFMLEngineWrapper.serviceCFML(CFMLEngineWrapper.java:97)
+	at lucee.loader.servlet.CFMLServlet.service(CFMLServlet.java:42)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:74)
+	at io.undertow.servlet.handlers.FilterHandler$FilterChainImpl.doFilter(FilterHandler.java:129)
+	at org.cfmlprojects.regexpathinfofilter.RegexPathInfoFilter.doFilter(RegexPathInfoFilter.java:54)
+	at io.undertow.servlet.core.ManagedFilter.doFilter(ManagedFilter.java:67)
+	at io.undertow.servlet.handlers.FilterHandler$FilterChainImpl.doFilter(FilterHandler.java:131)
+	at io.undertow.servlet.handlers.FilterHandler.handleRequest(FilterHandler.java:84)
+	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+	at io.undertow.servlet.handlers.ServletChain$1.handleRequest(ServletChain.java:68)
+	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+	at runwar.undertow.SSLCertHeaderHandler.handleRequest(SSLCertHeaderHandler.java:161)
+	at io.undertow.servlet.handlers.RedirectDirHandler.handleRequest(RedirectDirHandler.java:68)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:257)
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchToPath(ServletInitialHandler.java:182)
+	at io.undertow.servlet.spec.RequestDispatcherImpl.forwardImpl(RequestDispatcherImpl.java:189)
+	at io.undertow.servlet.spec.RequestDispatcherImpl.forwardImplSetup(RequestDispatcherImpl.java:137)
+	at io.undertow.servlet.spec.RequestDispatcherImpl.forward(RequestDispatcherImpl.java:100)
+	at org.tuckey.web.filters.urlrewrite.NormalRewrittenUrl.doRewrite(NormalRewrittenUrl.java:215)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.handleRewrite(RuleChain.java:171)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.doRules(RuleChain.java:145)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriter.processRequest(UrlRewriter.java:92)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(UrlRewriteFilter.java:405)
+	at io.undertow.servlet.core.ManagedFilter.doFilter(ManagedFilter.java:67)
+	at io.undertow.servlet.handlers.FilterHandler$FilterChainImpl.doFilter(FilterHandler.java:131)
+	at io.undertow.servlet.handlers.FilterHandler.handleRequest(FilterHandler.java:84)
+	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+	at io.undertow.servlet.handlers.ServletChain$1.handleRequest(ServletChain.java:68)
+	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+	at runwar.undertow.SSLCertHeaderHandler.handleRequest(SSLCertHeaderHandler.java:161)
+	at io.undertow.servlet.handlers.RedirectDirHandler.handleRequest(RedirectDirHandler.java:68)
+	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:117)
+	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:60)
+	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:77)
+	at io.undertow.security.handlers.AbstractSecurityContextAssociationHandler.handleRequest(AbstractSecurityContextAssociationHandler.java:43)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.SendErrorPageHandler.handleRequest(SendErrorPageHandler.java:52)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:275)
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:79)
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:134)
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:131)
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48)
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43)
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:255)
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleRequest(ServletInitialHandler.java:175)
+	at io.undertow.server.handlers.HttpContinueReadHandler.handleRequest(HttpContinueReadHandler.java:69)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at runwar.undertow.WelcomeFileHandler.handleRequest(WelcomeFileHandler.java:49)
+	at io.undertow.server.handlers.PathHandler.handleRequest(PathHandler.java:104)
+	at runwar.undertow.SiteDeployment$1.handleRequest(SiteDeployment.java:169)
+	at io.undertow.predicate.PredicatesHandler.handleRequest(PredicatesHandler.java:141)
+	at io.undertow.server.handlers.DisallowedMethodsHandler.handleRequest(DisallowedMethodsHandler.java:62)
+	at io.undertow.predicate.PredicatesHandler.handleRequest(PredicatesHandler.java:113)
+	at io.undertow.server.handlers.encoding.EncodingHandler.handleRequest(EncodingHandler.java:72)
+	at runwar.undertow.LifecyleHandler.handleRequest(LifecyleHandler.java:143)
+	at runwar.undertow.SiteDeployment$4.handleRequest(SiteDeployment.java:360)
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:395)
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:854)
+	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2019)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1558)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1449)
+	at org.xnio.XnioWorker$WorkerThreadFactory$1$1.run(XnioWorker.java:1282)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</td></tr></table></td></tr><tr><td class="luceeH2">TagContext</td><td class="luceeN2"><table><tr><td class="collapse-trigger luceeH0" colspan="3" style="cursor:pointer;"><span>Array</span></td></tr><tr><td class="luceeH0">1</td><td class="luceeN0"><table><tr><td class="collapse-trigger luceeH2" colspan="3" style="cursor:pointer;"><span>Struct</span></td></tr><tr><td class="luceeH2">codePrintHTML</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">2: &amp;nbsp;&amp;nbsp;&amp;nbsp;router&amp;nbsp;=&amp;nbsp;new&amp;nbsp;core.Router();&lt;br&gt;
+3: &amp;nbsp;&amp;nbsp;&amp;nbsp;output&amp;nbsp;=router.begin();&lt;br&gt;
+&lt;b&gt;4: &amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(isStruct(output)&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;structKeyExists(output,&amp;nbsp;&amp;quot;code&amp;quot;)&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;structKeyExists(output,&amp;nbsp;&amp;quot;message&amp;quot;)){&lt;/b&gt;&lt;br&gt;
+5: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;cfcontent(reset=&amp;quot;true&amp;quot;,&amp;nbsp;type=&amp;quot;application/json&amp;quot;);&lt;br&gt;
+6: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;cfheader(statuscode=&amp;quot;#output.code#&amp;quot;,&amp;nbsp;statustext=&amp;quot;#output.message#&amp;quot;);&lt;br&gt;
+</td></tr></table></td></tr><tr><td class="luceeH2">codePrintPlain</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">2: 	router = new core.Router();
+3: 	output =router.begin();
+4: 	if (isStruct(output) &amp;&amp; structKeyExists(output, &quot;code&quot;) &amp;&amp; structKeyExists(output, &quot;message&quot;)){
+5: 		cfcontent(reset=&quot;true&quot;, type=&quot;application/json&quot;);
+6: 		cfheader(statuscode=&quot;#output.code#&quot;, statustext=&quot;#output.message#&quot;);
+</td></tr></table></td></tr><tr><td class="luceeH2">column</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">0</td></tr></table></td></tr><tr><td class="luceeH2">id</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">??</td></tr></table></td></tr><tr><td class="luceeH2">line</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">4</td></tr></table></td></tr><tr><td class="luceeH2">Raw_Trace</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">index_cfm$cf.call(/index.cfm:4)</td></tr></table></td></tr><tr><td class="luceeH2">template</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">D:\youtube\CFML\033-login-oauth2\src\index.cfm</td></tr></table></td></tr><tr><td class="luceeH2">type</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">cfml</td></tr></table></td></tr></table></td></tr></table></td></tr><tr><td class="luceeH2">type</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">expression</td></tr></table></td></tr></table></td></tr></table></div>
+<!-- ==stop== dump -->

@@ -1,0 +1,228 @@
+
+<!-- ==start== dump {ts '2025-05-30 13:36:27'} format: html -->
+<div id="xKRpLj6d1TBG0Z5_BheDuBQ" class="-lucee-dump"><style>
+.-lucee-dump .disp-none { display: none; }
+</style>
+<script>
+window.__Lucee = { initialized : false,
+				addEventListeners : function(selector, event, handler, useCapture){
+					useCapture = useCapture || false;
+					Array.prototype.forEach.call(
+						 document.querySelectorAll(selector)
+						,function(el, ix) {
+						  el.addEventListener(event, handler, useCapture);
+						}
+					);
+				}
+				,getNextSiblings   : function(el){
+					var  orig = el
+						,result = [];
+					while (el && el.nodeType === Node.ELEMENT_NODE) {
+						if (el !== orig)
+							result.push(el);
+						el = el.nextElementSibling || el.nextSibling;
+					}
+					return result;
+				}
+				,onDocumentReady		   : function(){
+					var L = window.__Lucee;
+					if (L.initialized)
+						return;
+					L.addEventListeners(".collapse-trigger", "click", function(evt){
+						var tr = evt.target.closest("tr");
+						var siblings = L.getNextSiblings(tr);
+						siblings.forEach(function(el, ix){
+							el.classList.toggle("disp-none");
+						});
+					});
+					L.initialized = true;
+				}
+			}
+			
+document.addEventListener("DOMContentLoaded", __Lucee.onDocumentReady);
+</script>
+<style type="text/css">
+div#xKRpLj6d1TBG0Z5_BheDuBQ table {font-family:Verdana, Geneva, Arial, Helvetica, sans-serif; font-size:11px; empty-cells:show; color:#000; border-collapse:collapse;}
+div#xKRpLj6d1TBG0Z5_BheDuBQ td {border:1px solid #000; vertical-align:top; padding:2px; empty-cells:show;}
+div#xKRpLj6d1TBG0Z5_BheDuBQ td span {font-weight:bold;}
+div#xKRpLj6d1TBG0Z5_BheDuBQ td.luceeN0 {color:#005122;border-color:#005122;background-color:#b7e4c7;}
+div#xKRpLj6d1TBG0Z5_BheDuBQ td.luceeH0 {color:#005122;border-color:#005122;background-color:#52b788;}
+div#xKRpLj6d1TBG0Z5_BheDuBQ td.luceeN1 {color:#990000;border-color:#990000;background-color:#fc9;}
+div#xKRpLj6d1TBG0Z5_BheDuBQ td.luceeH1 {color:#990000;border-color:#990000;background-color:#f60;}
+div#xKRpLj6d1TBG0Z5_BheDuBQ td.luceeN2 {color:#002949;border-color:#002949;background-color:#89c2d9;}
+div#xKRpLj6d1TBG0Z5_BheDuBQ td.luceeH2 {color:#002949;border-color:#002949;background-color:#468faf;}
+div#xKRpLj6d1TBG0Z5_BheDuBQ td.luceeN3 {color:#999999;border-color:#999999;background-color:#ccc;}
+div#xKRpLj6d1TBG0Z5_BheDuBQ td.luceeH3 {color:#999999;border-color:#999999;background-color:#fff;}
+</style>
+<table title="D:\youtube\025- fullstack-cfml-reactjs\backend\src\Application.cfc:49"><tr><td class="luceeH3">Exception</td></tr><tr><td class="luceeN3"><table><tr><td class="collapse-trigger luceeH2" colspan="3" style="cursor:pointer;"><span>Catch</span></td></tr><tr><td class="luceeH2">additional</td><td class="luceeN2"><table><tr><td class="collapse-trigger luceeH2" colspan="3" style="cursor:pointer;"><span>Struct (ordered)</span></td></tr><tr><td class="luceeH2">template</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">D:\youtube\025- fullstack-cfml-reactjs\backend\src\controllers\em\UserController.cfc</td></tr></table></td></tr><tr><td class="luceeH2">line</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">145</td></tr></table></td></tr><tr><td class="luceeH2">column</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">0</td></tr></table></td></tr></table></td></tr><tr><td class="luceeH2">Detail</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1"></td></tr></table></td></tr><tr><td class="luceeH2">ErrorCode</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">0</td></tr></table></td></tr><tr><td class="luceeH2">Extended_Info</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1"></td></tr></table></td></tr><tr><td class="luceeH2">ExtendedInfo</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1"></td></tr></table></td></tr><tr><td class="luceeH2">Message</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">Invalid Syntax Closing [)] not found; Failed in D:\youtube\025- fullstack-cfml-reactjs\backend\src\controllers\em\UserController.cfc:145; Failed in D:\youtube\025- fullstack-cfml-reactjs\backend\src\controllers\em\UserController.cfc:145</td></tr></table></td></tr><tr><td class="luceeH2">StackTrace</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">lucee.transformer.cfml.script.AbstrCFMLScriptTransformer$ComponentTemplateException: Invalid Syntax Closing [)] not found; Failed in D:\youtube\025- fullstack-cfml-reactjs\backend\src\controllers\em\UserController.cfc:145; Failed in D:\youtube\025- fullstack-cfml-reactjs\backend\src\controllers\em\UserController.cfc:145
+	at lucee.transformer.cfml.script.AbstrCFMLScriptTransformer._multiAttrStatement(AbstrCFMLScriptTransformer.java:1401)
+	at lucee.transformer.cfml.script.AbstrCFMLScriptTransformer.componentStatement(AbstrCFMLScriptTransformer.java:493)
+	at lucee.transformer.cfml.script.AbstrCFMLScriptTransformer.statement(AbstrCFMLScriptTransformer.java:247)
+	at lucee.transformer.cfml.script.AbstrCFMLScriptTransformer.statement(AbstrCFMLScriptTransformer.java:222)
+	at lucee.transformer.cfml.script.AbstrCFMLScriptTransformer.statements(AbstrCFMLScriptTransformer.java:205)
+	at lucee.transformer.cfml.script.AbstrCFMLScriptTransformer.statements(AbstrCFMLScriptTransformer.java:189)
+	at lucee.transformer.cfml.script.CFMLScriptTransformer.transform(CFMLScriptTransformer.java:48)
+	at lucee.transformer.cfml.tag.CFMLTransformer.tag(CFMLTransformer.java:742)
+	at lucee.transformer.cfml.tag.CFMLTransformer.body(CFMLTransformer.java:409)
+	at lucee.transformer.cfml.tag.CFMLTransformer.transform(CFMLTransformer.java:348)
+	at lucee.transformer.cfml.tag.CFMLTransformer.transform(CFMLTransformer.java:340)
+	at lucee.transformer.cfml.tag.CFMLTransformer.transform(CFMLTransformer.java:195)
+	at lucee.runtime.compiler.CFMLCompilerImpl._compile(CFMLCompilerImpl.java:101)
+	at lucee.runtime.compiler.CFMLCompilerImpl.compile(CFMLCompilerImpl.java:73)
+	at lucee.runtime.PageSourceImpl._compile(PageSourceImpl.java:476)
+	at lucee.runtime.PageSourceImpl.compile(PageSourceImpl.java:442)
+	at lucee.runtime.PageSourceImpl.loadPhysical(PageSourceImpl.java:348)
+	at lucee.runtime.PageSourceImpl.loadPageThrowTemplateException(PageSourceImpl.java:210)
+	at lucee.runtime.config.ConfigImpl.getCachedPage(ConfigImpl.java:3129)
+	at lucee.runtime.config.SingleContextConfigWeb.getCachedPage(SingleContextConfigWeb.java:1053)
+	at lucee.runtime.config.ConfigWebImpl.getCachedPage(ConfigWebImpl.java:1307)
+	at lucee.runtime.component.ComponentLoader._search(ComponentLoader.java:298)
+	at lucee.runtime.component.ComponentLoader._search(ComponentLoader.java:212)
+	at lucee.runtime.component.ComponentLoader.searchComponent(ComponentLoader.java:85)
+	at lucee.runtime.PageContextImpl.loadComponent(PageContextImpl.java:3680)
+	at lucee.runtime.functions.other.CreateObject.doComponent(CreateObject.java:189)
+	at lucee.runtime.functions.other.CreateObject.call(CreateObject.java:105)
+	at lucee.runtime.functions.other.CreateObject.call(CreateObject.java:80)
+	at core.app_cfc$cf.udfCall(/core/App.cfc:143)
+	at lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)
+	at lucee.runtime.type.UDFImpl._call(UDFImpl.java:357)
+	at lucee.runtime.type.UDFImpl.call(UDFImpl.java:224)
+	at lucee.runtime.ComponentImpl._call(ComponentImpl.java:722)
+	at lucee.runtime.ComponentImpl._call(ComponentImpl.java:595)
+	at lucee.runtime.ComponentImpl.call(ComponentImpl.java:2101)
+	at lucee.runtime.util.VariableUtilImpl.callFunctionWithoutNamedValues(VariableUtilImpl.java:773)
+	at lucee.runtime.PageContextImpl.getFunction(PageContextImpl.java:2075)
+	at core.router_cfc$cf.udfCall(/core/Router.cfc:12)
+	at lucee.runtime.type.UDFImpl.implementation(UDFImpl.java:112)
+	at lucee.runtime.type.UDFImpl._call(UDFImpl.java:357)
+	at lucee.runtime.type.UDFImpl.call(UDFImpl.java:224)
+	at lucee.runtime.ComponentImpl._call(ComponentImpl.java:722)
+	at lucee.runtime.ComponentImpl._call(ComponentImpl.java:595)
+	at lucee.runtime.ComponentImpl.call(ComponentImpl.java:2101)
+	at lucee.runtime.util.VariableUtilImpl.callFunctionWithoutNamedValues(VariableUtilImpl.java:773)
+	at lucee.runtime.PageContextImpl.getFunction(PageContextImpl.java:2075)
+	at index_cfm$cf.call(/index.cfm:3)
+	at lucee.runtime.PageContextImpl._doInclude(PageContextImpl.java:1112)
+	at lucee.runtime.PageContextImpl._doInclude(PageContextImpl.java:1006)
+	at lucee.runtime.listener.ModernAppListener._onRequest(ModernAppListener.java:213)
+	at lucee.runtime.listener.MixedAppListener.onRequest(MixedAppListener.java:41)
+	at lucee.runtime.PageContextImpl.execute(PageContextImpl.java:2810)
+	at lucee.runtime.PageContextImpl._execute(PageContextImpl.java:2797)
+	at lucee.runtime.PageContextImpl.executeCFML(PageContextImpl.java:2768)
+	at lucee.runtime.engine.Request.exe(Request.java:45)
+	at lucee.runtime.engine.CFMLEngineImpl._service(CFMLEngineImpl.java:1109)
+	at lucee.runtime.engine.CFMLEngineImpl.serviceCFML(CFMLEngineImpl.java:1066)
+	at lucee.loader.engine.CFMLEngineWrapper.serviceCFML(CFMLEngineWrapper.java:97)
+	at lucee.loader.servlet.CFMLServlet.service(CFMLServlet.java:42)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:74)
+	at io.undertow.servlet.handlers.FilterHandler$FilterChainImpl.doFilter(FilterHandler.java:129)
+	at org.cfmlprojects.regexpathinfofilter.RegexPathInfoFilter.doFilter(RegexPathInfoFilter.java:54)
+	at io.undertow.servlet.core.ManagedFilter.doFilter(ManagedFilter.java:67)
+	at io.undertow.servlet.handlers.FilterHandler$FilterChainImpl.doFilter(FilterHandler.java:131)
+	at io.undertow.servlet.handlers.FilterHandler.handleRequest(FilterHandler.java:84)
+	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+	at io.undertow.servlet.handlers.ServletChain$1.handleRequest(ServletChain.java:68)
+	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+	at runwar.undertow.SSLCertHeaderHandler.handleRequest(SSLCertHeaderHandler.java:161)
+	at io.undertow.servlet.handlers.RedirectDirHandler.handleRequest(RedirectDirHandler.java:68)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:257)
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchToPath(ServletInitialHandler.java:182)
+	at io.undertow.servlet.spec.RequestDispatcherImpl.forwardImpl(RequestDispatcherImpl.java:189)
+	at io.undertow.servlet.spec.RequestDispatcherImpl.forwardImplSetup(RequestDispatcherImpl.java:137)
+	at io.undertow.servlet.spec.RequestDispatcherImpl.forward(RequestDispatcherImpl.java:100)
+	at org.tuckey.web.filters.urlrewrite.NormalRewrittenUrl.doRewrite(NormalRewrittenUrl.java:215)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.handleRewrite(RuleChain.java:171)
+	at org.tuckey.web.filters.urlrewrite.RuleChain.doRules(RuleChain.java:145)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriter.processRequest(UrlRewriter.java:92)
+	at org.tuckey.web.filters.urlrewrite.UrlRewriteFilter.doFilter(UrlRewriteFilter.java:405)
+	at io.undertow.servlet.core.ManagedFilter.doFilter(ManagedFilter.java:67)
+	at io.undertow.servlet.handlers.FilterHandler$FilterChainImpl.doFilter(FilterHandler.java:131)
+	at io.undertow.servlet.handlers.FilterHandler.handleRequest(FilterHandler.java:84)
+	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
+	at io.undertow.servlet.handlers.ServletChain$1.handleRequest(ServletChain.java:68)
+	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36)
+	at runwar.undertow.SSLCertHeaderHandler.handleRequest(SSLCertHeaderHandler.java:161)
+	at io.undertow.servlet.handlers.RedirectDirHandler.handleRequest(RedirectDirHandler.java:68)
+	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:117)
+	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:57)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:46)
+	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:64)
+	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:60)
+	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:77)
+	at io.undertow.security.handlers.AbstractSecurityContextAssociationHandler.handleRequest(AbstractSecurityContextAssociationHandler.java:43)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.SendErrorPageHandler.handleRequest(SendErrorPageHandler.java:52)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:275)
+	at io.undertow.servlet.handlers.ServletInitialHandler.access$100(ServletInitialHandler.java:79)
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:134)
+	at io.undertow.servlet.handlers.ServletInitialHandler$2.call(ServletInitialHandler.java:131)
+	at io.undertow.servlet.core.ServletRequestContextThreadSetupAction$1.call(ServletRequestContextThreadSetupAction.java:48)
+	at io.undertow.servlet.core.ContextClassLoaderSetupAction$1.call(ContextClassLoaderSetupAction.java:43)
+	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:255)
+	at io.undertow.servlet.handlers.ServletInitialHandler.handleRequest(ServletInitialHandler.java:175)
+	at io.undertow.server.handlers.HttpContinueReadHandler.handleRequest(HttpContinueReadHandler.java:69)
+	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43)
+	at runwar.undertow.WelcomeFileHandler.handleRequest(WelcomeFileHandler.java:49)
+	at io.undertow.server.handlers.PathHandler.handleRequest(PathHandler.java:104)
+	at runwar.undertow.SiteDeployment$1.handleRequest(SiteDeployment.java:169)
+	at io.undertow.predicate.PredicatesHandler.handleRequest(PredicatesHandler.java:141)
+	at io.undertow.server.handlers.DisallowedMethodsHandler.handleRequest(DisallowedMethodsHandler.java:62)
+	at io.undertow.predicate.PredicatesHandler.handleRequest(PredicatesHandler.java:113)
+	at io.undertow.server.handlers.encoding.EncodingHandler.handleRequest(EncodingHandler.java:72)
+	at runwar.undertow.LifecyleHandler.handleRequest(LifecyleHandler.java:143)
+	at runwar.undertow.SiteDeployment$4.handleRequest(SiteDeployment.java:360)
+	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:395)
+	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:854)
+	at org.jboss.threads.ContextClassLoaderSavingRunnable.run(ContextClassLoaderSavingRunnable.java:35)
+	at org.jboss.threads.EnhancedQueueExecutor.safeRun(EnhancedQueueExecutor.java:2019)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.doRunTask(EnhancedQueueExecutor.java:1558)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1449)
+	at org.xnio.XnioWorker$WorkerThreadFactory$1$1.run(XnioWorker.java:1282)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</td></tr></table></td></tr><tr><td class="luceeH2">TagContext</td><td class="luceeN2"><table><tr><td class="collapse-trigger luceeH0" colspan="3" style="cursor:pointer;"><span>Array</span></td></tr><tr><td class="luceeH0">1</td><td class="luceeN0"><table><tr><td class="collapse-trigger luceeH2" colspan="3" style="cursor:pointer;"><span>Struct</span></td></tr><tr><td class="luceeH2">codePrintHTML</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">143: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;expdtRefresh&amp;nbsp;=&amp;nbsp;dateAdd(&amp;quot;n&amp;quot;,&amp;nbsp;10080&amp;nbsp;,&amp;nbsp;now());&amp;nbsp;//&amp;nbsp;expires&amp;nbsp;in&amp;nbsp;7&amp;nbsp;days&lt;br&gt;
+144: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;cfcookie&amp;nbsp;=&amp;nbsp;(&lt;br&gt;
+&lt;b&gt;145: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;name:&amp;nbsp;&amp;quot;refreshToken&amp;quot;,&lt;/b&gt;&lt;br&gt;
+146: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;value:&amp;nbsp;token.refreshToken,&lt;br&gt;
+147: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;domain:&amp;nbsp;&amp;quot;.local.com&amp;quot;,&lt;br&gt;
+</td></tr></table></td></tr><tr><td class="luceeH2">codePrintPlain</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">143:             var expdtRefresh = dateAdd(&quot;n&quot;, 10080 , now()); // expires in 7 days
+144:             cfcookie = (
+145:                 name: &quot;refreshToken&quot;,
+146:                 value: token.refreshToken,
+147:                 domain: &quot;.local.com&quot;,
+</td></tr></table></td></tr><tr><td class="luceeH2">column</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">0</td></tr></table></td></tr><tr><td class="luceeH2">id</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">??</td></tr></table></td></tr><tr><td class="luceeH2">line</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">145</td></tr></table></td></tr><tr><td class="luceeH2">Raw_Trace</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1"></td></tr></table></td></tr><tr><td class="luceeH2">template</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">D:\youtube\025- fullstack-cfml-reactjs\backend\src\controllers\em\UserController.cfc</td></tr></table></td></tr><tr><td class="luceeH2">Type</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">cfml</td></tr></table></td></tr></table></td></tr><tr><td class="luceeH0">2</td><td class="luceeN0"><table><tr><td class="collapse-trigger luceeH2" colspan="3" style="cursor:pointer;"><span>Struct</span></td></tr><tr><td class="luceeH2">codePrintHTML</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">141: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;controllerPath&amp;nbsp;=&amp;nbsp;&amp;quot;/controllers/#replace(controllerFile,&amp;nbsp;&amp;quot;.&amp;quot;,&amp;nbsp;&amp;quot;/&amp;quot;,&amp;nbsp;&amp;quot;all&amp;quot;)#.cfc&amp;quot;;&lt;br&gt;
+142: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(fileExists(expandPath(controllerPath)))&amp;nbsp;{&lt;br&gt;
+&lt;b&gt;143: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;var&amp;nbsp;controller&amp;nbsp;=&amp;nbsp;createObject(&amp;quot;component&amp;quot;,&amp;nbsp;&amp;quot;controllers.#controllerFile#&amp;quot;);&lt;/b&gt;&lt;br&gt;
+144: &lt;br&gt;
+145: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(structKeyExists(controller,&amp;nbsp;controllerMethod))&amp;nbsp;{&lt;br&gt;
+</td></tr></table></td></tr><tr><td class="luceeH2">codePrintPlain</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">141:         var controllerPath = &quot;/controllers/#replace(controllerFile, &quot;.&quot;, &quot;/&quot;, &quot;all&quot;)#.cfc&quot;;
+142:         if (fileExists(expandPath(controllerPath))) {
+143:             var controller = createObject(&quot;component&quot;, &quot;controllers.#controllerFile#&quot;);
+144: 
+145:             if (structKeyExists(controller, controllerMethod)) {
+</td></tr></table></td></tr><tr><td class="luceeH2">column</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">0</td></tr></table></td></tr><tr><td class="luceeH2">id</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">??</td></tr></table></td></tr><tr><td class="luceeH2">line</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">143</td></tr></table></td></tr><tr><td class="luceeH2">Raw_Trace</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">core.app_cfc$cf.udfCall(/core/App.cfc:143)</td></tr></table></td></tr><tr><td class="luceeH2">template</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">D:\youtube\025- fullstack-cfml-reactjs\backend\src\core\App.cfc</td></tr></table></td></tr><tr><td class="luceeH2">type</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">cfml</td></tr></table></td></tr></table></td></tr><tr><td class="luceeH0">3</td><td class="luceeN0"><table><tr><td class="collapse-trigger luceeH2" colspan="3" style="cursor:pointer;"><span>Struct</span></td></tr><tr><td class="luceeH2">codePrintHTML</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">10: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;app.get(&amp;quot;/user/refresh&amp;quot;,&amp;nbsp;{&amp;nbsp;controller:&amp;nbsp;&amp;quot;em.UserController&amp;quot;,&amp;nbsp;method:&amp;nbsp;&amp;quot;refreshToken&amp;quot;});&lt;br&gt;
+11: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;app.put(&amp;quot;/user/update&amp;quot;,&amp;nbsp;{&amp;nbsp;controller:&amp;nbsp;&amp;quot;em.UserController&amp;quot;,&amp;nbsp;method:&amp;nbsp;&amp;quot;update&amp;quot;});&lt;br&gt;
+&lt;b&gt;12: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;return&amp;nbsp;app.run();&lt;/b&gt;&lt;br&gt;
+13: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;}&lt;br&gt;
+14: }&lt;br&gt;
+</td></tr></table></td></tr><tr><td class="luceeH2">codePrintPlain</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">10:         app.get(&quot;/user/refresh&quot;, { controller: &quot;em.UserController&quot;, method: &quot;refreshToken&quot;});
+11:         app.put(&quot;/user/update&quot;, { controller: &quot;em.UserController&quot;, method: &quot;update&quot;});
+12:         return app.run();
+13:     }
+14: }
+</td></tr></table></td></tr><tr><td class="luceeH2">column</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">0</td></tr></table></td></tr><tr><td class="luceeH2">id</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">??</td></tr></table></td></tr><tr><td class="luceeH2">line</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">12</td></tr></table></td></tr><tr><td class="luceeH2">Raw_Trace</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">core.router_cfc$cf.udfCall(/core/Router.cfc:12)</td></tr></table></td></tr><tr><td class="luceeH2">template</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">D:\youtube\025- fullstack-cfml-reactjs\backend\src\core\Router.cfc</td></tr></table></td></tr><tr><td class="luceeH2">type</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">cfml</td></tr></table></td></tr></table></td></tr><tr><td class="luceeH0">4</td><td class="luceeN0"><table><tr><td class="collapse-trigger luceeH2" colspan="3" style="cursor:pointer;"><span>Struct</span></td></tr><tr><td class="luceeH2">codePrintHTML</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">1: &amp;lt;cfscript&amp;gt;&lt;br&gt;
+2: &amp;nbsp;&amp;nbsp;&amp;nbsp;router&amp;nbsp;=&amp;nbsp;new&amp;nbsp;core.Router();&lt;br&gt;
+&lt;b&gt;3: &amp;nbsp;&amp;nbsp;&amp;nbsp;output&amp;nbsp;=router.begin();&lt;/b&gt;&lt;br&gt;
+4: &amp;nbsp;&amp;nbsp;&amp;nbsp;if&amp;nbsp;(isStruct(output)&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;structKeyExists(output,&amp;nbsp;&amp;quot;code&amp;quot;)&amp;nbsp;&amp;amp;&amp;amp;&amp;nbsp;structKeyExists(output,&amp;nbsp;&amp;quot;message&amp;quot;)){&lt;br&gt;
+5: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;cfcontent(reset=&amp;quot;true&amp;quot;,&amp;nbsp;type=&amp;quot;application/json&amp;quot;);&lt;br&gt;
+</td></tr></table></td></tr><tr><td class="luceeH2">codePrintPlain</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">1: &lt;cfscript&gt;
+2: 	router = new core.Router();
+3: 	output =router.begin();
+4: 	if (isStruct(output) &amp;&amp; structKeyExists(output, &quot;code&quot;) &amp;&amp; structKeyExists(output, &quot;message&quot;)){
+5: 		cfcontent(reset=&quot;true&quot;, type=&quot;application/json&quot;);
+</td></tr></table></td></tr><tr><td class="luceeH2">column</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">0</td></tr></table></td></tr><tr><td class="luceeH2">id</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">??</td></tr></table></td></tr><tr><td class="luceeH2">line</td><td class="luceeN2"><table><tr><td class="luceeH1">number</td><td class="luceeN1">3</td></tr></table></td></tr><tr><td class="luceeH2">Raw_Trace</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">index_cfm$cf.call(/index.cfm:3)</td></tr></table></td></tr><tr><td class="luceeH2">template</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">D:\youtube\025- fullstack-cfml-reactjs\backend\src\index.cfm</td></tr></table></td></tr><tr><td class="luceeH2">type</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">cfml</td></tr></table></td></tr></table></td></tr></table></td></tr><tr><td class="luceeH2">type</td><td class="luceeN2"><table><tr><td class="luceeH1">string</td><td class="luceeN1">template</td></tr></table></td></tr></table></td></tr></table></div>
+<!-- ==stop== dump -->
